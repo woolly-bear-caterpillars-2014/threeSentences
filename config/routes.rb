@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # devise_for :users
 
   resources :stories
+  resources :users, only: [:show]
 
   root "stories#index"
 
