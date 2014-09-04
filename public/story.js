@@ -1,4 +1,5 @@
 var story;
+
 var sentenceTemplate,
     paneTemplate,
     sliceTemplate;
@@ -6,6 +7,7 @@ var sentenceTemplate,
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
+
 
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
@@ -79,6 +81,7 @@ function recursiveRenderSentence(sentence) {
   }
 }
 
+
 var renderPane = function(sentence) {
   var pane = paneTemplate({depth: sentence.depth});
   $('.content').append(pane);
@@ -133,6 +136,7 @@ function initializeTemplates(){
 
 $(document).ready(function() {
   initializeTemplates();
+
   response = getStory();
   renderStory(response);
 });
