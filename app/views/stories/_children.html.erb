@@ -2,6 +2,17 @@
 <div class="child">
 <p><%= child.id %>, <%= child.depth %>, <%= child.position %> - <%= child.content %><br></p><br><br>
 
+  <% if child.children.count < 3 %>
+    <%= form_for [@story, @sentence] do |f| -%>
+      <%= f.hidden_field :parent_id, :value => child.id %>
+      <%= f.hidden_field :depth, :value => child.depth + 1 %>
+      <%= f.hidden_field :position, :value =>  child.children.count + 1%>
+      <%= f.label :content, "Content" %>
+      <%= f.text_field :content %>
+      <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+    <% end -%>
+  <% end %>
+
 <% unless child.children.empty? %>
   <%= render partial: 'stories/children', locals: { sentence: child } %>
 <% end %>
