@@ -2,7 +2,7 @@
   <h2>My Stories</h2>
   <ol>
     <% @user.stories.each do |story| %>
-      <li><%= link_to story.name, story %></li>
+      <li><%= link_to story.name, story %>, <%= link_to "Delete Story", story_path(story), method: :delete, data: {confirm: "Are you sure you want to logout?"} %></li>
     <% end %>
   </ol>
 

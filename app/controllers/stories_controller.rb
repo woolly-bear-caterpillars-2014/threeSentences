@@ -8,6 +8,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @sentence = Sentence.new
+    @user = current_user
   end
 
   def new
@@ -21,6 +22,12 @@ class StoriesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @story = current_user.stories.find(params[:id])
+    @story.destroy
+    redirect_to user_path(current_user)
   end
 
   private
