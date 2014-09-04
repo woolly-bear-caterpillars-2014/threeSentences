@@ -17,10 +17,20 @@ var renderSentence = function(sentence) {
   $('.content').append(sentenceTemplate({sentence: sentence}));
 }
 
+function recursiveRenderSentence (sentence) {
+  renderSentence(sentence);
+  if (sentence.children.length !== 0) {
+    sentence.children.forEach(recursiveRenderSentence);
+  } else {
+    return;
+  }
+}
+
 var renderStory = function(response) {
   response.success(function(data) {
     story = data;
-    story.sentences.forEach(renderSentence);
+    story.sentences.forEach(recursiveRenderSentence);
+    // story.sentences.forEach(renderSentence);
     // renderSentence(story.sentences[0]);
   });
 }
