@@ -1,4 +1,4 @@
-<h1><%= @user.username %>'s Profile Page %>
+<h1><%= @user.username %>'s Profile Page</h1>
   <h2>My Stories</h2>
   <ol>
     <% @user.stories.each do |story| %>
@@ -6,4 +6,4 @@
     <% end %>
   </ol>
 
-<p><%= link_to 'Create new story', stories_new %></p>
+<p><%= link_to 'Create new story', new_story_path %></p>
