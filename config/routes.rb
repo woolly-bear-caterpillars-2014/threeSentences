@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :sentences, only: [:new, :create, :show, :update, :destroy]
   end
 
-  root "stories#index"
+  root "welcome#index"
   resources :users, only: [:show]
   devise_for :users, :controllers => { registrations: 'registrations' }
 
