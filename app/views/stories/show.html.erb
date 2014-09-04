@@ -1,10 +1,20 @@
 <p>StoryBoard</p>
+<% if @story.sentences.length < 3 %>
 
+  <%= form_for [@story, @sentence] do |f| -%>
+    <%= f.hidden_field :depth, :value => '0' %>
+    <%= f.hidden_field :position, :value => @story.sentences.length + 1 %>
+    <%= f.label :content, "Content" %>
+    <%= f.text_field :content %>
+    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+  <% end -%>
+
+<% end %>
 
 <% @story.sentences.each do |sentence| %>
   <% if sentence.parent_id == nil %>
   <div class="child">
-    <p><%= sentence.id %>, <%= sentence.content %>, <%= sentence.position %></p>
+    <p><%= sentence.id %>, <%= sentence.depth %>, <%= sentence.position %> - <%= sentence.content %></p>
 
     <% if sentence.children.count > 0 %>
 
