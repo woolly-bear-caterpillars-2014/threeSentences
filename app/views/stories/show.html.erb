@@ -1,6 +1,6 @@
 <p>StoryBoard</p>
-<% if @story.sentences.length < 3 %>
 
+<% if @story.sentences.length < 3 %>
   <%= form_for [@story, @sentence] do |f| -%>
     <%= f.hidden_field :depth, :value => '0' %>
     <%= f.hidden_field :position, :value => @story.sentences.length + 1 %>
@@ -8,7 +8,6 @@
     <%= f.text_field :content %>
     <%= f.submit "Submit", :disable_with => 'Submiting...' %>
   <% end -%>
-
 <% end %>
 
 <% @story.sentences.each do |sentence| %>
