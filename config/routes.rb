@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   # devise_for :users
 
-  resources :users, only: [:show]
+
 
   resources :stories do
     resources :sentences, only: [:new, :create, :show, :update, :destroy]
   end
 
   root "stories#index"
-
+  resources :users, only: [:show]
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   # The priority is based upon order of creation: first created -> highest priority.
