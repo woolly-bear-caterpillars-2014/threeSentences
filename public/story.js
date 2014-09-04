@@ -79,8 +79,44 @@ function recursiveRenderSentence(sentence) {
   }
 }
 
-function recursiveRenderSentence (sentence) {
+var renderPane = function(sentence) {
+  var pane = paneTemplate({depth: sentence.depth});
+  $('.content').append(pane);
+  return $(pane);
+}
+
+var renderSlice = function(sentence) {
+  var pane = findPane(sentence);
+  var slice = sliceTemplate({parent_id: sentence.parent_id, depth: sentence.depth })
+  pane.append(slice);
+  return $(slice);
+}
+
+var setupSlice = function(sentence) {
+  var slice;
+  if (findSlice(sentence).length === 0) {
+    slice = renderSlice(sentence);
+  } else {
+    slice = findSlice(sentence);
+  }
+  return slice;
+}
+
+var setupPane = function(sentence) {
+  var pane;
+  if (findPane(sentence).length === 0) {
+    pane = renderPane(sentence);
+  } else {
+    pane = findPane(sentence);
+  }
+  return pane;
+}
+
+
+
+function recursiveRenderSentence(sentence) {
   renderSentence(sentence);
+
   if (sentence.children.length !== 0) {
     sentence.children.forEach(recursiveRenderSentence);
   } else {

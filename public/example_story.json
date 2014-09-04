@@ -6,7 +6,7 @@
     {
       "id": 1,
       "story_id": 1,
-      "parent_id": null,
+      "parent_id": 0,
       "depth": 0,
       "position": 1,
       "content": "It was the best of times.",
@@ -53,18 +53,29 @@
     {
       "id": 2,
       "story_id": 1,
+<<<<<<< HEAD
       "depth": 0,
       "position": 2,
       "parent_id": null,
+=======
+      "parent_id": 0,
+      "depth": 0,
+      "position": 2,
+>>>>>>> Start work on DOM generation
       "content": "It was the worst of times.",
       "children": []
     },
     {
       "id": 3,
       "story_id": 1,
+<<<<<<< HEAD
       "position": 3,
       "parent_id": null,
+=======
+      "parent_id": 0,
+>>>>>>> Start work on DOM generation
       "depth": 0,
+      "position": 3,
       "content": "It was the age of wisdom.",
       "children": [
         {
