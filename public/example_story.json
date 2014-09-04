@@ -6,31 +6,45 @@
     {
       "id": 1,
       "story_id": 1,
-      "parent_id": "",
-      "depth": "0",
+      "parent_id": 0,
+      "depth": 0,
+      "position": 1,
       "content": "It was the best of times.",
       "children": [
         {
           "id": 4,
           "story_id": 1,
-          "parent_id": "1",
-          "depth": "1",
+          "parent_id": 1,
+          "depth": 1,
+          "position": 1,
           "content": "We had everything before us.",
-          "children": []
+          "children": [
+            {
+              "id": 8,
+              "story_id": 1,
+              "parent_id": 4,
+              "depth": 2,
+              "position": 1,
+              "content": "I'm the third level of the first sentence.",
+              "children": []
+            }
+          ]
         },
         {
           "id": 5,
           "story_id": 1,
-          "parent_id": "1",
-          "depth": "1",
+          "parent_id": 1,
+          "depth": 1,
+          "position": 2,
           "content": "We had nothing before us.",
           "children": []
         },
         {
           "id": 6,
           "story_id": 1,
-          "parent_id": "",
-          "depth": "1",
+          "parent_id": 1,
+          "depth": 1,
+          "position": 1,
           "content": "We were all going to Heaven.",
           "children": []
         }
@@ -39,18 +53,30 @@
     {
       "id": 2,
       "story_id": 1,
-      "parent_id": "",
-      "depth": "0",
+      "parent_id": 0,
+      "depth": 0,
+      "position": 2,
       "content": "It was the worst of times.",
       "children": []
     },
     {
       "id": 3,
       "story_id": 1,
-      "parent_id": "",
-      "depth": "0",
+      "parent_id": 0,
+      "depth": 0,
+      "position": 3,
       "content": "It was the age of wisdom.",
-      "children": []
+      "children": [
+        {
+          "id": 7,
+          "story_id": 1,
+          "parent_id": 3,
+          "depth": 1,
+          "position": 1,
+          "content": "I'm the second level of the third sentence.",
+          "children": []
+        }
+      ]
     }
   ]
 }

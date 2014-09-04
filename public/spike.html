@@ -1,0 +1,37 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script type="text/javascript" src="/story.js"></script>
+</head>
+<body>
+  <div class="content">
+    <div class="pane" data-depth="0">
+      <div class="slice" data-depth="0">
+        <p contenteditable="true" class="sentence" data-position="1"></p>
+        <p contenteditable="true" class="sentence" data-position="2"></p>
+        <p contenteditable="true" class="sentence" data-position="3"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="text/template" class="template" id="sentence-template">
+    <p data-parent-id="{{ sentence.parent_id }}" data-depth="{{ sentence.depth }}">
+      {{ sentence.content }}
+    </p>
+  </script>
+
+  <script type="text/template" class="template" id="pane-template">
+    <div class="pane" data-depth="{{ depth }}"></div>
+  </script>
+
+  <script type="text/template" class="template" id="slice-template">
+    <div class="slice" data-depth="{{ depth }}" data-parent-id="{{ parent_id }}">
+      <p contenteditable="true" class="sentence" data-position="1"></p>
+      <p contenteditable="true" class="sentence" data-position="2"></p>
+      <p contenteditable="true" class="sentence" data-position="3"></p>
+    </div>
+  </script>
+</body>
+</html>
