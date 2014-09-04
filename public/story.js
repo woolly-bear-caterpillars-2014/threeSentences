@@ -11,7 +11,7 @@ _.templateSettings = {
 var getStory = function() {
   return $.ajax({
     method: 'get',
-    url: '/example_story.json',
+    url: '/test.json',
     dataType: 'json'
   })
 }
@@ -26,6 +26,18 @@ var findSlice = function(sentence) {
   var pane = findPane(sentence);
   return pane.children('.slice[data-parent-id=' + sentence.parent_id + ']');
 }
+
+// var renderSentence = function(sentence) {
+//   console.log(sentence);
+//   if (sentence.depth === 0){
+//     var slice = $('.slice[data-depth=0]');
+//   } else {
+//     var pane = setupPane(sentence);
+//     var slice = setupSlice(sentence);
+//   }
+
+//   slice.children('p[data-position=' + sentence.position + ']').html(sentence.content);
+// }
 
 var renderSentence = function(sentence) {
   console.log(sentence);
@@ -66,20 +78,21 @@ var setupPane = function(sentence) {
   return findPane(sentence);
 }
 
-function recursiveRenderSentence(sentence) {
-  renderSentence(sentence);
+// function recursiveRenderSentence(sentence) {
+//   renderSentence(sentence);
 
-  if (sentence.children.length !== 0) {
-    sentence.children.forEach(recursiveRenderSentence);
-  } else {
-    return;
-  }
-}
+//   if (sentence.children.length !== 0) {
+//     sentence.children.forEach(recursiveRenderSentence);
+//   } else {
+//     return;
+//   }
+// }
 
 var renderStory = function(response) {
   response.success(function(data) {
     story = data;
-    story.sentences.forEach(recursiveRenderSentence);
+    story.sentences.forEach(renderSentence)
+    // story.sentences.forEach(recursiveRenderSentence);
   });
 }
 
@@ -89,6 +102,7 @@ function initializeTemplates(){
   paneTemplate = _.template($('#pane-template').html());
   sliceTemplate = _.template($('#slice-template').html());
 }
+
 $(document).ready(function() {
   initializeTemplates();
 
