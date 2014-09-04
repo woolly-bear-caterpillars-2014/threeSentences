@@ -28,12 +28,15 @@ Sentence.all.each do |sentence|
   a.story_id = sentence.story_id
   a.depth = (sentence.depth + 1)
   a.content = "one"
+  a.position = 1
   b.story_id = sentence.story_id
   b.depth = (sentence.depth + 1)
   b.content = "two"
+  b.position = 2
   c.story_id = sentence.story_id
   c.depth = (sentence.depth + 1)
   c.content = "three"
+  c.position = 3
   a.save
   b.save
   c.save
@@ -48,12 +51,15 @@ depth2.each do |sentence|
   a.story_id = 1
   a.depth = (3)
   a.content = "one"
+  a.position = 1
   b.story_id = 1
   b.depth = (3)
   b.content = "two"
+  b.position = 2
   c.story_id = 1
   c.depth = (3)
   c.content = "three"
+  c.position = 3
   a.save
   b.save
   c.save

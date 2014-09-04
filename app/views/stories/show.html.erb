@@ -1,5 +1,5 @@
 <p>StoryBoard</p>
 
 <% @story.sentences.each do |sentence| %>
-  <p><%= sentence.id %>, <%= sentence.content %></p>
+  <p><%= sentence.id %>, <%= sentence.content %>, <%= sentence.position %></p>
   <% end %>
