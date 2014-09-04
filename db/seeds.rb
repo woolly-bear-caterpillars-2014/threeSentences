@@ -12,9 +12,9 @@ depth = [2, 3, 4, 5, 6]
 
 # create 3 parentless sentences
 def make_three(sid, d, pid = nil)
-  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "one")
-  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "two")
-  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "three")
+  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "one", position: 1)
+  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "two", position: 2)
+  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "three", position: 3)
 end
 
 # new parent id = depth ** 3 + 1
