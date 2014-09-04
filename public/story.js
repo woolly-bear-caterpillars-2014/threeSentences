@@ -1,5 +1,4 @@
 var story;
-
 var sentenceTemplate,
     paneTemplate,
     sliceTemplate;
@@ -89,9 +88,9 @@ function initializeTemplates(){
   paneTemplate = _.template($('#pane-template').html());
   sliceTemplate = _.template($('#slice-template').html());
 }
+
 $(document).ready(function() {
   initializeTemplates();
-
   response = getStory();
   renderStory(response);
 });
