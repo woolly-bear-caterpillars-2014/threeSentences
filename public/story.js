@@ -1,6 +1,10 @@
 var story;
 var sentenceTemplate;
 
+_.templateSettings = {
+  interpolate: /\{\{(.+?)\}\}/g
+};
+
 var getStory = function() {
   return $.ajax({
     method: 'get',
@@ -14,7 +18,9 @@ var getStory = function() {
 
 var renderSentence = function(sentence) {
   console.log(sentence);
-  $('.content').append(sentenceTemplate({sentence: sentence}));
+  var depth = sentence.depth;
+  var pane = $('.pane[data-depth=' + depth + ']');
+  pane.append(sentenceTemplate({sentence: sentence}));
 }
 
 function recursiveRenderSentence (sentence) {
