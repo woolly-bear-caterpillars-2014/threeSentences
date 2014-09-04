@@ -7,6 +7,11 @@ class SentencesController < ApplicationController
 
   def create
     @story = Story.find(params[:story_id])
+
+    unless current_user == @story.user
+      return redirect_to new_user_session_path
+    end
+
     @sentence = @story.sentences.build(sentence_params)
     if @sentence.save
       redirect_to @story
