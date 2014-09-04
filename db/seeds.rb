@@ -26,11 +26,14 @@ Sentence.all.each do |sentence|
   b = sentence.children.create
   c = sentence.children.create
   a.story_id = sentence.story_id
-  a.depth = sentence.(depth + 1)
+  a.depth = (sentence.depth + 1)
   b.story_id = sentence.story_id
-  b.depth = sentence.(depth + 1)
+  b.depth = (sentence.depth + 1)
   c.story_id = sentence.story_id
-  c.depth = sentence.(depth + 1)
+  c.depth = (sentence.depth + 1)
+  a.save
+  b.save
+  c.save
 end
 
 depth2 = [4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -39,10 +42,13 @@ depth2.each do |sentence|
   a = Sentence.find(sentence).children.create
   b = Sentence.find(sentence).children.create
   c = Sentence.find(sentence).children.create
-  a.story_id = sentence.story_id
-  a.depth = sentence.(depth + 1)
-  b.story_id = sentence.story_id
-  b.depth = sentence.(depth + 1)
-  c.story_id = sentence.story_id
-  c.depth = sentence.(depth + 1)
+  a.story_id = 1
+  a.depth = (3)
+  b.story_id = 1
+  b.depth = (3)
+  c.story_id = 1
+  c.depth = (3)
+  a.save
+  b.save
+  c.save
 end
