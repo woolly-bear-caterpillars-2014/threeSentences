@@ -1,5 +1,8 @@
 var story;
-var sentenceTemplate;
+
+var sentenceTemplate,
+    paneTemplate,
+    sliceTemplate;
 
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
@@ -13,18 +16,62 @@ var getStory = function() {
   })
 }
 
-
 // view
+
+var findPane = function(sentence) {
+  return $('.pane[data-depth=' + sentence.depth + ']');
+}
+
+var findSlice = function(sentence) {
+  var pane = findPane(sentence.depth);
+  return pane.children('.slice[data-parent-id=' + sentence.parent_id + ']');
+}
 
 var renderSentence = function(sentence) {
   console.log(sentence);
-  var depth = sentence.depth;
-  var pane = $('.pane[data-depth=' + depth + ']');
-  pane.append(sentenceTemplate({sentence: sentence}));
+  var pane = setupPane(sentence);
+  var slice = setupSlice(sentence);
+  slice.children('p[data-position=' + sentence.position + ']').html(sentence.content);
 }
 
-function recursiveRenderSentence (sentence) {
+var renderPane = function(sentence) {
+  var pane = paneTemplate({depth: sentence.depth});
+  $('.content').append(pane);
+  return $(pane);
+}
+
+var renderSlice = function(sentence) {
+  var pane = findPane(sentence);
+  var slice = sliceTemplate({parent_id: sentence.parent_id, depth: sentence.depth })
+  pane.append(slice);
+  return $(slice);
+}
+
+var setupSlice = function(sentence) {
+  var slice;
+  if (findSlice(sentence).length === 0) {
+    slice = renderSlice(sentence);
+  } else {
+    slice = findSlice(sentence);
+  }
+  return slice;
+}
+
+var setupPane = function(sentence) {
+  var pane;
+  if (findPane(sentence).length === 0) {
+    pane = renderPane(sentence);
+  } else {
+    pane = findPane(sentence);
+  }
+  return pane;
+}
+
+
+
+function recursiveRenderSentence(sentence) {
   renderSentence(sentence);
+
   if (sentence.children.length !== 0) {
     sentence.children.forEach(recursiveRenderSentence);
   } else {
@@ -36,16 +83,18 @@ var renderStory = function(response) {
   response.success(function(data) {
     story = data;
     story.sentences.forEach(recursiveRenderSentence);
-    // story.sentences.forEach(renderSentence);
-    // renderSentence(story.sentences[0]);
   });
 }
 
 
 // init
-
+function initializeTemplates(){
+  // sentenceTemplate = _.template($('#sentence-template').html());
+  paneTemplate = _.template($('#pane-template').html());
+  sliceTemplate = _.template($('#slice-template').html());
+}
 $(document).ready(function() {
-  sentenceTemplate = _.template($('#sentence-template').html());
+  initializeTemplates();
 
   response = getStory();
   renderStory(response);
