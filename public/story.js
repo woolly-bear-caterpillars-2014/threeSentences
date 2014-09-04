@@ -89,30 +89,23 @@ var renderSlice = function(sentence) {
   var pane = findPane(sentence);
   var slice = sliceTemplate({parent_id: sentence.parent_id, depth: sentence.depth })
   pane.append(slice);
-  return $(slice);
 }
 
 var setupSlice = function(sentence) {
   var slice;
   if (findSlice(sentence).length === 0) {
-    slice = renderSlice(sentence);
-  } else {
-    slice = findSlice(sentence);
+    renderSlice(sentence);
   }
-  return slice;
+  return findSlice(sentence);
 }
 
 var setupPane = function(sentence) {
   var pane;
   if (findPane(sentence).length === 0) {
-    pane = renderPane(sentence);
-  } else {
-    pane = findPane(sentence);
+    renderPane(sentence);
   }
-  return pane;
+  return findPane(sentence);
 }
-
-
 
 function recursiveRenderSentence(sentence) {
   renderSentence(sentence);
