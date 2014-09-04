@@ -1,0 +1,5 @@
+<p>Hi</p>
+
+<% @stories.all.each do |story| %>
+  <p><%= link_to story.name, story %></p>
+  <% end %>

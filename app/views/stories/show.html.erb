@@ -1,0 +1,17 @@
+<p>StoryBoard</p>
+
+
+<% @story.sentences.each do |sentence| %>
+  <% if sentence.parent_id == nil %>
+  <div class="child">
+    <p><%= sentence.id %>, <%= sentence.content %>, <%= sentence.position %></p>
+
+    <% if sentence.children.count > 0 %>
+
+      <%= render partial: 'stories/children', locals: { sentence: sentence } %>
+
+    <% end %>
+  </div>
+  <% end %>
+
+<% end %>

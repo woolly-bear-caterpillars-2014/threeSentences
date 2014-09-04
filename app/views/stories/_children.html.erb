@@ -1,0 +1,12 @@
+<% sentence.children.each do |child| %>
+<div class="child">
+<p><%= child.id %>, <%= child.content %>, <%= child.position %><br></p><br><br>
+
+<% unless child.children.empty? %>
+  <%= render partial: 'stories/children', locals: { sentence: child } %>
+<% end %>
+</div>
+<% end %>
+
+
+
