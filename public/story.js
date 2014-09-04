@@ -75,6 +75,15 @@ function recursiveRenderSentence(sentence) {
   }
 }
 
+function recursiveRenderSentence (sentence) {
+  renderSentence(sentence);
+  if (sentence.children.length !== 0) {
+    sentence.children.forEach(recursiveRenderSentence);
+  } else {
+    return;
+  }
+}
+
 var renderStory = function(response) {
   response.success(function(data) {
     story = data;
