@@ -23,51 +23,48 @@ var findPane = function(sentence) {
 }
 
 var findSlice = function(sentence) {
-  var pane = findPane(sentence.depth);
+  var pane = findPane(sentence);
   return pane.children('.slice[data-parent-id=' + sentence.parent_id + ']');
 }
 
 var renderSentence = function(sentence) {
   console.log(sentence);
-  var pane = setupPane(sentence);
-  var slice = setupSlice(sentence);
+  if (sentence.depth === 0){
+    var slice = $('.slice[data-depth=0]');
+  } else {
+    var pane = setupPane(sentence);
+    var slice = setupSlice(sentence);
+  }
+
   slice.children('p[data-position=' + sentence.position + ']').html(sentence.content);
 }
 
 var renderPane = function(sentence) {
   var pane = paneTemplate({depth: sentence.depth});
   $('.content').append(pane);
-  return $(pane);
 }
 
 var renderSlice = function(sentence) {
   var pane = findPane(sentence);
   var slice = sliceTemplate({parent_id: sentence.parent_id, depth: sentence.depth })
   pane.append(slice);
-  return $(slice);
 }
 
 var setupSlice = function(sentence) {
   var slice;
   if (findSlice(sentence).length === 0) {
-    slice = renderSlice(sentence);
-  } else {
-    slice = findSlice(sentence);
+    renderSlice(sentence);
   }
-  return slice;
+  return findSlice(sentence);
 }
 
 var setupPane = function(sentence) {
   var pane;
   if (findPane(sentence).length === 0) {
-    pane = renderPane(sentence);
-  } else {
-    pane = findPane(sentence);
+    renderPane(sentence);
   }
-  return pane;
+  return findPane(sentence);
 }
-
-
 
 function recursiveRenderSentence(sentence) {
   renderSentence(sentence);
@@ -89,7 +86,6 @@ var renderStory = function(response) {
 
 // init
 function initializeTemplates(){
-  // sentenceTemplate = _.template($('#sentence-template').html());
   paneTemplate = _.template($('#pane-template').html());
   sliceTemplate = _.template($('#slice-template').html());
 }
@@ -99,6 +95,3 @@ $(document).ready(function() {
   response = getStory();
   renderStory(response);
 });
-
-
-
