@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @stories = current_user.stories.all
@@ -25,9 +25,9 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-    # @story = current_user.stories.find(params[:id])
-    # @story.destroy
-    # redirect_to user_path(current_user)
+    @story = current_user.stories.find(params[:id])
+    @story.destroy
+    redirect_to user_path(current_user)
   end
 
   private
