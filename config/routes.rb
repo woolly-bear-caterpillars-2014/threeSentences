@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   root "welcome#index"
-  resources :users, only: [:show]
+
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   # The priority is based upon order of creation: first created -> highest priority.
