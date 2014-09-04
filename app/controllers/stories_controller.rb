@@ -12,8 +12,21 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @sentence = Sentence.new
   end
 
+  def new
+    @story = Story.new
+  end
+
+  def create
+    @story = Story.new(story_params)
+    if @story.save
+      redirect_to @story
+    else
+      render :new
+    end
+  end
 
   private
 

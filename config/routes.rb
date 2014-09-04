@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   # devise_for :users
 
-  resources :stories
   resources :users, only: [:show]
+
+  resources :stories do
+    resources :sentences, only: [:new, :create, :show, :update, :destroy]
+  end
 
   root "stories#index"
 
