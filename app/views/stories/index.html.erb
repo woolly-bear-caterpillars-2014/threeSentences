@@ -1,5 +1,13 @@
-<p>Hi</p>
+
+<% if user_signed_in? %>
+
+<p> <%= @user.username %></p>
+
 
 <% @stories.all.each do |story| %>
   <p><%= link_to story.name, story %></p>
   <% end %>
+
+  <% end %>
+
+
