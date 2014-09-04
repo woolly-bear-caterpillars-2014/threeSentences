@@ -1,13 +1,8 @@
 class StoriesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @stories = Story.all
-    p params
-    puts "********************************************************************"
-    if user_signed_in?
-      @user = current_user
-    end
-
+    @stories = current_user.stories.all
   end
 
   def show
@@ -16,11 +11,11 @@ class StoriesController < ApplicationController
   end
 
   def new
-    @story = Story.new
+    @story = current_user.stories.new
   end
 
   def create
-    @story = Story.new(story_params)
+    @story = current_user.stories.new(story_params)
     if @story.save
       redirect_to @story
     else

@@ -1,13 +1,10 @@
-
 <% if user_signed_in? %>
+  <p> <%= current_user.username %></p>
 
-<p> <%= @user.username %></p>
-
-
-<% @stories.all.each do |story| %>
-  <p><%= link_to story.name, story %></p>
+  <% @stories.all.each do |story| %>
+    <p><%= link_to story.name, story %></p>
   <% end %>
 
-  <% end %>
+<% end %>
 
-
+<%= link_to "New Story", new_story_path  %>
