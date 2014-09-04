@@ -7,6 +7,10 @@ _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
 
+_.templateSettings = {
+  interpolate: /\{\{(.+?)\}\}/g
+};
+
 var getStory = function() {
   return $.ajax({
     method: 'get',
