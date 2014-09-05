@@ -71,8 +71,9 @@ h4 {
 button, a.button, input[type=submit], input[type=button] {
   padding: 10px;
   font-size: $font-smallsize;
-  font-family: Helvetica;
-  font-weight: lighter;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
   color: $medium-shade-base-text;
   border: 1px solid $primary-color;
   background: $background-color;
@@ -89,3 +90,24 @@ button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover
   background-color: $primary-color;
 }
 
+#brand {
+  color: $primary-color;
+}
+
+form input[type='text'], form input[type='email'], form input[type='password'] {
+  border-radius: 2px;
+  border: none;
+  border: 1px solid $primary-color;
+  width: 200px;
+  margin: 10px;
+  padding: 4px;
+  font-size: $font-basesize;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+input[type='checkbox'] {
+  position: relative;
+  bottom: 1px;
+}

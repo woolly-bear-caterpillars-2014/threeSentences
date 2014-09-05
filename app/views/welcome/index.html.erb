@@ -1,16 +1,21 @@
-<h1>welcome</h1>
+<div class="container">
+  <div class="absolute-center">
+    <h1 id="brand">three sentences</h1>
 
-<% if user_signed_in? %>
-<h1><%= @user.username %>'s Profile Page</h1>
-  <h2>My Stories</h2>
-  <p><%= current_user.username %>
-  <ol>
-    <% @user.stories.each do |story| %>
-      <li><%= link_to story.name, story %>, <%= link_to "Delete Story", story_path(story), method: :delete, data: {confirm: "Are you sure you want to logout?"} %></li>
+    <% if user_signed_in? %>
+    <h1><%= @user.username %>'s Profile Page</h1>
+      <h2>My Stories</h2>
+      <p><%= current_user.username %>
+      <ol>
+        <% @user.stories.each do |story| %>
+          <li><%= link_to story.name, story %>, <%= link_to "Delete Story", story_path(story), method: :delete, data: {confirm: "Are you sure you want to logout?"} %></li>
+        <% end %>
+      </ol>
+
+    <p><%= link_to 'Create new story', new_story_path %></p>
+    <% else %>
+      <p id="tagline">If you can write three sentences,<br> you can write a story.</p>
     <% end %>
-  </ol>
+  </div>
+</div>
 
-<p><%= link_to 'Create new story', new_story_path %></p>
-<% else %>
-<p>you must log in to view this page</p>
-<% end %>

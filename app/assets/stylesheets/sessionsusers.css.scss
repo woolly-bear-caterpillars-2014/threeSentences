@@ -1,0 +1,21 @@
+.signupform, .loginform {
+  text-align: center;
+}
+
+.signupform h2, .loginform h2 {
+  margin-bottom: 20px;
+}
+
+.signupform form input[type='submit'], .loginform form input[type='submit'] {
+  margin-top: 20px;
+}
+
+#rememberme {
+  font-family: 'Varela Round', sans-serif;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#remember {
+  padding-left: 8px;
+}
