@@ -27,7 +27,37 @@
 	cursor: pointer;
 	overflow: auto;
 	width: 90vh;
+}
 
+.family {
+  border: dotted blue;
+  margin-top: 5px;
+}
+
+.sentence {
+  /*margin: 20px 0px;*/
+  font-size: 18px;
+}
+
+.sentence p {
+  text-align: left;
+}
+
+.depth1 {
+  margin: 120px 10px;
+}
+
+.depth2 {
+  margin: 30px;
+}
+
+.depth3 {
+  margin: 15px;
+}
+
+.depth4 {
+  margin: 8px;
+}
 }
 .slidee li.active {
 	border: solid red;
