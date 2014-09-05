@@ -1,0 +1,45 @@
+.container {
+
+}
+
+.absolute-center {
+  bottom: 0;
+  height: 30%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+}
+
+.container h1, p {
+  text-align: center;
+}
+
+#brand {
+  font-size: 50px;
+}
+
+.home {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.signup {
+  position: absolute;
+  top: 20px;
+  left: 113px;
+}
+
+.login, .logout {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#tagline {
+  line-height: 27px;
+  margin: 30px;
+}
