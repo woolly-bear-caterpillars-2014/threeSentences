@@ -13,16 +13,18 @@ class SentencesController < ApplicationController
     end
 
     @sentence = @story.sentences.build(sentence_params)
+
     if @sentence.save
-      redirect_to @story
+      render json: @sentence.to_json
     else
-      redirect_to @story, alert: "Error!"
+      render json: @sentence.errors.full_messages.to_json
     end
   end
+
 
   private
 
   def sentence_params
-    params.require(:sentence).permit(:depth, :position, :content, :parent_id)
+    params.require(:sentence).permit(:id, :depth, :position, :content, :parent_id)
   end
 end

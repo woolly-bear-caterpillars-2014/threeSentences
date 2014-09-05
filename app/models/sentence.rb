@@ -4,4 +4,6 @@ class Sentence < ActiveRecord::Base
   belongs_to :parent, class_name: "Sentence"
 
   validates :depth, presence: true
+  validates :story_id, presence: true
+  validates :position, presence: true
 end
