@@ -1,0 +1,91 @@
+@import 'font_variables';
+@import 'color_variables';
+
+body {
+  font-family: $font-family;
+  background: $background-color;
+  color: $base-text;
+  font-size: $font-basesize;
+}
+
+h1, h2, h3, h4 {
+  font-family: $display-font;
+}
+
+h1 {
+  font-size: $font-xlargesize;
+}
+
+h2 {
+  font-size: $font-largesize;
+}
+
+h3 {
+  font-size: $font-mediumsize;
+}
+
+h4 {
+  font-size: $font-smallsize;
+}
+
+.primary {
+  background-color: $primary-color;
+}
+
+.secondary {
+  background-color: $secondary-color;
+}
+
+.info {
+  background-color: $info-color;
+}
+
+.warning {
+  background-color: $warning-color;
+}
+
+.error {
+  background-color: $error-color;
+}
+
+.success {
+  background-color: $success-color;
+}
+
+.font-small {
+  font-size: $font-smallsize;
+}
+
+.font-medium {
+  font-size: $font-mediumsize;
+}
+
+.font-large {
+  font-size: $font-largesize;
+}
+
+.font-x-large {
+  font-size: $font-xlargesize;
+}
+
+button, a.button, input[type=submit], input[type=button] {
+  padding: 10px;
+  font-size: $font-smallsize;
+  font-family: Helvetica;
+  font-weight: lighter;
+  color: $medium-shade-base-text;
+  border: 1px solid $primary-color;
+  background: $background-color;
+  border-radius: 2px;
+  text-decoration: none;
+  -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
+}
+
+button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover {
+
+  background-color: $primary-color;
+}
+
