@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ThreeSentences</title>
+  <title>three sentences</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Lora|Varela+Round' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <nav>
-  <%= link_to "Home", root_path %>
+  <%= link_to "Home", root_path, class: 'button home' %>
   <% unless user_signed_in? %>
-  <%= link_to "Sign Up", new_user_registration_path %>
-  <%= link_to "Log In", new_user_session_path %>
+  <%= link_to "Sign Up", new_user_registration_path, class: 'button signup' %>
+  <%= link_to "Log In", new_user_session_path, class: 'button login' %>
   <% else %>
-  <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to logout?"} %>
+  <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: 'button logout' %>
   <% end %>
 </nav>
 <%= yield %>
