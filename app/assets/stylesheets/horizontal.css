@@ -1,23 +1,23 @@
 
 #frame {
-	height: 100%;
-    margin: 0px 0px;
-    padding: 10px 0px; //(ver,hor)
+	/*height: 100%;*/
+  margin: 75px 0px 0px 0px;
+  padding: 10px 0px; //(ver,hor)
 	overflow: hidden;
-    width: 3700px;
-    padding-left: 225px;
-    padding-right: 0px;
+  width: 3700px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .slidee {
 	list-style: none;
 	margin: 0px 10px;
-    padding: 0px 0px;
-	height: 100%;
+  padding: 0px 0px;
+	/*height: 100%;*/
 	font-size: 30px;
 }
 .hello {
 	float: left;
-	height: 90vh;
+	/*height: 90vh;*/
 	margin: 0 5px 0 0;
 	background: #F5FEFF;
     /*border: solid black;*/
@@ -26,8 +26,8 @@
 	text-align: center;
 	cursor: pointer;
 	overflow: auto;
-	width: 120vh;
-	
+	width: 90vh;
+
 }
 .slidee li.active {
 	border: solid red;
