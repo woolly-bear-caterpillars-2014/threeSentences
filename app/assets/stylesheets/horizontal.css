@@ -18,7 +18,7 @@
 .hello {
 	float: left;
 	/*height: 90vh;*/
-	margin: 0 5px 0 0;
+	margin: 0 5px 10px 0;
 	background: #F5FEFF;
     /*border: solid black;*/
     /*border-radius: 20px;*/
@@ -30,12 +30,11 @@
 }
 
 .family {
-  border: dotted blue;
+  border: dotted blue 1px;
   margin-top: 5px;
 }
 
 .sentence {
-  /*margin: 20px 0px;*/
   font-size: 18px;
 }
 
@@ -44,19 +43,19 @@
 }
 
 .depth1 {
-  margin: 120px 10px;
+  margin: 150px 10px;
 }
 
 .depth2 {
-  margin: 30px;
+  margin: 40px 10px;
 }
 
 .depth3 {
-  margin: 15px;
+  margin: 15px 10px;
 }
 
 .depth4 {
-  margin: 8px;
+  margin: 8px 10px;
 }
 }
 .slidee li.active {
