@@ -9,6 +9,9 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @sentence = Sentence.new
     @user = current_user
+    unless current_user == @story.user
+      return redirect_to new_user_session_path
+    end
   end
 
   def new
@@ -35,5 +38,4 @@ class StoriesController < ApplicationController
   def story_params
     params.require(:story).permit(:name)
   end
-
 end
