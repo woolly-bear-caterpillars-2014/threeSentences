@@ -33,6 +33,15 @@ class StoriesController < ApplicationController
     redirect_to root_path
   end
 
+  def test
+    @story = Story.find(params[:id])
+    @sentence = Sentence.new
+    @user = current_user
+    unless current_user == @story.user
+      return redirect_to new_user_session_path
+    end
+  end
+
   private
 
   def story_params
