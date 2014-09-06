@@ -4,62 +4,63 @@ class Story < ActiveRecord::Base
 
   validates :name, presence: true
 
+
   def export
     self.generate_markdown('args')
+  end
+
+  def depth_start_position(depth)
+    position = 1
+    depth.times do |i|
+      position += 3 ** (i + 1)
+    end
+    position
+  end
+
+  def depth_end_position(depth)
+    depth_start_position(depth) + 3 ** (depth + 1) - 1
+  end
+
+  def get_headers(depth)
+    positions = (self.depth_start_position(depth)..self.depth_end_position(depth)).to_a
+    positions.map {|position| Sentence.find_by_position(position)}
   end
 
   def generate_markdown(args)
     depth = args[:depth]
     filetype = args[:type]
+    self.export(get_content(depth), filetype)
+  end
+
+  def get_content(depth)
     md_content = ""
     md_content += create_title
 
-    # sentences = self.sentences
-
-    # sentences.each do |sentence|
-    #   if sentence.depth == depth - 1
-
-    #   elsif sentence.depth == depth
-
-    #   end
-    # end
-
-    first_parent = self.sentences.where(parent_id: nil, position: 1)
-    second_parent = self.sentences.where(parent_id: nil, position: 2)
-    third_parent = self.sentences.where(parent_id: nil, position: 3)
-
     if depth == 0
-      create_header(first_parent)
-      create_header(second_parent)
-      create_header(third_parent)
-    else
-      first_parent.children.each do |child|
-        if child.depth == depth
-          # do
-        end
+      headers = get_headers(depth)
+      headers.each do |header|
+        md_content += create_header(header)
       end
-      second_parent
-      third_parent
+    else
+      headers = get_headers(depth - 1)
+      headers.each do |header|
+        md_content += create_header(header)
+        header.children.each do |child|
+          md_content += create_text(child)
+        end
+        md_content += "\n"
+      end
     end
-
-
-
-    # parents.each do |parent|
-    #   md_content += create_header(parent)
-    #   parent.children.each do |child|
-    #     md_content += create_text(child)
-    #   end
-    # end
-
-    self.export(md_content, filetype)
+    md_content
   end
+
 
   def create_title
     "# #{self.name}\n\n"
   end
 
-  def create_header(parent, level = 2)
-    "#{'#' * level} #{parent.content}\n\n"
+  def create_header(header, level = 2)
+    "#{'#' * level} #{header.content}\n\n"
   end
 
   def create_text(child)
@@ -70,4 +71,5 @@ class Story < ActiveRecord::Base
   def export(content, filetype)
     Docverter::Conversion.run("markdown", filetype, content)
   end
+
 end
