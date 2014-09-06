@@ -71,7 +71,26 @@ input.sentence:hover {
 }
 
 #exportform {
-  padding: 20px;
+  padding: 80px;
   text-align: center;
-  background: $secondary-color;
+  background: $background-color;
+  border: 1px solid $primary-color;
+  -webkit-box-shadow: 0px 0px 100px 1px $primary-color;
+  -moz-box-shadow: 0px 0px 100px 1px $primary-color;
+  box-shadow: 0px 0px 100px 1px $primary-color;
+  display: none;
+}
+
+#exportform h2 {
+  padding-bottom: 40px;
+}
+
+#exportform .radio {
+  padding-top: 20px;
+}
+
+.export {
+  position: fixed;
+  top: 20px;
+  right: 120px;
 }
