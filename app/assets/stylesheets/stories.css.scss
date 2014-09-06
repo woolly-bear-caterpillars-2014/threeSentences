@@ -1,0 +1,71 @@
+@import 'font_variables';
+@import 'color_variables';
+
+// Place all the styles related to the stories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.child {
+  margin-left: 45px;
+  float: left;
+  display: inline-block;
+  clear: both;
+  p {
+    float: left;
+  }
+}
+
+.parent{
+  clear: both;
+  display: inline-block;
+}
+
+h1.story-name {
+  font-family: $font-family;
+  margin: 1.2em auto 0.8em auto;
+  text-align: center;
+}
+
+
+.cue {
+  font-family: $font-family;
+  margin: 1.6em auto 0.8em auto;
+  text-align: center;
+  color: $light-shade-base-text;
+}
+
+input.sentence{
+  display: block;
+  font-family: $font-family;
+  width: 600px;
+  padding: 10px 10px 10px 10px;
+  margin: 10px auto;
+  border-width:0px;
+  border:none;
+  border-bottom: 1px solid $primary-color;
+  border-radius: 3px 3px 0 0;
+  background-color: $background-color;
+  outline: none;
+  cursor: text;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  box-shadow: none;
+  transition: all 0.4s ease;
+}
+
+input.sentence:focus {
+  outline: none;
+  padding: 10px 10px 8px 10px;
+  margin: 10px auto 9px auto;
+  border-bottom: 3px solid $primary-color;
+  background-color: white;
+}
+
+input.sentence:hover {
+  background-color: white;
+}
+
+::selection {
+  color: white;
+  background-color: $primary-color;
+}
