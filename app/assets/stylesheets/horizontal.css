@@ -92,6 +92,7 @@ h1, h2, h3, h4, h5, h6, li, p {
 .my-icon {
     position: relative;
     z-index: -1;
+
 }
 .my-icon > i {
     position: absolute;
@@ -105,6 +106,7 @@ h1, h2, h3, h4, h5, h6, li, p {
     left: 0em;
     top: 0em;
     z-index: -1;
+
 }
 .my-icon > i+i {
     position: absolute;
@@ -126,7 +128,6 @@ h1, h2, h3, h4, h5, h6, li, p {
     top: 0em;
     z-index: -1;
 }
-
 
 .icontext {
 	font-size: 16px;
@@ -172,6 +173,16 @@ h1, h2, h3, h4, h5, h6, li, p {
 	font-family: 'Varela Round', sans-serif;
 	color: #333333;
 	font-size: 0.5em;
+}
+
+.col-1 a {
+	text-decoration: none;
+	color: #333333;
+}
+
+.col-1 a:hover {
+	text-decoration: none;
+	color: #7F7F7F;
 }
 
 .col-1 h4{
