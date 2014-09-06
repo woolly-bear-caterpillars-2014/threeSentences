@@ -1,55 +1,81 @@
-console.log("BANG!");
+// PERFORMANCE
+// Don't do multiple appends, concat string first.
+
+// OO REFACTOR TODO
+// MODELS:
+// ------
+// Sentence, Pane (depth), Slice
 
 var sentenceTemplate,
     paneTemplate,
-    sliceTemplate;
+    sliceTemplate,
+    newSliceTemplate,
+    currentSentence;
 
-var findPane = function(sentence) {
-  return $('.pane[data-depth=' + sentence.depth + ']');
+var findPane = function(depth) {
+  return $('.pane[data-depth=' + depth + ']');
 }
 
-var findSlice = function(sentence) {
-  var pane = findPane(sentence);
-  return pane.children('.slice[data-parent-id=' + sentence.parent_id + ']');
+var findSlice = function(depth, parent_id) {
+  var pane = findPane(depth);
+  return pane.children('.slice[data-parent-id=' + parent_id + ']');
 }
 
 var renderSentence = function(sentence) {
-  console.log(sentence);
   if (sentence.depth === 0){
-    var slice = $('.slice[data-depth=0]');
+    var $slice = $('.slice[data-depth=0]');
   } else {
-    var pane = setupPane(sentence);
-    var slice = setupSlice(sentence);
+    var $pane = setupPane(sentence);
+    var $slice = setupSlice(sentence);
   }
-  sentence = sentenceTemplate( { sentence: sentence } )
-  slice.append(sentence);
+  // sentence = sentenceTemplate( { sentence: sentence } );
+  // slice.append(sentence);
+  $sentence = $slice.children('[data-position=' + sentence.position + ']').eq(0);
+  $sentence.val(sentence.content);
+  $sentence.attr('data-id', sentence.id)
+  // does child slice exist? if not, renderSlice
+  console.log($sentence.val());
+  renderChildren(sentence.depth, sentence.id);
 }
 
-var renderPane = function(sentence) {
-  var pane = paneTemplate({depth: sentence.depth});
+var renderPane = function(depth) {
+  var pane = paneTemplate({depth: depth});
   $('.content').append(pane);
 }
 
-var renderSlice = function(sentence) {
-  var pane = findPane(sentence);
-  var slice = sliceTemplate({parent_id: sentence.parent_id, depth: sentence.depth })
+var renderSlice = function(depth, parent_id) {
+  var pane = findPane(depth);
+  var slice = newSliceTemplate({
+    parent_id: parent_id,
+    depth: depth,
+    cue: $('.sentence[data-id=' + parent_id + ']').val()
+  })
   pane.append(slice);
+}
+
+var renderChildren = function(parentDepth, parentId) {
+  if (findPane(parentDepth + 1).length === 0) {
+    renderPane(parentDepth + 1);
+  }
+  if (findSlice(parentDepth + 1, parentId).length === 0) {
+    renderSlice(parentDepth + 1, parentId)
+  }
 }
 
 var setupSlice = function(sentence) {
   var slice;
-  if (findSlice(sentence).length === 0) {
-    renderSlice(sentence);
+  if (findSlice(sentence.depth, sentence.parent_id).length === 0) {
+    renderSlice(sentence.depth, sentence.parent_id);
   }
-  return findSlice(sentence);
+  return findSlice(sentence.depth, sentence.parent_id);
 }
 
 var setupPane = function(sentence) {
   var pane;
-  if (findPane(sentence).length === 0) {
-    renderPane(sentence);
+  if (findPane(sentence.depth).length === 0) {
+    renderPane(sentence.depth);
   }
-  return findPane(sentence);
+  return findPane(sentence.depth);
 }
 
 function fillInitialSentences(){
@@ -61,10 +87,108 @@ function fillInitialSentences(){
 function initializeTemplates(){
   paneTemplate = _.template($('#pane-template').html());
   sliceTemplate = _.template($('#slice-template').html());
+  newSliceTemplate = _.template($('#new-slice-template').html());
   sentenceTemplate = _.template($('#sentence-template').html());
 }
 
+function updateCue($sentence) {
+  var cue = $('.cue[data-parent-id=' + $sentence.attr('data-id') + ']');
+  cue.html($sentence.val());
+}
+
+function update(sentence) {
+  var data = {
+    sentence: {
+      id: sentence.attr('data-id'),
+      position: sentence.attr('data-position'),
+      depth: sentence.attr('data-depth'),
+      parent_id: sentence.attr('data-parent-id'),
+      content: sentence.val()
+    }
+  }
+  $.ajax({
+    url: '/stories/' + story.id + '/sentences/' + sentence.attr('data-id'),
+    method: 'PUT',
+    data: JSON.stringify(data),
+    dataType: 'json',
+    contentType: 'application/json'
+  }).done(function(data){
+    console.log(data);
+    updateCue(sentence);
+  }).error(function(data){
+    console.log(data)
+  });
+}
+
+function create($sentence) {
+  var depth = parseInt($sentence.attr('data-depth'));
+  data = {
+    sentence: {
+      id: $sentence.attr('data-id'),
+      position: $sentence.attr('data-position'),
+      depth: depth,
+      parent_id: $sentence.attr('data-parent-id'),
+      content: $sentence.val()
+    }
+  }
+
+  $.ajax({
+    url: '/stories/' + story.id + '/sentences',
+    method: 'POST',
+    data: JSON.stringify(data),
+    dataType: 'json',
+    contentType: 'application/json'
+  }).done(function(data){
+    console.log(data);
+    $sentence.attr('data-id', data.id);
+    newPane(depth + 1, $sentence);
+  }).error(function(data){
+    console.log(data)
+  });
+}
+
+function depthFull(depth) {
+  var pane = findPane(depth);
+  var slices = pane.children('.slice');
+  var full = true;
+
+  slices.each(function(index, slice){
+    var sentences = $(slice).children('input');
+    sentences.each(function(index, sentence){
+      if ($(sentence).val() === '') {
+        full = false;
+      }
+    });
+  });
+  return full;
+}
+
+function addSlice(pane, depth, $sentence) {
+  console.log($sentence);
+  console.log($sentence.attr('data-id'));
+  var slice = newSliceTemplate({
+    depth: depth,
+    parent_id: $sentence.attr('data-id'),
+    cue: $sentence.val()
+  });
+  console.log(slice);
+  pane.append(slice);
+}
+
+function paneDoesNotExist(depth) {
+  return (findPane(depth).length === 0);
+}
+
+function newPane(depth, $sentence) {
+  if (paneDoesNotExist(depth)) {
+    renderPane(depth);
+  }
+  var pane = findPane(depth);
+  addSlice(pane, depth, $sentence);
+}
+
 $(document).ready(function(){
+  console.log("BANG!");
   _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
   };
@@ -72,52 +196,26 @@ $(document).ready(function(){
 
   fillInitialSentences();
 
-  $('body').on('blur', 'p.sentence', function(e) {
+  $('body').on('focus', 'input.sentence', function(e){
+    e.preventDefault();
+    currentSentence = $(this).val();
+  })
+
+  $('body').on('blur', 'input.sentence', function(e) {
     e.preventDefault();
     console.log(e);
     console.log(this);
-    field = $(this);
-    data = {
-      sentence:
-      {
-        id: field.attr('data-id'),
-        position: field.attr('data-position'),
-        depth: field.attr('data-depth'),
-        parent_id: field.attr('data-parent-id'),
-        content: field.html()
+    if ($(this).val() !== currentSentence) {
+      var $sentence = $(this);
+      var depth = $sentence.attr('data-depth');
+      if ($sentence.attr('data-id')) {
+        console.log("UPDATE!");
+        update($sentence);
+      } else {
+        console.log("CREATE!");
+        create($sentence);
       }
-    };
-    console.log(data);
-    console.log(JSON.stringify(data));
-
-    $.ajax({
-      url: '/stories/' + story.id + '/sentences',
-      method: 'POST',
-      data: JSON.stringify(data),
-      dataType: 'json',
-      contentType: 'application/json'
-    }).done(function(data){
-      console.log(data);
-    }).error(function(data){
-      console.log(data)
-    });
-  });
-
-  $('body').on('submit', 'form.new_sentence', function(e){
-    e.preventDefault();
-    var form = $(this);
-    console.log(form.attr('action'))
-
-    $.ajax({
-      url: form.attr('action'),
-      method: 'POST',
-      data: form.serialize(),
-      dataType: 'json'
-    }).done(function(data){
-      console.log(data);
-    }).error(function(data){
-      console.log(data)
-    });
+    }
   });
 });
 
