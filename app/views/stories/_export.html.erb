@@ -1,0 +1,14 @@
+<div class="absolute-center">
+  <div id="exportform">
+    <%= form_tag("/stories/#{params[:id]}/export") do %>
+      <%= label_tag 'Which column best represents your story?' %><br>
+      <%= text_field_tag "Column" %><br>
+      <%= label_tag 'Output filetype:' %>
+      <%= radio_button_tag(:age, "child") %>
+      <%= label_tag(:rtf, "RTF") %>
+      <%= radio_button_tag(:age, "adult") %>
+      <%= label_tag(:pdf, "PDF") %><br>
+      <%= submit_tag 'Export' %>
+    <% end %>
+  </div>
+</div>
