@@ -9,7 +9,7 @@ var nightMode = false
 
     Mousetrap.bind('right', function() {
         screenRight = $(document).scrollLeft();
-        $("html, body").animate({scrollLeft: (screenRight + $(".hello").width())}, 300);
+        $("html, body").animate({scrollLeft: (screenRight + $(".column").width())}, 300);
         // currentPos = (currentPos + 200);
     });
 
@@ -20,7 +20,7 @@ var nightMode = false
 
     Mousetrap.bind('left', function() {
         screenLeft = $(document).scrollLeft();
-        $("html, body").animate({scrollLeft: (screenLeft - $(".hello").width())}, 300);
+        $("html, body").animate({scrollLeft: (screenLeft - $(".column").width())}, 300);
         // currentPos = (currentPos + 200);
     });
 
@@ -30,14 +30,14 @@ var nightMode = false
     });
 
     Mousetrap.bind('down', function() {
-        screenDown = $(".hello").scrollTop();
-        $(".hello").animate({scrollTop: screenDown + 200}, 300);
+        screenDown = $(".column").scrollTop();
+        $(".column").animate({scrollTop: screenDown + 200}, 300);
         // currentPos = (currentPos + 200);
     });
 
     Mousetrap.bind('up', function() {
-        screenUp = $(".hello").scrollTop();
-        $(".hello").animate({scrollTop: screenUp - 200}, 300);
+        screenUp = $(".column").scrollTop();
+        $(".column").animate({scrollTop: screenUp - 200}, 300);
         // currentPos = (currentPos + 200);
     });
 
@@ -54,12 +54,12 @@ var nightMode = false
     Mousetrap.bind('shift+n', function() {
          if (nightMode === false){
          nightMode = true
-         $("html, body, .hello, #frame, .slidee, .slidee").css( "background", "#333333" );
+         $("html, body, .column, #frame, .slidee, .slidee").css( "background", "#333333" );
          $("p, h1, h2, h3, h4, h5, h6, li").css( "color", "#F5FEFF" );
         }
         else {
          nightMode = false
-         $("html, body, .hello, #frame, .slidee").css( "background", "#F5FEFF" );
+         $("html, body, .column, #frame, .slidee").css( "background", "#F5FEFF" );
          $("p, h1, h2, h3, h4, h5, h6, li").css( "color", "#333333" );
         }
     });
