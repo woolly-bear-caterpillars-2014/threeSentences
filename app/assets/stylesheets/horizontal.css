@@ -4,7 +4,7 @@
   margin: 75px 0px 0px 0px;
   padding: 10px 0px; //(ver,hor)
 	overflow: hidden;
-  width: 3700px;
+  width: 4400px;
   padding-left: 0px;
   padding-right: 0px;
 }
@@ -15,9 +15,9 @@
 	/*height: 100%;*/
 	font-size: 30px;
 }
-.hello {
+.column {
 	float: left;
-	/*height: 90vh;*/
+	height: 80vh;
 	margin: 0 5px 10px 0;
 	background: #F5FEFF;
     /*border: solid black;*/
@@ -26,16 +26,16 @@
 	text-align: center;
 	cursor: pointer;
 	overflow: auto;
-	width: 90vh;
+	width: 110vh;
 }
 
 .family {
-  border: dotted blue 1px;
+  /*border: dotted blue 1px;*/
   margin-top: 5px;
 }
 
 .sentence {
-  font-size: 18px;
+  font-size: 38px;
 }
 
 .sentence p {
@@ -162,6 +162,8 @@ h1, h2, h3, h4, h5, h6, li, p {
 	float: left;
 	width: 33.3333%;
 }
+
+
 .col-1 {
 	color: blue;
 	display: inline-block;
@@ -212,3 +214,5 @@ h1, h2, h3, h4, h5, h6, li, p {
 .grid {
 	color: red;
 }
+
+
