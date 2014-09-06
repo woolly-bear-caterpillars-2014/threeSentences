@@ -7,107 +7,27 @@
     <% if user_signed_in? %>
     <div class="absolute-center-icons">
     <div id="profile">
+      <div class="grid">
       <h2><%= @user.username %>'s stories</h2><br><br>
       <li><%= link_to 'New Story', new_story_path, class: 'button newstory' %></li>
         <ol>
           
 
           <br><br>
+         
 
-          <div class="grid">
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i>
-            <h4>3</h4><br><h6>sentences<h6>
-            <h5>Hello</h5>
-            </div>
-
-            </div>
-
-
-            <div class="grouping">
-            <!-- <div class="icontext">Hello</div> -->
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>9</h4><br><h6>sentences<h6>
-            <h5>My awesome story</h5>
-            </div>
-            </div>
-           
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>20</h4><br><h6>sentences<h6><h5>A Tale of Two Cities</h5>
-            </div>
-            </div>
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>2</h4><br><h6>sentences<h6><h5>Game of Thrones</h5>
-            </div>
-            </div>
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>13</h4><br><h6>sentences<h6><h5>Dev Bootcamp</h5>
-            </div>
-            </div>
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>27</h4><br><h6>sentences<h6><h5>Hello</h5>
-            </div>
-            </div>
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i>
-            <h4>81</h4><br><h6>sentences<h6><h5>Hello</h5>
-            </div>
-
-            </div>
-
-
-            <div class="grouping">
-            <!-- <div class="icontext">Hello</div> -->
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>72</h4><br><h6>sentences<h6><h5>My awesome story</h5>
-            </div>
-            </div>
-           
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>100</h4><br><h6>sentences<h6><h5>A Tale of Two Cities</h5>
-            </div>
-            </div>
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>9</h4><br><h6>sentences<h6><h5>Game of Thrones</h5>
-            </div>
-            </div>
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>20</h4><br><h6>sentences<h6><h5>Dev Bootcamp</h5>
-            </div>
-            </div>
-
-            <div class="grouping">
-            <div class="col-1">
-            <i class="my-icon"><i></i><i></i><i></i></i><h4>17</h4><br><h6>sentences<h6><h5>Hello</h5>
-            </div>
-            </div>
-
-          </div>
           <% @user.stories.each do |story| %>
-            <li><%= link_to story.name, story, class: 'button' %></li><br><br><br><br>
-
-
-
+            
+           <div class="grouping">
+            <div class="col-1">
+            <i class="my-icon"><i></i><i></i><i></i></i><h4><%= story.sentences.size %></h4><br><h6><%= pluralize(story.sentences.size, 'sentence')%><h6><h5><%= link_to story.name, story %></h5>
+            </div>
+            </div>
 
           <% end %>
+
         </ol>
-    
+     </div>
     <% else %>
       <p id="tagline">If you can write three sentences,<br> you can write a story.</p>
     <% end %>
