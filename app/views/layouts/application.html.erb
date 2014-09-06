@@ -2,8 +2,15 @@
 <html>
 <head>
   <title>three sentences</title>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Lora|Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="horizontal.css">
+  <script src="mousetrap.min.js"></script>
+  <script src="horizontal.js"></script>
+
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,9 +22,10 @@
   <%= link_to "Sign Up", new_user_registration_path, class: 'button signup' %>
   <%= link_to "Log In", new_user_session_path, class: 'button login' %>
   <% else %>
-  <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: 'button logout' %>
+  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'button logout' %>
   <% end %>
 </nav>
+
 <%= yield %>
 
 </body>

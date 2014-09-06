@@ -1,7 +1,3 @@
-.container {
-
-}
-
 .absolute-center {
   bottom: 0;
   height: 30%;
@@ -10,10 +6,21 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 60%;
+  width: 70%;
 }
 
-.container h1, p {
+.absolute-center-icons {
+  bottom: 0;
+  height: 80%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+}
+
+.container h1, p, #profile {
   text-align: center;
 }
 
@@ -42,4 +49,20 @@
 #tagline {
   line-height: 27px;
   margin: 30px;
+}
+
+#profile ol {
+  text-align: left;
+  padding-left: 100px;
+}
+#profile li {
+  margin: 5px;
+}
+
+.newstory.a.button {
+  width: 2000px;
+}
+
+.newstoryform {
+  text-align: center;
 }

@@ -80,14 +80,23 @@ button, a.button, input[type=submit], input[type=button] {
   border-radius: 2px;
   text-decoration: none;
   -webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-    transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  transition: all 0.30s ease-in-out;
 }
 
 button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover {
 
   background-color: $primary-color;
+}
+
+a.button.newstory {
+  background: $secondary-color;
+}
+
+a.button.newstory:hover {
+  color: white;
+  background: $base-text;
 }
 
 #brand {

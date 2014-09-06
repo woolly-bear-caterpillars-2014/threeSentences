@@ -40,6 +40,7 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+gem 'jquery-turbolinks'
 gem 'devise'
 gem 'pandoc-ruby'
 
