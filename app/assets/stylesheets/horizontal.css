@@ -57,10 +57,11 @@
 .depth4 {
   margin: 8px 10px;
 }
-}
+
 .slidee li.active {
 	border: solid red;
 }
+
 p {
   font-size: 14px;
   color: #000;
@@ -131,14 +132,14 @@ h1, h2, h3, h4, h5, h6, li, p {
 
 .icontext {
 	font-size: 16px;
-	
+
 	font-family: 'Helvetica Neue', serif;
 	font-weight: 300;
 }
 
 .grid {
 	font-size: 2em;
-	<!-- 100% wide -->
+	/*<!-- 100% wide -->*/
 }
 
 .col-1 {
