@@ -8,9 +8,9 @@
       </div><br>
       <%= text_field_tag "Column", nil, class: 'columnSelection' %><br>
       <div class="radio">
-        <%= radio_button_tag(:age, "child") %>
+        <%= radio_button_tag(:filetype, "rtf") %>
         <%= label_tag(:rtf, "RTF") %>
-        <%= radio_button_tag(:age, "adult") %>
+        <%= radio_button_tag(:filetype, "pdf") %>
         <%= label_tag(:pdf, "PDF") %>
       </div><br>
       <%= submit_tag 'Export' %>
