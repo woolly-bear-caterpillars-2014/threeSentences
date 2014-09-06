@@ -28,13 +28,10 @@ var renderSentence = function(sentence) {
     var $pane = setupPane(sentence);
     var $slice = setupSlice(sentence);
   }
-  // sentence = sentenceTemplate( { sentence: sentence } );
-  // slice.append(sentence);
+
   $sentence = $slice.children('[data-position=' + sentence.position + ']').eq(0);
   $sentence.val(sentence.content);
   $sentence.attr('data-id', sentence.id)
-  // does child slice exist? if not, renderSlice
-  console.log($sentence.val());
   renderChildren(sentence.depth, sentence.id);
 }
 
@@ -113,10 +110,9 @@ function update(sentence) {
     dataType: 'json',
     contentType: 'application/json'
   }).done(function(data){
-    console.log(data);
     updateCue(sentence);
   }).error(function(data){
-    console.log(data)
+    console.log(data);
   });
 }
 
@@ -164,14 +160,11 @@ function depthFull(depth) {
 }
 
 function addSlice(pane, depth, $sentence) {
-  console.log($sentence);
-  console.log($sentence.attr('data-id'));
   var slice = newSliceTemplate({
     depth: depth,
     parent_id: $sentence.attr('data-id'),
     cue: $sentence.val()
   });
-  console.log(slice);
   pane.append(slice);
 }
 
@@ -188,7 +181,6 @@ function newPane(depth, $sentence) {
 }
 
 $(document).ready(function(){
-  console.log("BANG!");
   _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
   };
@@ -203,16 +195,13 @@ $(document).ready(function(){
 
   $('body').on('blur', 'input.sentence', function(e) {
     e.preventDefault();
-    console.log(e);
-    console.log(this);
+
     if ($(this).val() !== currentSentence) {
       var $sentence = $(this);
       var depth = $sentence.attr('data-depth');
       if ($sentence.attr('data-id')) {
-        console.log("UPDATE!");
         update($sentence);
       } else {
-        console.log("CREATE!");
         create($sentence);
       }
     }
