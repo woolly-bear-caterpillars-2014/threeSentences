@@ -1,37 +1,41 @@
 <p>StoryBoard</p>
-
-<% if @story.sentences.length < 3 %>
-  <%= form_for [@story, @sentence] do |f| -%>
-    <%= f.hidden_field :depth, :value => '0' %>
-    <%= f.hidden_field :position, :value => @story.sentences.length + 1 %>
-    <%= f.label :content, "Content" %>
-    <%= f.text_field :content %>
-    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-  <% end -%>
-<% end %>
-
-<% @story.sentences.each do |sentence| %>
-  <% if sentence.parent_id == nil %>
-  <div class="child">
-    <p><%= sentence.id %>, <%= sentence.depth %>, <%= sentence.position %> - <%= sentence.content %></p> <br>
-
-    <% if sentence.children.count < 3 %>
-      <%= form_for [@story, @sentence] do |f| -%>
-        <%= f.hidden_field :parent_id, :value => sentence.id %>
-        <%= f.hidden_field :depth, :value => sentence.depth + 1 %>
-        <%= f.hidden_field :position, :value =>  sentence.children.count + 1%>
-        <%= f.label :content, "Content" %>
-        <%= f.text_field :content %>
-        <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-      <% end -%>
-    <% end %>
-
-    <% if sentence.children.count > 0 %>
-
-      <%= render partial: 'stories/children', locals: { sentence: sentence } %>
-
-    <% end %>
+<div class="content">
+  <div class="pane" data-depth="0">
+    <div class="slice" data-depth="0">
+      <input type="text" class="sentence" data-id="" data-position="1" data-depth="0" data-parent-id=""></input>
+      <input type="text" class="sentence" data-id="" data-position="2" data-depth="0" data-parent-id=""></input>
+      <input type="text" class="sentence" data-id="" data-position="3" data-depth="0" data-parent-id=""></input>
+    </div>
   </div>
-  <% end %>
+</div>
 
-<% end %>
+<script type="text/template" class="template" id="pane-template">
+  <div class="pane" data-depth="{{ depth }}"></div>
+</script>
+
+<script type="text/template" class="template" id="sentence-template">
+  <input type="text" class="sentence" data-id="{{ sentence.id }}" data-position="{{ sentence.position }}" data-depth="{{ sentence.depth }}" data-parent-id="{{ sentence.parent_id }}" value="{{ sentence.content }}"></input>
+</script>
+
+<script type="text/template" class="template" id="slice-template">
+  <div class="slice" data-depth="{{ depth }}" data-parent-id="{{ parent_id }}">
+
+  </div>
+</script>
+
+<script type="text/template" class="template" id="new-slice-template">
+  <div class="slice" data-depth="{{ depth }}" data-parent-id="{{ parent_id }}">
+  <h3 class="cue" data-parent-id="{{ parent_id }}">{{ cue }}</h3>
+    <input type="text" class="sentence" data-id="" data-position="1" data-depth="{{ depth }}" data-parent-id="{{ parent_id }}"></input>
+    <input type="text" class="sentence" data-id="" data-position="2" data-depth="{{ depth }}" data-parent-id="{{ parent_id }}"></input>
+    <input type="text" class="sentence" data-id="" data-position="3" data-depth="{{ depth }}" data-parent-id="{{ parent_id }}"></input>
+  </div>
+</script>
+
+<script>
+  var story = <%= raw json_escape(@story.to_json) %>;
+  var sentences = [];
+  <% if @story.sentences %>
+  sentences = <%= raw json_escape(@story.sentences.order(:depth, :parent_id, :position).to_json) %>
+  <% end %>
+</script>
