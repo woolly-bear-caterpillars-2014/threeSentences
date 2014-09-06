@@ -59,3 +59,115 @@ p {
 h1, h2, h3, h4, h5, h6, li, p {
 	color: #333333;
 }
+
+.my-icon {
+    position: relative;
+    z-index: -1;
+}
+.my-icon > i {
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 0.5921052631578947em solid transparent;
+    border-right: 0.5921052631578947em solid #86CFD9;
+    border-bottom: 0.5921052631578947em solid #86CFD9;
+    left: 0em;
+    top: 0em;
+    z-index: -1;
+}
+.my-icon > i+i {
+    position: absolute;
+    display: inline-block;
+    width: 3em;
+    height: 2.3684210526315788em;
+    background-color: #86CFD9;
+    left: 0em;
+    top: 1.263157894736842em;
+    z-index: -1;
+}
+.my-icon > i+i+i {
+    position: absolute;
+    display: inline-block;
+    width: 1.7368421052631577em;
+    height: 1.263157894736842em;
+    background-color: #86CFD9;
+    left: 1.263157894736842em;
+    top: 0em;
+    z-index: -1;
+}
+
+
+.icontext {
+	font-size: 16px;
+	
+	font-family: 'Helvetica Neue', serif;
+	font-weight: 300;
+}
+
+.grid {
+	font-size: 2em;
+	<!-- 100% wide -->
+}
+
+.col-1 {
+	/*float: left;
+	width: 33.3333%;*/
+}
+
+/*.my-icon p {
+	position: relative;
+	top: 20px;
+}*/
+
+.grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.grouping {
+	float: left;
+	width: 33.3333%;
+}
+.col-1 {
+	color: blue;
+	display: inline-block;
+	margin: 0px;
+}
+
+.col-1 h5{
+	margin-top: 80px;
+	margin-bottom: 30px;
+	font-family: 'Varela Round', sans-serif;
+	color: #333333;
+	font-size: 0.5em;
+}
+
+.col-1 h4{
+	margin-top: 80px;
+	margin-bottom: 0px;
+	font-family: 'Varela Round', sans-serif;
+	color: #333333;
+	font-size: 1em;
+	/*text-align: center;*/
+	margin-left: 60px;
+}
+
+.col-1 h6{
+	margin-top: -20px;
+	font-family: 'Varela Round', sans-serif;
+	color: #333333;
+	font-size: 0.3em;
+	/*text-align: center;*/
+	margin-left: 55px;
+}
+
+#profile li {
+	list-style-type: none;
+}
+
+.grid {
+	color: red;
+}
