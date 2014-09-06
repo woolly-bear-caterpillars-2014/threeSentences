@@ -40,6 +40,7 @@ class Story < ActiveRecord::Base
       end
       second_parent
       third_parent
+    end
 
 
 
