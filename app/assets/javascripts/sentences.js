@@ -37,7 +37,10 @@ var renderSentence = function(sentence) {
 
 var renderPane = function(depth) {
   var pane = paneTemplate({depth: depth});
-  $('.content').append(pane);
+  console.log(pane)
+  console.log(depth)
+  $(".slidee").append("<div class='column'></div>");
+  $(".column:nth-child(" + (depth + 1) + ")").prepend(pane);
 }
 
 var renderSlice = function(depth, parent_id) {

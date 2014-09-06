@@ -15,9 +15,9 @@
 	/*height: 100%;*/
 	font-size: 30px;
 }
-.hello {
+.column {
 	float: left;
-	/*height: 90vh;*/
+	height: 80vh;
 	margin: 0 5px 10px 0;
 	background: #F5FEFF;
     /*border: solid black;*/
