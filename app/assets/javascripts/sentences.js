@@ -39,6 +39,7 @@ var renderPane = function(depth) {
   var pane = paneTemplate({depth: depth});
   console.log(pane)
   console.log(depth)
+  $(".slidee").append("<div class='column'></div>");
   $(".column:nth-child(" + (depth + 1) + ")").prepend(pane);
 }
 
