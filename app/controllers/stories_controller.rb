@@ -52,7 +52,6 @@ class StoriesController < ApplicationController
 
   def download
     file = File.open("tmp/#{params[:file]}.#{params[:filetype]}", 'r')
-
     mime_type = case params[:filetype]
                 when 'rtf' then 'text/richtext; charset=UTF-8'
                 when 'pdf' then 'application/pdf; charset=UTF-8'
@@ -61,7 +60,6 @@ class StoriesController < ApplicationController
     send_file file,
         :type => mime_type,
         :disposition => "attachment; filename=#{params[:file]}.#{params[:filetype]}"
-
   end
   private
 
