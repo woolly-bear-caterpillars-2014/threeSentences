@@ -5,19 +5,21 @@
   padding: 10px 0px; //(ver,hor)
 	overflow: hidden;
   width: 4400px;
+  /*width: 200%;*/
   padding-left: 0px;
   padding-right: 0px;
-}
-.slidee {
-	list-style: none;
-	margin: 0px 10px;
+  list-style: none;
+  margin: 75px 10px;
   padding: 0px 0px;
-	/*height: 100%;*/
-	font-size: 30px;
+  /*height: 100%;*/
+  font-size: 30px;
 }
+
 .column {
 	float: left;
 	height: 80vh;
+  width: 40vw;
+  /*width: 20%;*/
 	margin: 0 5px 10px 0;
 	background: #F5FEFF;
     /*border: solid black;*/
@@ -26,36 +28,10 @@
 	text-align: center;
 	cursor: pointer;
 	overflow: auto;
-	width: 110vh;
 }
 
-.family {
-  /*border: dotted blue 1px;*/
-  margin-top: 5px;
-}
-
-.sentence {
-  font-size: 38px;
-}
-
-.sentence p {
-  text-align: left;
-}
-
-.depth1 {
-  margin: 150px 10px;
-}
-
-.depth2 {
-  margin: 40px 10px;
-}
-
-.depth3 {
-  margin: 15px 10px;
-}
-
-.depth4 {
-  margin: 8px 10px;
+.column > :first-child {
+ margin-top: 0;
 }
 
 .slidee li.active {
@@ -143,14 +119,14 @@ h1, h2, h3, h4, h5, h6, li, p {
 }
 
 .col-1 {
-	/*float: left;
-	width: 33.3333%;*/
+	float: left;
+	width: 33.3333%;
 }
 
-/*.my-icon p {
+.my-icon p {
 	position: relative;
 	top: 20px;
-}*/
+}
 
 .grid:after {
   content: "";

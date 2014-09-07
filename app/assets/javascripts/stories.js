@@ -96,7 +96,8 @@ var storyView = (function() {
 
       });
       column += "</div>";
-      $('.slidee').append(column);
+      $('#frame').append(column);
+
     },
 
     findOrInitializeColumn: function(depth) {
@@ -128,6 +129,7 @@ var storyView = (function() {
      bindEventListeners();
     }
   };
+
 
 
 })();
@@ -199,6 +201,7 @@ Sentence.prototype.ajaxSync = function(url, method) {
 Sentence.prototype.updateCue = function() {
   var cue = $('.cue[data-parent-id=' + this.position + ']');
   cue.html(this.content);
+  cue.parent('.cluster').show()
 };
 
 Sentence.prototype.render = function() {
@@ -219,8 +222,15 @@ Sentence.prototype.updateElement = function() {
   this.$el.val(this.content);
 };
 
+var sentenceToggle = function(){
+  $(this).siblings('input').toggle();
+}
+
 // ---------------------------------------------
 
 $(document).ready(function(){
   storyView.initialize();
+
+  $('body').on('click', '.cue', sentenceToggle);
+
 });

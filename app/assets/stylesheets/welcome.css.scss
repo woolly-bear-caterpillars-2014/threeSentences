@@ -9,6 +9,20 @@
   width: 70%;
 }
 
+.absolute-center-export {
+  bottom: 0;
+  height: 100px;
+  left: 0;
+  margin: auto;
+  margin-top: 100px;
+  margin-right: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  z-index: -5;
+}
+
 .absolute-center-icons {
   bottom: 0;
   height: 80%;
