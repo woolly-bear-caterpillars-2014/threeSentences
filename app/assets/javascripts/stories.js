@@ -96,12 +96,8 @@ var storyView = (function() {
 
       });
       column += "</div>";
-      $('.slidee').append(column);
-      // column += "</div>";
-        // $('#frame').append(column);
-        // // $(".column").css("background-color","red")
+      $('#frame').append(column);
 
-        // // $('input[type=text]').hide()
     },
 
     findOrInitializeColumn: function(depth) {
@@ -133,6 +129,7 @@ var storyView = (function() {
      bindEventListeners();
     }
   };
+
 
 
 })();
@@ -204,6 +201,11 @@ Sentence.prototype.ajaxSync = function(url, method) {
 Sentence.prototype.updateCue = function() {
   var cue = $('.cue[data-parent-id=' + this.position + ']');
   cue.html(this.content);
+  // $('.column').accordion({
+  //   collapsible: true,
+  //   active: false
+  // });
+  cue.parent('.cluster').show()
 };
 
 Sentence.prototype.render = function() {
@@ -224,8 +226,15 @@ Sentence.prototype.updateElement = function() {
   this.$el.val(this.content);
 };
 
+var sentenceToggle = function(){
+  $(this).parent().children('input').toggle();
+}
+
 // ---------------------------------------------
 
 $(document).ready(function(){
   storyView.initialize();
+
+  $('.cue').on('click', sentenceToggle);
+
 });
