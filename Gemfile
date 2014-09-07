@@ -46,7 +46,6 @@ end
 
 gem 'jquery-turbolinks'
 gem 'devise'
-gem 'pandoc-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
