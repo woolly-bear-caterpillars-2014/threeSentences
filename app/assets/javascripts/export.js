@@ -1,12 +1,8 @@
 $(document).ready(function(){
-
   $('.export').click(function(e){
     e.preventDefault();
     $('#exportform').show();
   });
-  // $('body').on('focusout', '#exportform', function(e){
-  //   $('#exportform').hide();
-  // });
   $('#exportform form').submit(function(e){
     e.preventDefault();
     var $url = ($(this).attr('action'));
@@ -15,11 +11,13 @@ $(document).ready(function(){
       url: $url,
       data: $(this).serialize()
     }).done(function(data) {
-      console.log(data)
-      // $('#exportform').hide();
-      $('#exportform').append(data);
-
+      $.fileDownload(data['url'], {
+          successCallback: function (url) {
+            $('#exportform').hide();
+          },
+          failCallback: function (html, url) {
+          }
+      });
     });
   });
-
 });

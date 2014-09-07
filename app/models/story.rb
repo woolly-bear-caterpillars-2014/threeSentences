@@ -34,7 +34,7 @@ class Story < ActiveRecord::Base
 
   def get_headers(depth)
     positions = (self.depth_start_position(depth)..self.depth_end_position(depth)).to_a
-    positions.map {|position| Sentence.find_by_position(position)}
+    positions.map {|position| self.sentences.find_by_position(position)}
   end
 
   def depth_start_position(depth)
@@ -62,11 +62,22 @@ class Story < ActiveRecord::Base
   end
 
   def export(content, filetype)
-    a = Docverter::Conversion.run("markdown", filetype, content)
-    File.open('tmp/export.rtf', 'w') { |file| file.write(a) }
-    # File.open('test.pdf', 'wb') { |file| file.write(a) }
-    return "<a href='tmp/export.rtf'>download rtf</a>"
+    filename = downcase_and_change_spaces_to_underscores(self.name)
+    case filetype
+    when 'rtf'
+      to_export = Docverter::Conversion.run("markdown", filetype, content)
+      File.open("tmp/#{filename}.#{filetype}", 'w') { |file| file.write(to_export) }
+    when 'pdf'
+      to_export = Docverter::Conversion.run("markdown", filetype, content)
+      File.open("tmp/#{filename}.#{filetype}", 'wb') { |file| file.write(to_export) }
+    when 'md'
+      File.open("tmp/#{filename}.#{filetype}", 'w') { |file| file.write(content) }
+    end
+    return "/download/#{filename}.#{filetype}"
+  end
 
+  def downcase_and_change_spaces_to_underscores(name)
+    name.squish.downcase.tr(" ","_")
   end
 
 end
