@@ -1,5 +1,9 @@
 <h1 class="story-name"><%= @story.name %></h1>
-<%= link_to "Export", root_path, class: 'button export' %>
+
+<div class="controls">
+  <span class="save-indicator">Saved</span>
+  <%= link_to "Export", root_path, class: 'button export' %>
+</div>
 <%= render 'stories/export' %>
 
 <div id="frame">

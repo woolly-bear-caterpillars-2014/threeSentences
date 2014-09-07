@@ -112,6 +112,10 @@ var storyView = (function() {
       sentence.render();
     },
 
+    displaySave: function() {
+      $('.save-indicator').fadeIn(400).delay(700).fadeOut(400);
+    },
+
     initialize: function() {
      story.sentences = [];
      initializeTemplates();
@@ -153,6 +157,7 @@ Sentence.prototype.save = function() {
   response.done(function(data){
     sentence.id = data.id;
     sentence.render();
+    storyView.displaySave();
   });
   response.error(function(data){
     console.log(data);
@@ -168,6 +173,7 @@ Sentence.prototype.update = function(newContent) {
   response.done(function(data){
     sentence.updateCue();
     sentence.updateElement();
+    storyView.displaySave();
   });
   response.error(function(data){
     console.log(data);
