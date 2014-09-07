@@ -16,7 +16,9 @@ $(document).ready(function(){
       data: $(this).serialize()
     }).done(function(data) {
       console.log(data)
-      $('#exportform').hide();
+      // $('#exportform').hide();
+      $('#exportform').append(data);
+
     });
   });
 

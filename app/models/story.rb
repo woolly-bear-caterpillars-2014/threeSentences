@@ -6,10 +6,6 @@ class Story < ActiveRecord::Base
 
 
   def export_story(depth, filetype)
-    self.generate_markdown(depth, filetype)
-  end
-
-  def generate_markdown(depth, filetype)
     self.export(get_content(depth), filetype)
   end
 
@@ -67,8 +63,9 @@ class Story < ActiveRecord::Base
 
   def export(content, filetype)
     a = Docverter::Conversion.run("markdown", filetype, content)
-    File.open('tmp/blah.rtf', 'w') { |file| file.write(a) }
+    File.open('tmp/export.rtf', 'w') { |file| file.write(a) }
     # File.open('test.pdf', 'wb') { |file| file.write(a) }
+    return "<a href='tmp/export.rtf'>download rtf</a>"
 
   end
 

@@ -43,12 +43,24 @@ class StoriesController < ApplicationController
   end
 
   def export
-    p params
     @story = Story.find(params[:id])
     depth = params[:Column].to_i - 1
+    # @story.export_story(depth, params[:filetype])
+
     send_data @story.export_story(depth, params[:filetype]), :filename => "#{@story.name}.rtf",
                             :type => "application/rtf"
+    # redirect_to story_download_path(@story)
+    # return '/stories/#{params[:id]}/download'
   end
+
+  def download
+    p params
+    p "*************************"
+    # @story = Story.find(params[:id])
+  end
+
+
+
 
   private
 
