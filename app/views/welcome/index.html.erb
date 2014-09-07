@@ -21,7 +21,6 @@
            <div class="grouping">
             <div class="col-1">
             <i class="my-icon"><i></i><i></i><i></i></i><h4><%= story.sentences.size %></h4><br><h6><%= pluralize(story.sentences.size, 'sentence')%><h6><h5><%= link_to story.name, story %></h5>
-                              <%= link_to 'Export Story', story_export_path(story), class: 'button' %>
             </div>
             </div>
 

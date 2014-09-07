@@ -43,6 +43,7 @@ class StoriesController < ApplicationController
   end
 
   def export
+    p params
     @story = Story.find(params[:id])
     send_data @story.export, :filename => "#{@story.name}.pdf",
                             :type => "application/pdf"
