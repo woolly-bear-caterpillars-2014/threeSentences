@@ -15,4 +15,5 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require stories
+//= require jquery.fileDownload
 //= require_tree .
