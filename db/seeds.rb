@@ -21,7 +21,7 @@ make_three(1, 0)
 depth1 = [1, 2, 3]
 
 depth1.each do |d|
-  sentence = Sentence.find(1)
+  sentence = Sentence.find(d)
   make_three(sentence.story_id, (sentence.depth + 1), sentence.id, Sentence.last.position)
 end
 

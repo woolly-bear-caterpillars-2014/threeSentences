@@ -45,13 +45,14 @@ class StoriesController < ApplicationController
   def export
     p params
     @story = Story.find(params[:id])
-    send_data @story.export, :filename => "#{@story.name}.pdf",
-                            :type => "application/pdf"
+    depth = params[:Column].to_i - 1
+    send_data @story.export_story(depth, params[:filetype]), :filename => "#{@story.name}.rtf",
+                            :type => "application/rtf"
   end
 
   private
 
   def story_params
-    params.require(:story).permit(:name)
+    params.require(:story).permit(:name, :Column, :filetype)
   end
 end
