@@ -4,9 +4,13 @@
   margin: 75px 0px 0px 0px;
   padding: 10px 0px; //(ver,hor)
 	overflow: hidden;
-  width: 4400px;
+  width: 100%;
   padding-left: 0px;
   padding-right: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 55vh;
+  /*border: 5px solid black;*/
 }
 .slidee {
 	list-style: none;
@@ -16,6 +20,7 @@
 	font-size: 30px;
 }
 .column {
+	/*border: 5px solid black;*/
 	float: left;
 	height: 80vh;
 	margin: 0 5px 10px 0;
@@ -215,4 +220,5 @@ h1, h2, h3, h4, h5, h6, li, p {
 	color: red;
 }
 
+/*.loader{ margin-left:8%; margin-right:8%;} */
 

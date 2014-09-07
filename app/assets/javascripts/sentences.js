@@ -39,8 +39,9 @@ var renderPane = function(depth) {
   var pane = paneTemplate({depth: depth});
   console.log(pane)
   console.log(depth)
-  var width = $( document ).width();
-  width = (width + 500)
+  var width = $('body').width();
+  var view = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+  $('body').width( (width + (view/2)) )
   $(".slidee").append("<div class='column'></div>");
   $(".column:nth-child(" + (depth + 1) + ")").html(pane).hide().fadeIn(500);
 }
