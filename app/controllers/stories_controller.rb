@@ -55,7 +55,6 @@ class StoriesController < ApplicationController
 
   def download
     p params
-    p "*************************"
     # @story = Story.find(params[:id])
   end
 
