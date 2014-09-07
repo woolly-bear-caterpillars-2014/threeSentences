@@ -1,14 +1,7 @@
-<p>StoryBoard</p>
-<div class="content">
-  <div class="pane" data-depth="0">
-    <div class="slice" data-depth="0">
-      <input type="text" class="sentence" data-id="" data-position="1" data-depth="0" data-parent-id=""></input>
-      <input type="text" class="sentence" data-id="" data-position="2" data-depth="0" data-parent-id=""></input>
-      <input type="text" class="sentence" data-id="" data-position="3" data-depth="0" data-parent-id=""></input>
-    </div>
-  </div>
-</div>
 
+<h1 class="story-name"><%= @story.name %></h1>
+<%= link_to "Export", root_path, class: 'button export' %>
+<%= render 'stories/export' %>
 <script type="text/template" class="template" id="pane-template">
   <div class="pane" data-depth="{{ depth }}"></div>
 </script>
@@ -39,3 +32,22 @@
   sentences = <%= raw json_escape(@story.sentences.order(:depth, :parent_id, :position).to_json) %>
   <% end %>
 </script>
+
+
+<div id="frame">
+  <div class="slidee">
+    <div class="column">
+      <div class="family">
+        <div class="content">
+          <div class="pane" data-depth="0">
+            <div class="slice" data-depth="0">
+              <input type="text" class="sentence" data-id="" data-position="1" data-depth="0" data-parent-id="" placeholder="The Beginning"></input>
+              <input type="text" class="sentence" data-id="" data-position="2" data-depth="0" data-parent-id="" placeholder="The Conflict"></input>
+              <input type="text" class="sentence" data-id="" data-position="3" data-depth="0" data-parent-id="" placeholder="The Resolution"></input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

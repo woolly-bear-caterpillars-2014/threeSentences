@@ -4,7 +4,7 @@
   margin: 75px 0px 0px 0px;
   padding: 10px 0px; //(ver,hor)
 	overflow: hidden;
-  width: 3700px;
+  width: 4400px;
   padding-left: 0px;
   padding-right: 0px;
 }
@@ -15,9 +15,9 @@
 	/*height: 100%;*/
 	font-size: 30px;
 }
-.hello {
+.column {
 	float: left;
-	/*height: 90vh;*/
+	height: 80vh;
 	margin: 0 5px 10px 0;
 	background: #F5FEFF;
     /*border: solid black;*/
@@ -26,16 +26,16 @@
 	text-align: center;
 	cursor: pointer;
 	overflow: auto;
-	width: 90vh;
+	width: 110vh;
 }
 
 .family {
-  border: dotted blue 1px;
+  /*border: dotted blue 1px;*/
   margin-top: 5px;
 }
 
 .sentence {
-  font-size: 18px;
+  font-size: 38px;
 }
 
 .sentence p {
@@ -57,10 +57,11 @@
 .depth4 {
   margin: 8px 10px;
 }
-}
+
 .slidee li.active {
 	border: solid red;
 }
+
 p {
   font-size: 14px;
   color: #000;
@@ -92,6 +93,7 @@ h1, h2, h3, h4, h5, h6, li, p {
 .my-icon {
     position: relative;
     z-index: -1;
+
 }
 .my-icon > i {
     position: absolute;
@@ -105,6 +107,7 @@ h1, h2, h3, h4, h5, h6, li, p {
     left: 0em;
     top: 0em;
     z-index: -1;
+
 }
 .my-icon > i+i {
     position: absolute;
@@ -127,17 +130,16 @@ h1, h2, h3, h4, h5, h6, li, p {
     z-index: -1;
 }
 
-
 .icontext {
 	font-size: 16px;
-	
+
 	font-family: 'Helvetica Neue', serif;
 	font-weight: 300;
 }
 
 .grid {
 	font-size: 2em;
-	<!-- 100% wide -->
+	/*<!-- 100% wide -->*/
 }
 
 .col-1 {
@@ -160,6 +162,8 @@ h1, h2, h3, h4, h5, h6, li, p {
 	float: left;
 	width: 33.3333%;
 }
+
+
 .col-1 {
 	color: blue;
 	display: inline-block;
@@ -172,6 +176,16 @@ h1, h2, h3, h4, h5, h6, li, p {
 	font-family: 'Varela Round', sans-serif;
 	color: #333333;
 	font-size: 0.5em;
+}
+
+.col-1 a {
+	text-decoration: none;
+	color: #333333;
+}
+
+.col-1 a:hover {
+	text-decoration: none;
+	color: #7F7F7F;
 }
 
 .col-1 h4{
@@ -200,3 +214,5 @@ h1, h2, h3, h4, h5, h6, li, p {
 .grid {
 	color: red;
 }
+
+
