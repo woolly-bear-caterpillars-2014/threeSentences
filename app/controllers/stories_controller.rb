@@ -51,10 +51,17 @@ class StoriesController < ApplicationController
   end
 
   def download
-    file = File.open('tmp/export.rtf', 'r')
+    file = File.open("tmp/#{params[:file]}.#{params[:filetype]}", 'r')
+
+    mime_type = case params[:filetype]
+                when 'rtf' then 'text/richtext; charset=UTF-8'
+                when 'pdf' then 'application/pdf; charset=UTF-8'
+                when 'md' then 'text/x-markdown; charset=UTF-8'
+                end
     send_file file,
-        :type => 'text/richtext; charset=UTF-8;',
-        :disposition => "attachment; filename=export.rtf"
+        :type => mime_type,
+        :disposition => "attachment; filename=#{params[:file]}.#{params[:filetype]}"
+
   end
   private
 

@@ -11,7 +11,6 @@ $(document).ready(function(){
       url: $url,
       data: $(this).serialize()
     }).done(function(data) {
-      console.log(data);
       $.fileDownload(data['url'], {
           successCallback: function (url) {
             $('#exportform').hide();

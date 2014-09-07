@@ -12,6 +12,8 @@
         <%= label_tag(:rtf, "RTF") %>
         <%= radio_button_tag(:filetype, "pdf") %>
         <%= label_tag(:pdf, "PDF") %>
+        <%= radio_button_tag(:filetype, "md") %>
+        <%= label_tag(:pdf, "Markdown") %>
       </div><br>
       <%= submit_tag 'Export' %>
     <% end %>
