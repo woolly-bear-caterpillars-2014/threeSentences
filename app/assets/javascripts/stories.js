@@ -51,7 +51,10 @@ var buildColumn = function(depth) {
     });
   });
   column += "</div>";
-  $('.slidee').append(column);
+  $('#frame').append(column);
+  // $(".column").css("background-color","red")
+
+  // $('input[type=text]').hide()
 };
 
 var findOrInitializeColumn = function(depth) {
