@@ -16,7 +16,6 @@ var storyView = (function() {
 
   var initializeSentences = function() {
     if (sentencesJson.length > 0) {
-      console.log(this);
       sentencesJson.forEach(storyView.buildSentence);
     }
   };
@@ -149,19 +148,13 @@ Sentence.prototype.toParams = function() {
 
 Sentence.prototype.save = function() {
   var sentence = this;
+  var response = sentence.ajaxSync('/stories/' + story.id + '/sentences', 'POST');
 
-  $.ajax({
-    url: '/stories/' + story.id + '/sentences',
-    method: 'POST',
-    data: JSON.stringify(sentence.toParams()),
-    dataType: 'json',
-    contentType: 'application/json'
-  }).done(function(data){
-    console.log(data);
+  response.done(function(data){
     sentence.id = data.id;
     sentence.render();
-    sentence.updateCue();
-  }).error(function(data){
+  });
+  response.error(function(data){
     console.log(data);
   });
 };
@@ -170,19 +163,25 @@ Sentence.prototype.update = function(newContent) {
   var sentence = this;
   sentence.content = newContent;
 
-  $.ajax({
-    url: '/stories/' + story.id + '/sentences/' + sentence.id,
-    method: 'PUT',
+  var response = sentence.ajaxSync('/stories/' + story.id + '/sentences/' + sentence.id, 'PUT');
+
+  response.done(function(data){
+    sentence.updateCue();
+    sentence.updateElement();
+  });
+  response.error(function(data){
+    console.log(data);
+  });
+};
+
+Sentence.prototype.ajaxSync = function(url, method) {
+  var sentence = this;
+  return $.ajax({
+    url: url,
+    method: method,
     data: JSON.stringify(sentence.toParams()),
     dataType: 'json',
     contentType: 'application/json'
-  }).done(function(data){
-    sentence.updateCue();
-    sentence.updateElement();
-    console.log(data);
-    console.log(sentence);
-  }).error(function(data){
-    console.log(data);
   });
 };
 
