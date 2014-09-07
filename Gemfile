@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
 
 gem 'docverter'
+gem 'jquery_file_download-rails'
 
 group :development, :test do
   gem 'rspec-rails'

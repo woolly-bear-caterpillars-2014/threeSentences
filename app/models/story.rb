@@ -62,11 +62,11 @@ class Story < ActiveRecord::Base
   end
 
   def export(content, filetype)
+
     a = Docverter::Conversion.run("markdown", filetype, content)
     File.open('tmp/export.rtf', 'w') { |file| file.write(a) }
     # File.open('test.pdf', 'wb') { |file| file.write(a) }
-    return "tmp/export.rtf"
-
+    return "/tmp/export.rtf"
   end
 
 end
