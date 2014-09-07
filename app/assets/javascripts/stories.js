@@ -63,7 +63,7 @@ var buildColumn = function(depth) {
       parent_id: parentId(element)
     });
   });
-  var close = "</div>";
+  column += "</div>";
   $('.slidee').append(column);
 };
 
