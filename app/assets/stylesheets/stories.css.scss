@@ -28,7 +28,8 @@ h1.story-name {
 
 .cue {
   font-family: $font-family;
-  margin: 1.6em auto 0.8em auto;
+  font-size: $font-basesize;
+  margin: 3.2em auto 0.8em auto;
   text-align: center;
   color: $light-shade-base-text;
 }
@@ -36,6 +37,7 @@ h1.story-name {
 input.sentence{
   display: block;
   font-family: $font-family;
+  font-size: $font-basesize;
   width: 600px;
   padding: 10px 10px 10px 10px;
   margin: 10px auto;
