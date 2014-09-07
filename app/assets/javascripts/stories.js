@@ -143,6 +143,7 @@ Sentence.prototype.render = function() {
   findOrInitializeColumn(this.depth + 1);
   this.$el = column.find('.sentence[data-position=' + this.position + ']');
   this.updateElement();
+  this.updateCue();
 };
 
 Sentence.prototype.updateElement = function() {
