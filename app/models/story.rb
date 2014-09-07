@@ -6,7 +6,6 @@ class Story < ActiveRecord::Base
 
 
   def export_story(depth, filetype)
-    p "hello from export ******************************"
     self.generate_markdown(depth, filetype)
   end
 
@@ -42,10 +41,11 @@ class Story < ActiveRecord::Base
       end
     else
       headers = get_headers(depth - 1)
+      p headers
       headers.each do |header|
-        md_content += create_header(header)
+        p md_content += create_header(header)
         header.children.each do |child|
-          md_content += create_text(child)
+         md_content += create_text(child)
         end
         md_content += "\n"
       end
