@@ -201,10 +201,6 @@ Sentence.prototype.ajaxSync = function(url, method) {
 Sentence.prototype.updateCue = function() {
   var cue = $('.cue[data-parent-id=' + this.position + ']');
   cue.html(this.content);
-  // $('.column').accordion({
-  //   collapsible: true,
-  //   active: false
-  // });
   cue.parent('.cluster').show()
 };
 
@@ -227,7 +223,7 @@ Sentence.prototype.updateElement = function() {
 };
 
 var sentenceToggle = function(){
-  $(this).parent().children('input').toggle();
+  $(this).siblings('input').toggle();
 }
 
 // ---------------------------------------------
@@ -235,6 +231,6 @@ var sentenceToggle = function(){
 $(document).ready(function(){
   storyView.initialize();
 
-  $('.cue').on('click', sentenceToggle);
+  $('body').on('click', '.cue', sentenceToggle);
 
 });

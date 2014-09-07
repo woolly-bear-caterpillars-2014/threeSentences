@@ -34,35 +34,6 @@
  margin-top: 0;
 }
 
-.family {
-  /*border: dotted blue 1px;*/
-  margin-top: 5px;
-}
-
-/*.sentence {
-  font-size: 38px;
-}
-*/
-/*.sentence p {
-  text-align: left;
-}
-*/
-.depth1 {
-  margin: 150px 10px;
-}
-
-.depth2 {
-  margin: 40px 10px;
-}
-
-.depth3 {
-  margin: 15px 10px;
-}
-
-.depth4 {
-  margin: 8px 10px;
-}
-
 .slidee li.active {
 	border: solid red;
 }
@@ -148,14 +119,14 @@ h1, h2, h3, h4, h5, h6, li, p {
 }
 
 .col-1 {
-	/*float: left;
-	width: 33.3333%;*/
+	float: left;
+	width: 33.3333%;
 }
 
-/*.my-icon p {
+.my-icon p {
 	position: relative;
 	top: 20px;
-}*/
+}
 
 .grid:after {
   content: "";
