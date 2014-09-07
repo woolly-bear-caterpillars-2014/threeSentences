@@ -15,10 +15,8 @@ $(document).ready(function(){
       url: $url,
       data: $(this).serialize()
     }).done(function(data) {
-      console.log(data)
-      // $('#exportform').hide();
-      $('#exportform').append(data);
-
+      var _data = data;
+      $.fileDownload(_data).done(function() { $('#exportform').hide(); });
     });
   });
 
