@@ -16,7 +16,6 @@ var storyView = (function() {
 
   var initializeSentences = function() {
     if (sentencesJson.length > 0) {
-      console.log(this);
       sentencesJson.forEach(storyView.buildSentence);
     }
   };
@@ -81,7 +80,11 @@ var storyView = (function() {
      var endPos = calculateEndPosition(depth);
      var range = _.range(startPos, endPos + 1);
      _.each(range, function(element, index, list) {
+        if (index !== 0 && index % 3 === 0) {
+          column += '</div>';
+        }
         if (index % 3 === 0) {
+          column += '<div class="cluster">';
           column += cueTemplate({cue: '', parent_id: parentId(element)});
         }
         column += sentenceTemplate({
@@ -90,6 +93,7 @@ var storyView = (function() {
           depth: depth,
           parent_id: parentId(element)
         });
+
       });
       column += "</div>";
       $('.slidee').append(column);
@@ -111,6 +115,10 @@ var storyView = (function() {
     buildSentence: function(sentenceJson) {
       var sentence = storyView.initializeSentence(sentenceJson);
       sentence.render();
+    },
+
+    displaySave: function() {
+      $('.save-indicator').fadeIn(400).delay(700).fadeOut(400);
     },
 
     initialize: function() {
@@ -149,19 +157,14 @@ Sentence.prototype.toParams = function() {
 
 Sentence.prototype.save = function() {
   var sentence = this;
+  var response = sentence.ajaxSync('/stories/' + story.id + '/sentences', 'POST');
 
-  $.ajax({
-    url: '/stories/' + story.id + '/sentences',
-    method: 'POST',
-    data: JSON.stringify(sentence.toParams()),
-    dataType: 'json',
-    contentType: 'application/json'
-  }).done(function(data){
-    console.log(data);
+  response.done(function(data){
     sentence.id = data.id;
     sentence.render();
-    sentence.updateCue();
-  }).error(function(data){
+    storyView.displaySave();
+  });
+  response.error(function(data){
     console.log(data);
   });
 };
@@ -170,19 +173,26 @@ Sentence.prototype.update = function(newContent) {
   var sentence = this;
   sentence.content = newContent;
 
-  $.ajax({
-    url: '/stories/' + story.id + '/sentences/' + sentence.id,
-    method: 'PUT',
+  var response = sentence.ajaxSync('/stories/' + story.id + '/sentences/' + sentence.id, 'PUT');
+
+  response.done(function(data){
+    sentence.updateCue();
+    sentence.updateElement();
+    storyView.displaySave();
+  });
+  response.error(function(data){
+    console.log(data);
+  });
+};
+
+Sentence.prototype.ajaxSync = function(url, method) {
+  var sentence = this;
+  return $.ajax({
+    url: url,
+    method: method,
     data: JSON.stringify(sentence.toParams()),
     dataType: 'json',
     contentType: 'application/json'
-  }).done(function(data){
-    sentence.updateCue();
-    sentence.updateElement();
-    console.log(data);
-    console.log(sentence);
-  }).error(function(data){
-    console.log(data);
   });
 };
 
