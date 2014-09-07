@@ -192,8 +192,8 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
-  pandoc-ruby
   jquery-turbolinks
+  pandoc-ruby
   pg
   pry-rails
   rails (= 4.1.5)
