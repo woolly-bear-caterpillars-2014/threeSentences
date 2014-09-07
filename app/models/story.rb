@@ -9,23 +9,6 @@ class Story < ActiveRecord::Base
     self.generate_markdown(depth, filetype)
   end
 
-  def depth_start_position(depth)
-    position = 1
-    depth.times do |i|
-      position += 3 ** (i + 1)
-    end
-    position
-  end
-
-  def depth_end_position(depth)
-    depth_start_position(depth) + 3 ** (depth + 1) - 1
-  end
-
-  def get_headers(depth)
-    positions = (self.depth_start_position(depth)..self.depth_end_position(depth)).to_a
-    positions.map {|position| Sentence.find_by_position(position)}
-  end
-
   def generate_markdown(depth, filetype)
     self.export(get_content(depth), filetype)
   end
@@ -53,6 +36,22 @@ class Story < ActiveRecord::Base
     md_content
   end
 
+  def get_headers(depth)
+    positions = (self.depth_start_position(depth)..self.depth_end_position(depth)).to_a
+    positions.map {|position| Sentence.find_by_position(position)}
+  end
+
+  def depth_start_position(depth)
+    position = 1
+    depth.times do |i|
+      position += 3 ** (i + 1)
+    end
+    position
+  end
+
+  def depth_end_position(depth)
+    depth_start_position(depth) + 3 ** (depth + 1) - 1
+  end
 
   def create_title
     "# #{self.name}\n\n"
@@ -66,10 +65,10 @@ class Story < ActiveRecord::Base
     "#{child.content}\n"
   end
 
-
   def export(content, filetype)
-    Docverter::Conversion.run("markdown", filetype, content)
-    # File.open('test.rtf', 'w') { |file| file.write(a) }
+    a = Docverter::Conversion.run("markdown", filetype, content)
+    File.open('tmp/blah.rtf', 'w') { |file| file.write(a) }
+    # File.open('test.pdf', 'wb') { |file| file.write(a) }
 
   end
 

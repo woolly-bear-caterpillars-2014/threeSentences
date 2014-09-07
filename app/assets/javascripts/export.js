@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   $('.export').click(function(e){
     e.preventDefault();
     $('#exportform').show();
@@ -13,8 +14,10 @@ $(document).ready(function(){
       method: "POST",
       url: $url,
       data: $(this).serialize()
-    }).done(function() {
+    }).done(function(data) {
+      console.log(data)
       $('#exportform').hide();
     });
   });
+
 });
