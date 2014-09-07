@@ -1,5 +1,5 @@
 <div class="container">
-  
+
     <% unless user_signed_in? %>
       <div class="absolute-center">
       <h1 id="brand">three sentences</h1>
@@ -11,13 +11,13 @@
       <h2><%= @user.username %>'s stories</h2><br><br>
       <li><%= link_to 'New Story', new_story_path, class: 'button newstory' %></li>
         <ol>
-          
+
 
           <br><br>
-         
+
 
           <% @user.stories.each do |story| %>
-            
+
            <div class="grouping">
             <div class="col-1">
             <i class="my-icon"><i></i><i></i><i></i></i><h4><%= story.sentences.size %></h4><br><h6><%= pluralize(story.sentences.size, 'sentence')%><h6><h5><%= link_to story.name, story %></h5>

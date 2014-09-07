@@ -1,7 +1,7 @@
 
 <h1 class="story-name"><%= @story.name %></h1>
-
-
+<%= link_to "Export", root_path, class: 'button export' %>
+<%= render 'stories/export' %>
 <script type="text/template" class="template" id="pane-template">
   <div class="pane" data-depth="{{ depth }}"></div>
 </script>
