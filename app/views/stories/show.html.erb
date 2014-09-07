@@ -32,5 +32,3 @@
   sentencesJson = <%= raw json_escape(@story.sentences.order(:depth, :parent_id, :position).to_json) %>
   <% end %>
 </script>
-
-

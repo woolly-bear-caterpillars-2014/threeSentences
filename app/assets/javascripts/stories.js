@@ -28,19 +28,15 @@ var initializeTemplates = function() {
 var calculateStartPosition = function(depth) {
   var position = 0;
   while (depth > 0) {
-    position += Math.pow(3, depth - 1);
-    depth--;
-  }
-  return position;
-};
-
-var calculateEndPosition = function(depth) {
-  var position = 0;
-  while (depth > 1) {
     position += Math.pow(3, depth);
     depth--;
   }
-  return position;
+  return position + 1;
+};
+
+var calculateEndPosition = function(depth) {
+  var start = calculateStartPosition(depth);
+  return start + Math.pow(3, depth + 1) - 1;
 };
 
 var parentId = function(position) {
@@ -51,10 +47,10 @@ var buildColumn = function(depth) {
   var column = columnTemplate({depth: depth});
   var startPos = calculateStartPosition(depth);
   var endPos = calculateEndPosition(depth);
-  var range = _.range(startPos, endPos);
+  var range = _.range(startPos, endPos + 1);
   _.each(range, function(element, index, list) {
-    if ((index - 1) % 3 === 0) {
-      column += cueTemplate(templateDefaults.cue);
+    if (index % 3 === 0) {
+      column += cueTemplate({cue: '', parent_id: parentId(element)});
     }
     column += sentenceTemplate({
       sentence_id: '',
@@ -83,7 +79,7 @@ var initializeSentences = function() {
 
 // ----- SENTENCE MODEL ------
 
-story.sentences = [];
+
 
 var Sentence = function(sentenceJson) {
   this.id = sentenceJson.id;
@@ -120,8 +116,9 @@ Sentence.prototype.save = function() {
   });
 };
 
-Sentence.prototype.update = function() {
+Sentence.prototype.update = function(newContent) {
   var sentence = this;
+  sentence.content = newContent;
   var sentenceParams = {
     sentence: {
       id: sentence.id,
@@ -140,6 +137,7 @@ Sentence.prototype.update = function() {
   }).done(function(data){
     updateCue(sentence);
     sentence.updateElement();
+    console.log(data);
     console.log(sentence);
   }).error(function(data){
     console.log(data);
@@ -175,6 +173,8 @@ var buildSentence = function(sentenceJson) {
 
 
 $(document).ready(function(){
+  console.log("bang!");
+  story.sentences = [];
   _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
   };
@@ -190,14 +190,15 @@ $(document).ready(function(){
   $('body').on('blur', 'input.sentence', function(e) {
     e.preventDefault();
 
-    // if ($(this).val() !== currentSentence) {
-    //   var $sentence = $(this);
-    //   var depth = $sentence.attr('data-depth');
-    //   if ($sentence.attr('data-id')) {
-    //     update($sentence);
-    //   } else {
-    //     create($sentence);
-    //   }
-    // }
+    if ($(this).val() !== currentSentenceContent) {
+      var $sentence = $(this);
+      var depth = $sentence.attr('data-depth');
+      var sentence = _.findWhere(story.sentences, {position: parseInt($sentence.attr('data-position'))});
+      if ($sentence.attr('data-id')) {
+        sentence.update($sentence.val());
+      } else {
+        create($sentence);
+      }
+    }
   });
 });
