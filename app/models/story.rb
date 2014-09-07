@@ -5,8 +5,8 @@ class Story < ActiveRecord::Base
   validates :name, presence: true
 
 
-  def export
-    self.generate_markdown('args')
+  def export_story(depth, filetype)
+    self.generate_markdown(depth, filetype)
   end
 
   def depth_start_position(depth)
@@ -26,9 +26,7 @@ class Story < ActiveRecord::Base
     positions.map {|position| Sentence.find_by_position(position)}
   end
 
-  def generate_markdown(args)
-    depth = args[:depth]
-    filetype = args[:type]
+  def generate_markdown(depth, filetype)
     self.export(get_content(depth), filetype)
   end
 
@@ -43,10 +41,11 @@ class Story < ActiveRecord::Base
       end
     else
       headers = get_headers(depth - 1)
+      headers
       headers.each do |header|
         md_content += create_header(header)
         header.children.each do |child|
-          md_content += create_text(child)
+         md_content += create_text(child)
         end
         md_content += "\n"
       end
@@ -70,6 +69,8 @@ class Story < ActiveRecord::Base
 
   def export(content, filetype)
     Docverter::Conversion.run("markdown", filetype, content)
+    # File.open('test.rtf', 'w') { |file| file.write(a) }
+
   end
 
 end
