@@ -29,6 +29,6 @@
   var story = <%= raw json_escape(@story.to_json) %>;
   var sentencesJson = [];
   <% if @story.sentences %>
-  sentencesJson = <%= raw json_escape(@story.sentences.order(:depth, :parent_id, :position).to_json) %>
+  sentencesJson = <%= raw json_escape(@story.sentences.order(:position).to_json) %>
   <% end %>
 </script>
