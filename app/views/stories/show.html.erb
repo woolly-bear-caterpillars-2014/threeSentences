@@ -1,5 +1,9 @@
 <h1 class="story-name"><%= @story.name %></h1>
-<%= link_to "Export", root_path, class: 'button export' %>
+
+<div class="controls">
+  <span class="save-indicator">Saved</span>
+  <%= link_to "Export", root_path, class: 'button export' %>
+</div>
 <%= render 'stories/export' %>
 
 <div id="frame">
@@ -27,6 +31,6 @@
   var story = <%= raw json_escape(@story.to_json) %>;
   var sentencesJson = [];
   <% if @story.sentences %>
-  sentencesJson = <%= raw json_escape(@story.sentences.order(:depth, :parent_id, :position).to_json) %>
+  sentencesJson = <%= raw json_escape(@story.sentences.order(:position).to_json) %>
   <% end %>
 </script>
