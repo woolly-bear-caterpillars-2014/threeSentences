@@ -80,7 +80,11 @@ var storyView = (function() {
      var endPos = calculateEndPosition(depth);
      var range = _.range(startPos, endPos + 1);
      _.each(range, function(element, index, list) {
+        if (index !== 0 && index % 3 === 0) {
+          column += '</div>';
+        }
         if (index % 3 === 0) {
+          column += '<div class="cluster">';
           column += cueTemplate({cue: '', parent_id: parentId(element)});
         }
         column += sentenceTemplate({
@@ -89,6 +93,7 @@ var storyView = (function() {
           depth: depth,
           parent_id: parentId(element)
         });
+
       });
       column += "</div>";
       $('.slidee').append(column);
