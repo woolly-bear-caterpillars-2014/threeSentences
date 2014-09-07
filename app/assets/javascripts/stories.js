@@ -8,16 +8,7 @@ var templateDefaults = {
     parent_id: '',
     cue: ''
   }
-  // sentence: {
-  //   sentence_id: '',
-
-  // }
 };
-
-function updateCue(sentence) {
-  var cue = $('.cue[data-parent-id=' + sentence.id + ']');
-  cue.html(sentence.content);
-}
 
 var initializeTemplates = function() {
   columnTemplate = _.template($('#column-template').html());
@@ -64,7 +55,6 @@ var buildColumn = function(depth) {
 };
 
 var findOrInitializeColumn = function(depth) {
-  var column;
   if ($('.column[data-depth=' + depth + ']').length === 0) {
     buildColumn(depth);
   }
@@ -78,9 +68,6 @@ var initializeSentences = function() {
 };
 
 // ----- SENTENCE MODEL ------
-
-
-
 var Sentence = function(sentenceJson) {
   this.id = sentenceJson.id;
   this.position = sentenceJson.position;
@@ -90,27 +77,32 @@ var Sentence = function(sentenceJson) {
   this.$el = null;
 };
 
-Sentence.prototype.save = function() {
-  var sentence = this;
-  var sentenceParams = {
-    sentence: {
-      position: sentence.position,
-      depth: sentence.depth,
-      parent_id: sentence.parentId,
-      content: sentence.content
+Sentence.prototype.toParams = function() {
+  return {
+    "sentence": {
+      id: this.id,
+      position: this.position,
+      depth: this.depth,
+      parent_id: this.parentId,
+      content: this.content
     }
   };
+};
+
+Sentence.prototype.save = function() {
+  var sentence = this;
 
   $.ajax({
     url: '/stories/' + story.id + '/sentences',
     method: 'POST',
-    data: JSON.stringify(sentenceParams),
+    data: JSON.stringify(sentence.toParams()),
     dataType: 'json',
     contentType: 'application/json'
   }).done(function(data){
     console.log(data);
-    sentence.id(data.id);
-    findOrInitializeColumn(sentence.depth + 1);
+    sentence.id = data.id;
+    sentence.render();
+    sentence.updateCue();
   }).error(function(data){
     console.log(data);
   });
@@ -119,23 +111,15 @@ Sentence.prototype.save = function() {
 Sentence.prototype.update = function(newContent) {
   var sentence = this;
   sentence.content = newContent;
-  var sentenceParams = {
-    sentence: {
-      id: sentence.id,
-      position: sentence.position,
-      depth: sentence.depth,
-      parent_id: sentence.parentId,
-      content: sentence.content
-    }
-  };
+
   $.ajax({
     url: '/stories/' + story.id + '/sentences/' + sentence.id,
     method: 'PUT',
-    data: JSON.stringify(sentenceParams),
+    data: JSON.stringify(sentence.toParams()),
     dataType: 'json',
     contentType: 'application/json'
   }).done(function(data){
-    updateCue(sentence);
+    sentence.updateCue();
     sentence.updateElement();
     console.log(data);
     console.log(sentence);
@@ -144,30 +128,48 @@ Sentence.prototype.update = function(newContent) {
   });
 };
 
+Sentence.prototype.updateCue = function() {
+  var cue = $('.cue[data-parent-id=' + this.position + ']');
+  cue.html(this.content);
+};
+
 Sentence.prototype.render = function() {
-  var column; //, cluster;
+  var column;
   if (this.depth === 0){
     column = $('.column[data-depth=0]');
-    // cluster = $('.cluster[data-depth=0]');
   } else {
     column = findOrInitializeColumn(this.depth);
-    // cluster = findOrInitializeCluster(this);
   }
+  findOrInitializeColumn(this.depth + 1);
   this.$el = column.find('.sentence[data-position=' + this.position + ']');
   this.updateElement();
 };
 
 Sentence.prototype.updateElement = function() {
   this.$el.attr('data-id', this.id);
-  // this.$el.attr('data-parent-id', this.parentId);
   this.$el.val(this.content);
 };
 
 // ---------------------------------------------
 
-var buildSentence = function(sentenceJson) {
+var sentenceElToJson = function($sentence) {
+  return {
+    parent_id: parseInt($sentence.attr('data-parent-id')),
+    depth: parseInt($sentence.attr('data-depth')),
+    content: $sentence.val(),
+    position: parseInt($sentence.attr('data-position')),
+    id: parseInt($sentence.attr('data-id')) || ''
+  };
+};
+
+var initializeSentence = function(sentenceJson){
   var sentence = new Sentence(sentenceJson);
   story.sentences.push(sentence);
+  return sentence;
+};
+
+var buildSentence = function(sentenceJson) {
+  var sentence = initializeSentence(sentenceJson);
   sentence.render();
 };
 
@@ -191,13 +193,16 @@ $(document).ready(function(){
     e.preventDefault();
 
     if ($(this).val() !== currentSentenceContent) {
+      var sentence;
       var $sentence = $(this);
-      var depth = $sentence.attr('data-depth');
-      var sentence = _.findWhere(story.sentences, {position: parseInt($sentence.attr('data-position'))});
+      var position = $sentence.attr('data-position');
       if ($sentence.attr('data-id')) {
+        sentence = _.findWhere(story.sentences, {position: parseInt(position)});
         sentence.update($sentence.val());
       } else {
-        create($sentence);
+        var sentenceJson = sentenceElToJson($sentence);
+        sentence = initializeSentence(sentenceJson);
+        sentence.save();
       }
     }
   });
