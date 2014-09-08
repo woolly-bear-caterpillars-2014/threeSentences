@@ -19,6 +19,26 @@ You do that by expanding each of the three sentences into three sentences, addin
 
 We loved the three sentences writing technique so much, we decided to build an app around it. Since the app automates the process, it makes scaffolding out your story even easier. When you load the three sentences, you see three lines: the beginning, middle, and end. Fill them in, and the app will guide you along expanding your story into a usable scaffold, three sentences at a time.
 
+### Installation
+Three Sentences is built with a Rails 4.1.5. To set up:
+
+```
+git clone https://github.com/woolly-bear-caterpillars-2014/threeSentences.git
+```
+
+Run bundle:
+
+```
+bundle install
+```
+
+Start the server:
+
+```
+rails s
+```
+
+
 ## The Team
 
 * [David Bragdon](https://github.com/postmodem)
