@@ -127,3 +127,47 @@ input[type='checkbox'] {
   position: relative;
   bottom: 1px;
 }
+
+#error_explanation{
+  font-size: 12px;
+  margin: 20px auto 0;
+  padding: 10px;
+  background: $error-color;
+  width: 350px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#error_explanation h3 {
+  font-size: 14px;
+  margin: 10px;
+}
+
+#error_explanation li {
+  padding-bottom: 10px;
+  padding-right: 20px;
+  text-align: right;
+}
+
+#success_explanation{
+  font-size: 12px;
+  margin: 20px auto 0;
+  padding: 10px;
+  background: $secondary-color;
+  width: 350px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#success_explanation h3 {
+  font-size: 14px;
+  margin: 10px;
+}
+
+#success_explanation li {
+  padding-bottom: 10px;
+  padding-right: 20px;
+  text-align: right;
+}
