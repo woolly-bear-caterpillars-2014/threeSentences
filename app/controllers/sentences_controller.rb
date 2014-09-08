@@ -1,15 +1,10 @@
 class SentencesController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_story
+  before_action :verify_author
 
   def create
-    @story = Story.find(params[:story_id])
-
-    unless current_user == @story.user
-      return redirect_to new_user_session_path
-    end
-
     @sentence = @story.sentences.build(sentence_params)
-
     if @sentence.save
       render json: @sentence.to_json
     else
@@ -18,16 +13,9 @@ class SentencesController < ApplicationController
   end
 
   def update
-    @story = Story.find(params[:story_id])
-
-    unless current_user == @story.user
-      return redirect_to new_user_session_path
-    end
-
     @sentence = Sentence.find(params[:id])
-    @sentence.update(sentence_params)
 
-    if @sentence.save
+    if @sentence.update(sentence_params)
       render json: @sentence.to_json
     else
       render json: @sentence.errors.full_messages.to_json
@@ -39,4 +27,16 @@ class SentencesController < ApplicationController
   def sentence_params
     params.require(:sentence).permit(:id, :depth, :position, :content, :parent_id)
   end
+
+  def get_story
+    @story = Story.find(params[:story_id])
+  end
+
+  # def save_and_return_json
+  #   if @sentence.save
+  #     render json: @sentence.to_json
+  #   else
+  #     render json: @sentence.errors.full_messages.to_json
+  #   end
+  # end
 end
