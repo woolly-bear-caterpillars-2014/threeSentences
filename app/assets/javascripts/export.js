@@ -1,7 +1,9 @@
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
-    $('#exportform').show();
+    $('.absolute-center-export').toggle();
+
+
   });
   $('#exportform form').submit(function(e){
     e.preventDefault();
