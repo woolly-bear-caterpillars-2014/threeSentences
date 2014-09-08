@@ -23,14 +23,28 @@ class Story < ActiveRecord::Base
       headers
       headers.each do |header|
         md_content += create_header(header)
-        header.children.each do |child|
-         md_content += create_text(child)
-        end
+        md_content += get_children(header)
         md_content += "\n"
       end
     end
     md_content
   end
+
+  def get_children(parent)
+    if parent.children.exists?
+      child_content = ">"
+      parent.children.each do |child|
+         child_content += create_text(child)
+         if child.children.exists?
+          child_content += "\n>"
+          child_content += get_children(child)
+          child_content += "\n"
+         end
+      end
+    end
+    child_content
+  end
+
 
   def get_headers(depth)
     positions = (self.depth_start_position(depth)..self.depth_end_position(depth)).to_a
@@ -58,6 +72,8 @@ class Story < ActiveRecord::Base
   end
 
   def create_text(child)
+    punct = %w(. : ? ! ;)
+    child.content += "." unless punct.include?(child.content[-1])
     "#{child.content}\n"
   end
 
