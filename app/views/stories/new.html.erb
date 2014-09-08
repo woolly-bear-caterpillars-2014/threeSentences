@@ -4,10 +4,18 @@
       <h2>What's your story's title?</h2>
 
       <%= form_for @story do |f| -%>
+
         <%= f.text_field :name, placeholder: 'Title' %> <br>
 
         <%= f.submit "Submit", :disable_with => 'Submiting...' %>
       <% end -%>
+      <% if @story.errors.full_messages.count > 0 %>
+        <div id="error_explanation">
+          <% @story.errors.full_messages.each do |msg| %>
+            <h3><%= msg %></h3>
+          <% end %>
+        </div>
+      <% end %>
    </div>
   </div>
 </div>
