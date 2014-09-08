@@ -11,9 +11,9 @@ Story.create(name: "My First Story", user_id: "1")
 
 # create 3 parentless sentences
 def make_three(sid, d, pid = nil, position = 0)
-  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "0.1 #{Faker::Lorem.sentence}", position: position + 1)
-  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "0.2 #{Faker::Lorem.sentence}", position: position + 2)
-  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "0.3 #{Faker::Lorem.sentence}", position: position + 3)
+  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "#{Faker::Hacker.say_something_smart}", position: position + 1)
+  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "#{Faker::Hacker.say_something_smart}", position: position + 2)
+  Sentence.create(parent_id: pid, story_id: sid, depth: d, content: "#{Faker::Hacker.say_something_smart}", position: position + 3)
 end
 
 make_three(1, 0)
