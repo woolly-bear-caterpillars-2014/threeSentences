@@ -50,6 +50,14 @@ class StoriesController < ApplicationController
         :disposition => "attachment; filename=#{params[:file]}.#{params[:filetype]}"
   end
 
+  def delete_export
+    file = "tmp/#{params[:file]}.#{params[:filetype]}"
+    File.delete(file) if File.exist?(file)
+    respond_to do |format|
+      format.json {render :json => "200".to_json}
+    end
+  end
+
   private
 
   def story_params
