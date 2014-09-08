@@ -21,9 +21,17 @@
 // }
 
 h1.story-name {
-  font-family: $font-family;
-  margin: 1.2em auto 0.8em auto;
+  font-family: $display-font;
+  // margin: 1.2em auto 0.8em auto;
   text-align: center;
+  position: fixed;
+  margin-top: 0px;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin-top: 60px;
+  text-align: center;
+
 }
 
 .cluster {
@@ -111,7 +119,7 @@ input.sentence:hover {
 .export {
   position: fixed;
   top: 20px;
-  right: 120px;
+  left: 100px;
 }
 
 
