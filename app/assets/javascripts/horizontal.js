@@ -8,6 +8,7 @@ var screenUp
 var nightMode = false
 
    $(".column").mCustomScrollbar({
+     // autoHideScrollbar: true,
      theme: 'rounded-dots-dark'
    });
 

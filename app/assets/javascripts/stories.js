@@ -271,9 +271,15 @@ var sentenceToggle = function(){
 
 // ---------------------------------------------
 
+
 $(document).ready(function(){
   storyView.initialize();
 
-  $('body').on('click', '.cue', sentenceToggle);
+  $(window).scroll($.debounce( 250, true, function(){
+    $(".column").mCustomScrollbar("disable");
+  } ) );
+  $(window).scroll($.debounce( 250, function(){
+    $(".column").mCustomScrollbar("update");
+  } ) );
 
 });
