@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
+    // if $('.ab')
     $('.absolute-center-export').toggle();
 
 
@@ -15,7 +16,7 @@ $(document).ready(function(){
     }).done(function(data) {
       $.fileDownload(data['url'], {
           successCallback: function (url) {
-            $('#exportform').hide();
+            $('.absolute-center-export').hide();
           },
           failCallback: function (html, url) {
           }
