@@ -42,18 +42,6 @@ class Story < ActiveRecord::Base
     [1, 2, 3].map {|position| self.sentences.find_by_position(position)}
   end
 
-  # def depth_start_position(depth)
-  #   position = 1
-  #   depth.times do |i|
-  #     position += 3 ** (i + 1)
-  #   end
-  #   position
-  # end
-
-  # def depth_end_position(depth)
-  #   depth_start_position(depth) + 3 ** (depth + 1) - 1
-  # end
-
   def create_title
     "# #{self.name}\n\n"
   end
@@ -75,7 +63,7 @@ class Story < ActiveRecord::Base
   end
 
   def export(content, filetype)
-    filename = downcase_and_change_spaces_to_underscores(self.name)
+    filename = downcase_and_change_spaces_to_underscores(self.shortened_title)
     case filetype
     when 'rtf'
       to_export = Docverter::Conversion.run("markdown", filetype, content)
@@ -92,5 +80,26 @@ class Story < ActiveRecord::Base
   def downcase_and_change_spaces_to_underscores(name)
     name.squish.downcase.tr(" ","_")
   end
+
+  def shortened_title
+    if self.name.length > 20
+      shortened_title = self.name[0..19]
+    else
+      shortened_title = self.name
+    end
+  end
+  # def depth_start_position(depth)
+  #   position = 1
+  #   depth.times do |i|
+  #     position += 3 ** (i + 1)
+  #   end
+  #   position
+  # end
+
+  # def depth_end_position(depth)
+  #   depth_start_position(depth) + 3 ** (depth + 1) - 1
+  # end
+
+
 
 end

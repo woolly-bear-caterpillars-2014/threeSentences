@@ -1,12 +1,8 @@
 <div class="absolute-center-export">
 
   <div id="exportform">
-    <h2>Export <%= @story.name %></h2>
+    <h2>Export <%= @story.shortened_title %></h2>
     <%= form_tag("/stories/#{params[:id]}/export") do %>
-      <div>
-        <%= label_tag 'Which column best represents your story?' %>
-      </div><br>
-      <%= text_field_tag "Column", nil, class: 'columnSelection' %><br>
       <div class="radio">
         <%= radio_button_tag(:filetype, "rtf", checked: true) %>
         <%= label_tag(:rtf, "RTF") %>
