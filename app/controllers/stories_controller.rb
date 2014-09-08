@@ -1,17 +1,15 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_story, only: [:show, :destroy, :export]
+  before_action :verify_author, only: [:show, :destroy, :export]
 
   def index
     @stories = current_user.stories.all
   end
 
   def show
-    @story = Story.find(params[:id])
     @sentence = Sentence.new
     @user = current_user
-    unless current_user == @story.user
-      return redirect_to new_user_session_path
-    end
   end
 
   def new
@@ -28,27 +26,17 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-    @story = current_user.stories.find(params[:id])
     @story.destroy
     redirect_to root_path
   end
 
-  def test
-    @story = Story.find(params[:id])
-    @sentence = Sentence.new
-    @user = current_user
-    unless current_user == @story.user
-      return redirect_to new_user_session_path
-    end
-  end
-
   def export
     cookies['fileDownload'] = 'true'
-    @story = Story.find(params[:id])
     depth = params[:Column].to_i - 1
     test = @story.export_story(depth, params[:filetype])
     render json: { url: test }.to_json
   end
+
 
   def download
     file = File.open("tmp/#{params[:file]}.#{params[:filetype]}", 'r')
@@ -61,9 +49,14 @@ class StoriesController < ApplicationController
         :type => mime_type,
         :disposition => "attachment; filename=#{params[:file]}.#{params[:filetype]}"
   end
+
   private
 
   def story_params
     params.require(:story).permit(:name, :Column, :filetype)
+  end
+
+  def get_story
+    @story = Story.find(params[:id])
   end
 end

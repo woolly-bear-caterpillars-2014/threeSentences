@@ -129,7 +129,7 @@ describe StoriesController do
 	sign_in @user
       end
 
-      it "creates a new story with valid params" do
+      it "creates a new story" do
 	expect{
 	  post :create, :story => {
 	    name: @story.name,
@@ -146,11 +146,81 @@ describe StoriesController do
 	  email: "test@test.com",
 	  password: "password1"
 	)
-	@story = @user.stories.build(
-	  name: ""
-	)
 	sign_in @user
+      end
+
+      it "does not create a new story" do
+	expect{
+	  post :create, :story => {
+	    name: '',
+	    user_id: @user.id
+	  }
+	}.not_to change{ @user.stories.count }
       end
     end
   end
+
+  context "DELETE destroy" do
+    context "when authenticated" do
+      before do
+	@user = User.create(
+	  username: "Tester",
+	  email: "test@test.com",
+	  password: "password1"
+	)
+	@story = @user.stories.create(
+	  name: "Test Story"
+	)
+      end
+
+      context "as resource owner" do
+	it "deletes story" do
+	  sign_in @user
+	  expect {
+	    delete :destroy, id: @story.id
+	  }.to change{ @user.stories.count }.by(-1)
+	end
+      end
+
+      context "as unauthorized user" do
+	before do
+	  @user2 = User.create(
+	    username: "Tester2",
+	    email: "test2@test2.com",
+	    password: "password1"
+	  )
+	  sign_in @user2
+	end
+	it "does not delete story" do
+	  expect {
+	    delete :destroy, id: @story.id
+	  }.not_to change{ @user.stories.count }
+	end
+      end
+    end
+
+    context "when unauthenticated" do
+      it "redirects to login page" do
+	@user = User.create(
+	  username: "Tester",
+	  email: "test@test.com",
+	  password: "password1"
+	)
+	@story = @user.stories.create(
+	  name: "Test Story"
+	)
+	delete :destroy, id: @story.id
+	expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  context "POST export" do
+    pending "determine how to test file creation"
+  end
+
+  context "GET download" do
+    pending "determine how to test file download"
+  end
+
 end
