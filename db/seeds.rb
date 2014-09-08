@@ -45,11 +45,3 @@ depth4.each do |d|
   sentence = Sentence.find(d)
   make_three(sentence.story_id, (sentence.depth + 1), sentence.id, Sentence.last.position)
 end
-
-# depth5 = (121..363).to_a
-
-# depth5.each do |d|
-#   sentence = Sentence.find(d)
-#   make_three(sentence.story_id, (sentence.depth + 1), sentence.id, Sentence.last.position)
-# end
-
