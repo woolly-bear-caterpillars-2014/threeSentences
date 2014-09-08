@@ -5,38 +5,30 @@ class Story < ActiveRecord::Base
   validates :name, presence: true
 
 
-  def export_story(depth, filetype)
-    self.export(get_content(depth), filetype)
+  def export_story(filetype)
+    self.export(get_content, filetype)
   end
 
-  def get_content(depth)
+  def get_content
     md_content = ""
     md_content += create_title
 
-    if depth == 0
-      headers = get_headers(depth)
-      headers.each do |header|
-        md_content += create_header(header)
-      end
-    else
-      headers = get_headers(depth - 1)
-      headers
-      headers.each do |header|
-        md_content += create_header(header)
-        md_content += get_children(header)
-        md_content += "\n"
-      end
+    headers = get_headers
+    headers.each do |header|
+      md_content += create_header(header)
+      md_content += get_children(header)
+      md_content += "\n"
     end
     md_content
   end
 
   def get_children(parent)
-    if parent.children.exists?
-      child_content = ">"
+      child_content = ""
+     if parent.children.exists?
       parent.children.each do |child|
          child_content += create_text(child)
          if child.children.exists?
-          child_content += "\n>"
+          child_content += "\n"
           child_content += get_children(child)
           child_content += "\n"
          end
@@ -46,22 +38,21 @@ class Story < ActiveRecord::Base
   end
 
 
-  def get_headers(depth)
-    positions = (self.depth_start_position(depth)..self.depth_end_position(depth)).to_a
-    positions.map {|position| self.sentences.find_by_position(position)}
+  def get_headers
+    [1, 2, 3].map {|position| self.sentences.find_by_position(position)}
   end
 
-  def depth_start_position(depth)
-    position = 1
-    depth.times do |i|
-      position += 3 ** (i + 1)
-    end
-    position
-  end
+  # def depth_start_position(depth)
+  #   position = 1
+  #   depth.times do |i|
+  #     position += 3 ** (i + 1)
+  #   end
+  #   position
+  # end
 
-  def depth_end_position(depth)
-    depth_start_position(depth) + 3 ** (depth + 1) - 1
-  end
+  # def depth_end_position(depth)
+  #   depth_start_position(depth) + 3 ** (depth + 1) - 1
+  # end
 
   def create_title
     "# #{self.name}\n\n"
@@ -74,7 +65,13 @@ class Story < ActiveRecord::Base
   def create_text(child)
     punct = %w(. : ? ! ;)
     child.content += "." unless punct.include?(child.content[-1])
-    "#{child.content}\n"
+    level = case child.depth
+                when 1 then '### '
+                when 2 then '> '
+                when 3 then '>> '
+                when 4 then '>>> '
+                end
+    "#{level}#{child.content}\n"
   end
 
   def export(content, filetype)
