@@ -31,12 +31,4 @@ class SentencesController < ApplicationController
   def get_story
     @story = Story.find(params[:story_id])
   end
-
-  # def save_and_return_json
-  #   if @sentence.save
-  #     render json: @sentence.to_json
-  #   else
-  #     render json: @sentence.errors.full_messages.to_json
-  #   end
-  # end
 end
