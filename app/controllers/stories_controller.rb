@@ -32,8 +32,8 @@ class StoriesController < ApplicationController
 
   def export
     cookies['fileDownload'] = 'true'
-    test = @story.export_story(params[:filetype])
-    render json: { url: test }.to_json
+    file_link = @story.export_story(params[:filetype])
+    render json: { url: file_link }.to_json
   end
 
 
