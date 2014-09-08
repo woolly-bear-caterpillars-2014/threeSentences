@@ -7,6 +7,10 @@ var screenDown
 var screenUp
 var nightMode = false
 
+   $(".column").mCustomScrollbar({
+     theme: 'rounded-dots-dark'
+   });
+
     Mousetrap.bind('right', function() {
         screenRight = $(document).scrollLeft();
         $("html, body").animate({scrollLeft: (screenRight + $(".column").width())}, 300);
