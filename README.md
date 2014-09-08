@@ -1,4 +1,4 @@
-three sentences ![travis-ci-status](https://travis-ci.org/woolly-bear-caterpillars-2014/threeSentences.svg?branch=master)
+Three Sentences ![travis-ci-status](https://travis-ci.org/woolly-bear-caterpillars-2014/threeSentences.svg?branch=master)
 ==============
 
 If you can write [three sentences](http://threesentences.herokuapp.com), you can write a story.
