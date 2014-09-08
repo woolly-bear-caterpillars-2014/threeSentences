@@ -47,19 +47,23 @@ class Story < ActiveRecord::Base
   end
 
   def create_header(header, level = 2)
-    "#{'#' * level} #{header.content}\n\n"
+    "#{'#' * level} #{punctuate(header).content}\n\n"
   end
 
   def create_text(child)
-    punct = %w(. : ? ! ;)
-    child.content += "." unless punct.include?(child.content[-1])
     level = case child.depth
                 when 1 then '### '
                 when 2 then '> '
                 when 3 then '>> '
                 when 4 then '>>> '
                 end
-    "#{level}#{child.content}\n"
+    "#{level}#{punctuate(child).content}\n"
+  end
+
+  def punctuate(sentence)
+    punct = %w(. : ? ! ;)
+    sentence.content += "." unless punct.include?(sentence.content[-1])
+    sentence
   end
 
   def export(content, filetype)
