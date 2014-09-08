@@ -7,9 +7,8 @@
         <%= label_tag 'Which column best represents your story?' %>
       </div><br>
       <%= text_field_tag "Column", nil, class: 'columnSelection' %><br>
-     
       <div class="radio">
-        <%= radio_button_tag(:filetype, "rtf", :checked => true) %>
+        <%= radio_button_tag(:filetype, "rtf") %>
         <%= label_tag(:rtf, "RTF") %>
         <%= radio_button_tag(:filetype, "pdf") %>
         <%= label_tag(:pdf, "PDF") %>
