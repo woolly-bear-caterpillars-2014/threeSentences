@@ -35,10 +35,11 @@ gem 'jquery_file_download-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'pry-rails'
   gem 'jasmine-rails'
 end
+
+gem 'faker'
 
 group :test do
   gem 'capybara'
