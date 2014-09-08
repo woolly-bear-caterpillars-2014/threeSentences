@@ -3,9 +3,6 @@ $(document).ready(function(){
     e.preventDefault();
     $('#exportform').show();
   });
-  // $('body').on('focusout', '#exportform', function(e){
-  //   $('#exportform').hide();
-  // });
   $('#exportform form').submit(function(e){
     e.preventDefault();
     var $url = ($(this).attr('action'));
@@ -13,8 +10,14 @@ $(document).ready(function(){
       method: "POST",
       url: $url,
       data: $(this).serialize()
-    }).done(function() {
-      $('#exportform').hide();
+    }).done(function(data) {
+      $.fileDownload(data['url'], {
+          successCallback: function (url) {
+            $('#exportform').hide();
+          },
+          failCallback: function (html, url) {
+          }
+      });
     });
   });
 });

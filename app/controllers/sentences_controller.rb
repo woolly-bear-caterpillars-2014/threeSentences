@@ -1,9 +1,6 @@
 class SentencesController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-  end
-
   def create
     @story = Story.find(params[:story_id])
 

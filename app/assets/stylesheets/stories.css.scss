@@ -28,17 +28,21 @@ h1.story-name {
 
 .cue {
   font-family: $font-family;
-  margin: 1.6em auto 0.8em auto;
-  text-align: center;
+  font-size: $font-basesize;
+  margin: 3.2em auto 0.8em auto;
+  text-align: left;
   color: $light-shade-base-text;
 }
 
 input.sentence{
   display: block;
   font-family: $font-family;
+  font-size: $font-basesize;
   width: 600px;
   padding: 10px 10px 10px 10px;
   margin: 10px auto;
+  margin-left: 10px;
+  // margin: 10px 10px;
   border-width:0px;
   border:none;
   border-bottom: 1px solid $primary-color;
@@ -56,7 +60,7 @@ input.sentence{
 input.sentence:focus {
   outline: none;
   padding: 10px 10px 8px 10px;
-  margin: 10px auto 9px auto;
+  // margin: 10px auto 10px auto;
   border-bottom: 3px solid $primary-color;
   background-color: white;
 }
@@ -71,7 +75,7 @@ input.sentence:hover {
 }
 
 #exportform {
-  padding: 80px;
+  padding: 20px;
   text-align: center;
   background: $background-color;
   border: 1px solid $primary-color;
@@ -82,15 +86,30 @@ input.sentence:hover {
 }
 
 #exportform h2 {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 #exportform .radio {
   padding-top: 20px;
 }
 
+.save-indicator {
+  position: fixed;
+  top: 30px;
+  right: 200px;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  color: $primary-color;
+  font-weight: 300;
+  margin-right: 20px;
+  display: none;
+}
+
 .export {
   position: fixed;
   top: 20px;
   right: 120px;
+}
+
+.cluster {
+  display: none;
 }

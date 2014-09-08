@@ -43,13 +43,24 @@ class StoriesController < ApplicationController
   end
 
   def export
-    p params
+    cookies['fileDownload'] = 'true'
     @story = Story.find(params[:id])
     depth = params[:Column].to_i - 1
-    send_data @story.export_story(depth, params[:filetype]), :filename => "#{@story.name}.rtf",
-                            :type => "application/rtf"
+    test = @story.export_story(depth, params[:filetype])
+    render json: { url: test }.to_json
   end
 
+  def download
+    file = File.open("tmp/#{params[:file]}.#{params[:filetype]}", 'r')
+    mime_type = case params[:filetype]
+                when 'rtf' then 'text/richtext; charset=UTF-8'
+                when 'pdf' then 'application/pdf; charset=UTF-8'
+                when 'md' then 'text/x-markdown; charset=UTF-8'
+                end
+    send_file file,
+        :type => mime_type,
+        :disposition => "attachment; filename=#{params[:file]}.#{params[:filetype]}"
+  end
   private
 
   def story_params

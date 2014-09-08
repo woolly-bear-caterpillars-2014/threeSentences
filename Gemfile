@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -29,6 +30,7 @@ gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
 
 gem 'docverter'
+gem 'jquery_file_download-rails'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -46,6 +48,7 @@ end
 
 gem 'jquery-turbolinks'
 gem 'devise'
+gem 'simplecov', :require => false, :group => :test
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
