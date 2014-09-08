@@ -4,20 +4,21 @@
 // Place all the styles related to the stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.child {
-  margin-left: 45px;
-  float: left;
-  display: inline-block;
-  clear: both;
-  p {
-    float: left;
-  }
-}
 
-.parent{
-  clear: both;
-  display: inline-block;
-}
+// .child {
+//   margin-left: 45px;
+//   float: left;
+//   display: inline-block;
+//   clear: both;
+//   p {
+//     float: left;
+//   }
+// }
+
+// .parent{
+//   clear: both;
+//   display: inline-block;
+// }
 
 h1.story-name {
   font-family: $font-family;
@@ -25,11 +26,15 @@ h1.story-name {
   text-align: center;
 }
 
+.cluster {
+  display: none;
+  margin: 0 auto 2em auto;
+}
 
 .cue {
   font-family: $font-family;
   font-size: $font-basesize;
-  margin: 3.2em auto 0.8em auto;
+  margin: 0 auto 0.75em auto;
   text-align: left;
   color: $light-shade-base-text;
 }
@@ -110,6 +115,4 @@ input.sentence:hover {
   right: 120px;
 }
 
-.cluster {
-  display: none;
-}
+
