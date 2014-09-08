@@ -197,7 +197,7 @@ Sentence.prototype.update = function(newContent) {
   var response = sentence.ajaxSync('/stories/' + story.id + '/sentences/' + sentence.id, 'PUT');
 
   response.done(function(data){
-    sentence.updateCue();
+    sentence.updateChildren();
     sentence.updateElement();
     storyView.displaySave();
   });
@@ -217,9 +217,10 @@ Sentence.prototype.ajaxSync = function(url, method) {
   });
 };
 
-Sentence.prototype.updateCue = function() {
+Sentence.prototype.updateChildren = function() {
   var cue = $('.cue[data-parent-position=' + this.position + ']');
   cue.html(this.content);
+  cue.siblings('.sentence').attr('data-parent-id', this.id);
   cue.parent('.cluster').fadeIn(500);
 };
 
@@ -233,7 +234,7 @@ Sentence.prototype.render = function() {
   this.$el = column.find('.sentence[data-position=' + this.position + ']');
   this.updateElement();
   storyView.findOrInitializeColumn(this.depth + 1);
-  this.updateCue();
+  this.updateChildren();
 };
 
 Sentence.prototype.updateElement = function() {
