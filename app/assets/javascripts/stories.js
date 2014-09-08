@@ -96,8 +96,8 @@ var storyView = (function() {
 
       });
       column += "</div>";
-      $('#frame').append(column);
 
+      $('#frame').append(column)
     },
 
     findOrInitializeColumn: function(depth) {
@@ -201,7 +201,7 @@ Sentence.prototype.ajaxSync = function(url, method) {
 Sentence.prototype.updateCue = function() {
   var cue = $('.cue[data-parent-id=' + this.position + ']');
   cue.html(this.content);
-  cue.parent('.cluster').show()
+  cue.parent('.cluster').fadeIn(500)
 };
 
 Sentence.prototype.render = function() {
@@ -223,7 +223,7 @@ Sentence.prototype.updateElement = function() {
 };
 
 var sentenceToggle = function(){
-  
+
   if ($(this).siblings('input').is(":hidden")){
     console.log("heyhahah")
     $(this).siblings('input').animate({opacity: 1})
@@ -235,8 +235,8 @@ var sentenceToggle = function(){
     $(this).siblings('input').animate({opacity: 0})
     $(this).siblings('input').toggle()
   }
-  
-  
+
+
 }
 
 // ---------------------------------------------
