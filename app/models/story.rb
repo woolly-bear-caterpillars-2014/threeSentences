@@ -23,8 +23,8 @@ class Story < ActiveRecord::Base
   end
 
   def get_children(parent)
-      child_content = ""
-     if parent.children.exists?
+    child_content = ""
+    if parent.children.exists?
       parent.children.each do |child|
          child_content += create_text(child)
          if child.children.exists?
@@ -92,18 +92,4 @@ class Story < ActiveRecord::Base
       shortened_title = self.name
     end
   end
-  # def depth_start_position(depth)
-  #   position = 1
-  #   depth.times do |i|
-  #     position += 3 ** (i + 1)
-  #   end
-  #   position
-  # end
-
-  # def depth_end_position(depth)
-  #   depth_start_position(depth) + 3 ** (depth + 1) - 1
-  # end
-
-
-
 end

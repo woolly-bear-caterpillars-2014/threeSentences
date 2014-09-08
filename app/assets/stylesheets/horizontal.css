@@ -18,7 +18,6 @@ body {
   top: 0;
   margin: 0;
   padding: 0;
-  /*height: 100%;*/
   width: 100%;
 }
 
@@ -38,10 +37,6 @@ body {
 	overflow: scroll;
 }
 
-/*#firstthree {
-  margin-right: -40px;
-}*/
-
 .column > :first-child {
  margin-top: 0;
 }
@@ -50,18 +45,21 @@ p {
   font-size: 14px;
   color: #000;
 }
+
 .scrollbar {
 	margin: 0 0 1em 0;
 	height: 2px;
 	background: #ccc;
 	line-height: 0;
 }
+
 .scrollbar .handle {
 	width: 100px;
 	height: 100%;
 	background: #292a33;
 	cursor: pointer;
 }
+
 .scrollbar .handle .mousearea {
 	position: absolute;
 	top: -9px;
@@ -77,8 +75,8 @@ h1, h2, h3, h4, h5, h6, li, p {
 .my-icon {
     position: relative;
     z-index: -1;
-
 }
+
 .my-icon > i {
     position: absolute;
     display: inline-block;
@@ -93,6 +91,7 @@ h1, h2, h3, h4, h5, h6, li, p {
     z-index: -1;
 
 }
+
 .my-icon > i+i {
     position: absolute;
     display: inline-block;
@@ -103,6 +102,7 @@ h1, h2, h3, h4, h5, h6, li, p {
     top: 1.263157894736842em;
     z-index: -1;
 }
+
 .my-icon > i+i+i {
     position: absolute;
     display: inline-block;
@@ -116,14 +116,12 @@ h1, h2, h3, h4, h5, h6, li, p {
 
 .icontext {
 	font-size: 16px;
-
 	font-family: 'Helvetica Neue', serif;
 	font-weight: 300;
 }
 
 .grid {
 	font-size: 2em;
-
 }
 
 .col-1 {
@@ -146,7 +144,6 @@ h1, h2, h3, h4, h5, h6, li, p {
 	float: left;
 	width: 33.3333%;
 }
-
 
 .col-1 {
 	color: blue;
@@ -196,5 +193,3 @@ h1, h2, h3, h4, h5, h6, li, p {
 .grid {
 	color: red;
 }
-
-
