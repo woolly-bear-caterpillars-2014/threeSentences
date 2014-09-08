@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   get '/download/:file.:filetype' => 'stories#download'
 
+  delete '/download/:file.:filetype' => 'stories#delete_export'
+
+
 end
