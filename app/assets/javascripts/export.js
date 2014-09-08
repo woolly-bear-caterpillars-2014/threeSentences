@@ -1,7 +1,6 @@
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
-    // if $('.ab')
     $('.absolute-center-export').toggle();
 
 
