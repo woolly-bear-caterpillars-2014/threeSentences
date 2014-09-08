@@ -1,17 +1,9 @@
 
 #frame {
-	/*height: 100%;*/
-  margin: 75px 0px 0px 0px;
-  padding: 10px 0px; //(ver,hor)
+  margin: 10px 10px 0px 0px;
 	overflow: hidden;
   width: 4400px;
-  /*width: 200%;*/
-  padding-left: 0px;
-  padding-right: 0px;
   list-style: none;
-  margin: 75px 10px;
-  padding: 0px 0px;
-  /*height: 100%;*/
   font-size: 30px;
 }
 
@@ -21,13 +13,17 @@
   width: 20vw;
   min-width: 700px;
 	margin: 150px 20px 10px 0;
-  padding-left: 50px;
-  padding-right: 30px;
+  padding-left: 100px;
+/*  padding-right: 30px;*/
 	background: #F5FEFF;
 	color: #ddd;
 	text-align: center;
 	cursor: pointer;
 	overflow: auto;
+}
+
+#firstthree {
+  margin-right: -40px;
 }
 
 .column > :first-child {

@@ -1,36 +1,15 @@
 @import 'font_variables';
 @import 'color_variables';
 
-// Place all the styles related to the stories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-// .child {
-//   margin-left: 45px;
-//   float: left;
-//   display: inline-block;
-//   clear: both;
-//   p {
-//     float: left;
-//   }
-// }
-
-// .parent{
-//   clear: both;
-//   display: inline-block;
-// }
-
 h1.story-name {
   font-family: $display-font;
-  // margin: 1.2em auto 0.8em auto;
   text-align: center;
   position: fixed;
-  margin-top: 0px;
   left: 0;
   right: 0;
   top: 0;
 
-  margin: 80px auto;
+  margin: 60px auto;
   text-align: center;
   width: 50%;
 
@@ -53,6 +32,7 @@ input.sentence{
   display: block;
   font-family: $font-family;
   font-size: $font-basesize;
+  font-weight: 300;
   width: 600px;
   padding: 10px 10px 10px 10px;
   margin: 10px auto;
