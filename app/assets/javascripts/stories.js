@@ -14,8 +14,21 @@ var storyView = (function() {
     sentenceTemplate = _.template($('#sentence-template').html());
   };
 
+  var setupFirstThree = function(firstThree) {
+    var sentence;
+    firstThree.forEach(function(sentenceJson) {
+      sentence = storyView.initializeSentence(sentenceJson);
+      sentence.initialRender();
+    });
+    story.sentences.forEach(function(sentence) {
+      sentence.render();
+    });
+  };
+
   var initializeSentences = function() {
     if (sentencesJson.length > 0) {
+      var firstThree = sentencesJson.splice(0,3);
+      setupFirstThree(firstThree);
       sentencesJson.forEach(storyView.buildSentence);
     }
   };
@@ -59,8 +72,13 @@ var storyView = (function() {
     return start + Math.pow(3, depth + 1) - 1;
   };
 
-  var parentId = function(position) {
+  var parentPosition = function(position) {
     return Math.ceil(position / 3) - 1;
+  };
+
+  var parentId = function(position) {
+    var parentEl = $('.sentence[data-position=' + parentPosition(position) + ']');
+    return parentEl.attr('data-id');
   };
 
   var sentenceElToJson = function($sentence) {
@@ -85,7 +103,7 @@ var storyView = (function() {
         }
         if (index % 3 === 0) {
           column += '<div class="cluster">';
-          column += cueTemplate({cue: '', parent_id: parentId(element)});
+          column += cueTemplate({cue: '', parent_position: parentPosition(element)});
         }
         column += sentenceTemplate({
           sentence_id: '',
@@ -97,7 +115,7 @@ var storyView = (function() {
       });
       column += "</div>";
 
-      $('#frame').append(column)
+      $('#frame').append(column);
     },
 
     findOrInitializeColumn: function(depth) {
@@ -125,6 +143,7 @@ var storyView = (function() {
     initialize: function() {
      story.sentences = [];
      initializeTemplates();
+     // setupFirstThree();
      initializeSentences();
      bindEventListeners();
     }
@@ -199,10 +218,9 @@ Sentence.prototype.ajaxSync = function(url, method) {
 };
 
 Sentence.prototype.updateCue = function() {
-  var cue = $('.cue[data-parent-id=' + this.position + ']');
+  var cue = $('.cue[data-parent-position=' + this.position + ']');
   cue.html(this.content);
-  cue.parent('.cluster').fadeIn(500)
-
+  cue.parent('.cluster').fadeIn(500);
 };
 
 Sentence.prototype.render = function() {
@@ -212,15 +230,21 @@ Sentence.prototype.render = function() {
   } else {
     column = storyView.findOrInitializeColumn(this.depth);
   }
-  storyView.findOrInitializeColumn(this.depth + 1);
   this.$el = column.find('.sentence[data-position=' + this.position + ']');
   this.updateElement();
+  storyView.findOrInitializeColumn(this.depth + 1);
   this.updateCue();
 };
 
 Sentence.prototype.updateElement = function() {
   this.$el.attr('data-id', this.id);
   this.$el.val(this.content);
+};
+
+Sentence.prototype.initialRender = function() {
+  var column = $('.column[data-depth=0]');
+  this.$el = column.find('.sentence[data-position=' + this.position + ']');
+  this.updateElement();
 };
 
 var sentenceToggle = function(){
