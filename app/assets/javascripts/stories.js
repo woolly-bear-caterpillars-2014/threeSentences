@@ -223,7 +223,20 @@ Sentence.prototype.updateElement = function() {
 };
 
 var sentenceToggle = function(){
-  $(this).siblings('input').toggle();
+  
+  if ($(this).siblings('input').is(":hidden")){
+    console.log("heyhahah")
+    $(this).siblings('input').animate({opacity: 1})
+    $(this).siblings('input').toggle()
+
+  }
+  else {
+    console.log("bye")
+    $(this).siblings('input').animate({opacity: 0})
+    $(this).siblings('input').toggle()
+  }
+  
+  
 }
 
 // ---------------------------------------------
