@@ -97,12 +97,20 @@ var storyView = (function() {
      var startPos = calculateStartPosition(depth);
      var endPos = calculateEndPosition(depth);
      var range = _.range(startPos, endPos + 1);
+     var spacing = Math.pow(3, (depth - 1));
+     var iterator = 0;
      _.each(range, function(element, index, list) {
         if (index !== 0 && index % 3 === 0) {
           column += '</div>';
         }
         if (index % 3 === 0) {
-          column += '<div class="cluster">';
+          iterator++;
+          if (iterator % spacing === 0){
+            column += '<div class="cluster bottomborder">';
+          }
+          else {
+            column += '<div class="cluster">';
+          }
           column += cueTemplate({cue: '', parent_position: parentPosition(element)});
         }
         column += sentenceTemplate({

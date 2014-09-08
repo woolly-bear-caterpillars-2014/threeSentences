@@ -1,3 +1,9 @@
+var deleteExport = function (url) {
+  $.ajax({
+  method: "DELETE",
+  url: url}
+  )}
+
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
@@ -16,6 +22,7 @@ $(document).ready(function(){
       $.fileDownload(data['url'], {
           successCallback: function (url) {
             $('.absolute-center-export').hide();
+            deleteExport(url)
           },
           failCallback: function (html, url) {
           }
