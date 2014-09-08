@@ -29,4 +29,11 @@ $(document).ready(function(){
       });
     });
   });
+
+  $('#exportform button').click(function(e){
+    e.preventDefault();
+    $('.absolute-center-export').hide();
+  });
+
+
 });

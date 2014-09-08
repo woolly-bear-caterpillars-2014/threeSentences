@@ -32,9 +32,8 @@ class StoriesController < ApplicationController
 
   def export
     cookies['fileDownload'] = 'true'
-    depth = params[:Column].to_i - 1
-    test = @story.export_story(depth, params[:filetype])
-    render json: { url: test }.to_json
+    file_link = @story.export_story(params[:filetype])
+    render json: { url: file_link }.to_json
   end
 
 
@@ -61,7 +60,7 @@ class StoriesController < ApplicationController
   private
 
   def story_params
-    params.require(:story).permit(:name, :Column, :filetype)
+    params.require(:story).permit(:name, :filetype)
   end
 
   def get_story

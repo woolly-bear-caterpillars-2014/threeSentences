@@ -5,48 +5,41 @@ class Story < ActiveRecord::Base
   validates :name, presence: true
 
 
-  def export_story(depth, filetype)
-    self.export(get_content(depth), filetype)
+  def export_story(filetype)
+    self.export(get_content, filetype)
   end
 
-  def get_content(depth)
+  def get_content
     md_content = ""
     md_content += create_title
 
-    if depth == 0
-      headers = get_headers(depth)
-      headers.each do |header|
-        md_content += create_header(header)
-      end
-    else
-      headers = get_headers(depth - 1)
-      headers
-      headers.each do |header|
-        md_content += create_header(header)
-        header.children.each do |child|
-         md_content += create_text(child)
-        end
-        md_content += "\n"
-      end
+    headers = get_headers
+    headers.each do |header|
+      md_content += create_header(header)
+      md_content += get_children(header)
+      md_content += "\n"
     end
     md_content
   end
 
-  def get_headers(depth)
-    positions = (self.depth_start_position(depth)..self.depth_end_position(depth)).to_a
-    positions.map {|position| self.sentences.find_by_position(position)}
-  end
-
-  def depth_start_position(depth)
-    position = 1
-    depth.times do |i|
-      position += 3 ** (i + 1)
+  def get_children(parent)
+      child_content = ""
+     if parent.children.exists?
+      parent.children.each do |child|
+         child_content += create_text(child)
+         if child.children.exists?
+          child_content += "\n"
+          child_content += get_children(child)
+          child_content += "\n"
+         end
+      end
     end
-    position
+    child_content
   end
 
-  def depth_end_position(depth)
-    depth_start_position(depth) + 3 ** (depth + 1) - 1
+
+  def get_headers
+    [1, 2, 3].map {|position| self.sentences.find_by_position(position)}
   end
 
   def create_title
@@ -54,15 +47,27 @@ class Story < ActiveRecord::Base
   end
 
   def create_header(header, level = 2)
-    "#{'#' * level} #{header.content}\n\n"
+    "#{'#' * level} #{punctuate(header).content}\n\n"
   end
 
   def create_text(child)
-    "#{child.content}\n"
+    level = case child.depth
+                when 1 then '### '
+                when 2 then '> '
+                when 3 then '>> '
+                when 4 then '>>> '
+                end
+    "#{level}#{punctuate(child).content}\n"
+  end
+
+  def punctuate(sentence)
+    punct = %w(. : ? ! ;)
+    sentence.content += "." unless punct.include?(sentence.content[-1])
+    sentence
   end
 
   def export(content, filetype)
-    filename = downcase_and_change_spaces_to_underscores(self.name)
+    filename = downcase_and_change_spaces_to_underscores(self.shortened_title)
     case filetype
     when 'rtf'
       to_export = Docverter::Conversion.run("markdown", filetype, content)
@@ -79,5 +84,26 @@ class Story < ActiveRecord::Base
   def downcase_and_change_spaces_to_underscores(name)
     name.squish.downcase.tr(" ","_")
   end
+
+  def shortened_title
+    if self.name.length > 20
+      shortened_title = self.name[0..19]
+    else
+      shortened_title = self.name
+    end
+  end
+  # def depth_start_position(depth)
+  #   position = 1
+  #   depth.times do |i|
+  #     position += 3 ** (i + 1)
+  #   end
+  #   position
+  # end
+
+  # def depth_end_position(depth)
+  #   depth_start_position(depth) + 3 ** (depth + 1) - 1
+  # end
+
+
 
 end
