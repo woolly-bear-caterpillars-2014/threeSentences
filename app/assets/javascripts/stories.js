@@ -6,6 +6,8 @@ var storyView = (function() {
       sentenceTemplate,
       currentSentenceContent;
 
+  var colWidth = 850;
+
   var initializeTemplates = function() {
     _.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
 
@@ -91,6 +93,12 @@ var storyView = (function() {
     };
   };
 
+  var setFrameWidth = function() {
+    var numCols = $('.slidee').children('.column').length;
+    var currentWidth = $('#frame').width();
+    $('#frame').width(400 + (numCols * colWidth));
+  };
+
   return {
    buildColumn: function(depth) {
      var column = columnTemplate({depth: depth});
@@ -122,8 +130,11 @@ var storyView = (function() {
 
       });
       column += "</div>";
-
-      $('#frame').append(column);
+      $('.slidee').append(column);
+      setFrameWidth();
+      $('.column[data-depth=' + depth + ']').mCustomScrollbar({
+        theme: 'rounded-dots-dark'
+      });
     },
 
     findOrInitializeColumn: function(depth) {
@@ -151,9 +162,9 @@ var storyView = (function() {
     initialize: function() {
      story.sentences = [];
      initializeTemplates();
-     // setupFirstThree();
      initializeSentences();
      bindEventListeners();
+     setFrameWidth();
     }
   };
 
@@ -267,13 +278,9 @@ var sentenceToggle = function(){
   }
 };
 
-
-
 // ---------------------------------------------
 
 $(document).ready(function(){
   storyView.initialize();
-
   $('body').on('click', '.cue', sentenceToggle);
-
 });
