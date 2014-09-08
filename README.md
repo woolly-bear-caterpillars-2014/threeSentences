@@ -21,10 +21,10 @@ We loved the three sentences writing technique so much, we decided to build an a
 
 ## The Team
 
-[David Bragdon](https://github.com/postmodem)
-[Justin Wagner](https://github.com/jwag789)
-[Joseph White](https://github.com/jbwhite)
-[Alexei Pesic](https://github.com/apesic)
+* [David Bragdon](https://github.com/postmodem)
+* [Justin Wagner](https://github.com/jwag789)
+* [Joseph White](https://github.com/jbwhite)
+* [Alexei Pesic](https://github.com/apesic)
 
 The four of us are currently attending [DevBootcamp](http://devbootcamp.com) in NYC. Three Sentences is our final project. We hope you find it useful and fun. Happy writing!
 
