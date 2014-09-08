@@ -79,14 +79,50 @@ var storyView = (function() {
      var startPos = calculateStartPosition(depth);
      var endPos = calculateEndPosition(depth);
      var range = _.range(startPos, endPos + 1);
+     var spacing = Math.pow(3, (depth-1))
+     var x = 0
      _.each(range, function(element, index, list) {
         if (index !== 0 && index % 3 === 0) {
           column += '</div>';
         }
         if (index % 3 === 0) {
-          column += '<div class="cluster">';
+
+          console.log(spacing)
+          console.log(x)
+          x = (x+1)
+          console.log(x)
+          if (x % spacing === 0){
+            console.log('holla')
+             column += '<div class="cluster bottomborder">';
+          column += cueTemplate({cue: '', parent_id: parentId(element)});
+          }
+          else{
+            console.log("heyya")
+             column += '<div class="cluster">';
           column += cueTemplate({cue: '', parent_id: parentId(element)});
         }
+          // }
+          // console.log(x)
+          // column += '<div class="cluster">';
+          // column += cueTemplate({cue: '', parent_id: parentId(element)});
+        }
+
+        //      if (index % 3 === 0) {
+        //   if (index % spacing === 0) {
+        //     console.log("spacing?!?!!?!?!?!?!!?spacingSPACING?")
+        //     console.log(spacing)
+        //     console.log(index)
+        //     console.log(element)
+        //     column += '<div class="cluster fun">';
+        //   column += cueTemplate({cue: '', parent_id: parentId(element)});
+        //   }
+        //  else {
+        //   column += '<div class="cluster">';
+        //   column += cueTemplate({cue: '', parent_id: parentId(element)});
+        //   }
+        // }
+
+
         column += sentenceTemplate({
           sentence_id: '',
           position: element,
