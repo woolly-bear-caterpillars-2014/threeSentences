@@ -18,7 +18,6 @@ class StoriesController < ApplicationController
   def share
     @user = current_user if current_user
     @story = Story.find(params[:id])
-    share_url = Digest::SHA1.hexdigest(@story.name)[0..6]
     @shared = true
     render :show
   end
