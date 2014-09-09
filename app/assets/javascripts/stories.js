@@ -278,7 +278,7 @@ var sentenceToggle = function(){
 
 var tourStart = function(e){
   e.preventDefault();
-  introJs().start()
+  introJs().start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
 
 }
 

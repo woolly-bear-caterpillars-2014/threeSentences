@@ -135,12 +135,15 @@ tr.introjs-showElement > th {
 }
 
 .introjs-tooltip {
+  color: #FF6430;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 200;
   position: absolute;
   padding: 10px;
-  background-color: white;
+  background-color: #F5FEFF;
   min-width: 200px;
   max-width: 300px;
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   -webkit-transition: opacity 0.1s ease-out;
      -moz-transition: opacity 0.1s ease-out;
@@ -162,37 +165,33 @@ tr.introjs-showElement > th {
   overflow: visible;
   display: inline-block;
   padding: 0.3em 0.8em;
-  border: 1px solid #d4d4d4;
-  margin: 0;
+  
+  font-size: 12px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #333333;
+  border: 1px solid #86CFD9;
+  background: #F5FEFF;
+  border-radius: 2px;
   text-decoration: none;
-  text-shadow: 1px 1px 0 #fff;
-  font: 11px/normal sans-serif;
-  color: #333;
-  white-space: nowrap;
-  cursor: pointer;
-  outline: none;
-  background-color: #ececec;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
-  background-image: -moz-linear-gradient(#f4f4f4, #ececec);
-  background-image: -o-linear-gradient(#f4f4f4, #ececec);
-  background-image: linear-gradient(#f4f4f4, #ececec);
-  -webkit-background-clip: padding;
-  -moz-background-clip: padding;
-  -o-background-clip: padding-box;
-  /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
-  -webkit-border-radius: 0.2em;
-  -moz-border-radius: 0.2em;
-  border-radius: 0.2em;
-  /* IE hacks */
+  -webkit-transition: all 0.20s ease-in-out;
+  -moz-transition: all 0.20s ease-in-out;
+  -o-transition: all 0.20s ease-in-out;
+  transition: all 0.20s ease-in-out;
   zoom: 1;
   *display: inline;
   margin-top: 10px;
 }
+button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover {
+  
+  
+
+}
 
 .introjs-button:hover {
-  border-color: #bcbcbc;
-  text-decoration: none;
-  box-shadow: 0px 1px 1px #e3e3e3;
+  color: white;
+  background-color: #86CFD9;
 }
 
 .introjs-button:focus,
