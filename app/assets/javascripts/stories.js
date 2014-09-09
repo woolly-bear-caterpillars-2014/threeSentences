@@ -153,6 +153,8 @@ var storyView = (function() {
             column += '<div class="cluster">';
           }
           column += cueTemplate({cue: '', parent_position: parentPosition(element)});
+          column += '<div class="triad">'
+
         }
         column += sentenceTemplate({
           sentence_id: '',
@@ -162,7 +164,7 @@ var storyView = (function() {
         });
 
       });
-      column += "</div>";
+      column += "</div></div>";
       $('.slidee').append(column);
       setFrameWidth();
 
@@ -300,14 +302,7 @@ Sentence.prototype.initialRender = function() {
 };
 
 var sentenceToggle = function(){
-  if ($(this).siblings('input').is(":hidden")){
-    $(this).siblings('input').animate({opacity: 1});
-    $(this).siblings('input').toggle();
-
-  } else {
-    $(this).siblings('input').animate({opacity: 0});
-    $(this).siblings('input').toggle();
-  }
+  $(this).siblings('.triad').slideToggle(500);
 };
 
 var tourStart = function(e){
@@ -398,5 +393,4 @@ function startIntro(e){
 
 $(document).ready(function(){
   storyView.initialize();
-  $('body').on('click', '.cue', sentenceToggle);
 });
