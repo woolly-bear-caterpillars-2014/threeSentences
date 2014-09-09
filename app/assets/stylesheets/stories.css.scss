@@ -108,6 +108,13 @@ input.sentence:hover {
   opacity: 0.8;
 }
 
+.controls .share {
+  position: fixed;
+  top: 20px;
+  left: 170px;
+  opacity: 0.8;
+}
+
 #the-end {
   display: none;
 }
@@ -126,4 +133,21 @@ input.sentence:hover {
 
 .bottomborder {
   padding-bottom: 40px;
+}
+
+.end-message h3 {
+  margin: 20px;
+
+}
+.sharebox {
+  border-radius: 2px;
+  border: none;
+  border: 1px solid $primary-color;
+  width: 80%;
+  margin: 10px;
+  padding: 4px;
+  font-size: $font-basesize;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
 }

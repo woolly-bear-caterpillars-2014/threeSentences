@@ -21,7 +21,7 @@
 <div class="column" id="the-end" data-depth="6">
   <div class="end-message">
     <i class="fa fa-book fa-5x"></i>
-    <h3>You&#39;re ready to go write your book!<h3>
+    <h3>You&#39;re ready to go write your story!<h3>
     <%= link_to "Export", root_path, class: 'button export end' %>
   </div>
 </div>
@@ -40,6 +40,7 @@
 
 <script>
   var story = <%= raw json_escape(@story.to_json) %>;
+  var shared = <%= @shared %>
   var sentencesJson = [];
   <% if @story.sentences %>
   sentencesJson = <%= raw json_escape(@story.sentences.order(:position).to_json) %>
