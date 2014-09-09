@@ -95,12 +95,22 @@ var storyView = (function() {
 
   var setFrameWidth = function() {
     var numCols = $('.slidee').children('.column').length;
-    var currentWidth = $('#frame').width();
     $('#frame').width(400 + (numCols * colWidth));
+  };
+
+  var endColumn = function() {
+    if ($('.slidee #the-end').length === 0) {
+      var end = $('#the-end').detach();
+      $('.slidee').append(end);
+      var currentWidth = $('#frame').width();
+      $('#frame').width(currentWidth + 850);
+      end.fadeIn();
+    }
   };
 
   return {
    buildColumn: function(depth) {
+     if ( depth >= 5) { return endColumn() }
      var column = columnTemplate({depth: depth});
      var startPos = calculateStartPosition(depth);
      var endPos = calculateEndPosition(depth);
