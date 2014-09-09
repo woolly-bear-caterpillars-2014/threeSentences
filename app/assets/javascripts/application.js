@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require stories
 //= require jquery.fileDownload
+//= require jquery-scrollspy
 //= require_tree .
