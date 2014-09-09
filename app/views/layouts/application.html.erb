@@ -11,16 +11,7 @@
 </head>
 <body>
 
-<nav>
-  <%= link_to raw('<i class="fa fa-home"></i>'), root_path, class: 'button home round' %>
-  <a href="#" class="button help round"><i class="fa fa-question"></i></a>
-  <% unless user_signed_in? %>
-  <%= link_to "Sign Up", new_user_registration_path, class: 'button signup' %>
-  <%= link_to "Log In", new_user_session_path, class: 'button login' %>
-  <% else %>
-  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'button logout' %>
-  <% end %>
-</nav>
+<%= render :partial => 'shared/header' %>
 
 <%= yield %>
 
