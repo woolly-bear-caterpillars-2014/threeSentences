@@ -22,7 +22,7 @@ body {
 }
 
 .column:first-child {
-  margin-left: 400px;
+  margin-left: 200px;
 }
 .column {
 	float: left;
@@ -30,7 +30,7 @@ body {
 	margin: 150px 20px 10px 0;
     padding-left: 100px;
 	height: 70vh;
-    width: 700px;	
+    width: 700px;
     min-width: 700px;
 	background: #F5FEFF;
 	color: #ddd;
@@ -41,6 +41,18 @@ body {
 
 .column > :first-child {
  margin-top: 0;
+}
+
+#column-0 {
+  /*background: red;*/
+}
+
+#column-0 > :first-child {
+  margin-top: 140px;
+}
+
+#column-0 input.sentence {
+  margin-bottom: 70px;
 }
 
 p {
