@@ -22,6 +22,7 @@
             <div class="grouping">
               <div class="col-1">
                 <i class="my-icon"><i></i><i></i><i></i></i><h4><%= story.sentences.size %></h4><br><h6><%= 'sentence'.pluralize(story.sentences.size) %><h6><h5><%= story.name %></h5>
+                <h5><%= link_to 'Share', story_share_path(story) %>
                 
               </div>
             </div>

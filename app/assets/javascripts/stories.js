@@ -108,6 +108,13 @@ var storyView = (function() {
     }
   };
 
+  var setShared = function(shared_value){
+    if (shared_value === true) {
+    $('input.sentence').attr('disabled', true)
+  }
+}
+
+
   return {
    buildColumn: function(depth) {
      if ( depth >= 5) { return endColumn() }
@@ -173,6 +180,7 @@ var storyView = (function() {
      initializeSentences();
      bindEventListeners();
      setFrameWidth();
+     setShared(shared);
     }
   };
 
@@ -291,4 +299,5 @@ var sentenceToggle = function(){
 $(document).ready(function(){
   storyView.initialize();
   $('body').on('click', '.cue', sentenceToggle);
+
 });
