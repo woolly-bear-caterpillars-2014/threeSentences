@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   delete '/download/:file.:filetype' => 'stories#delete_export'
 
+  get 'stories/:id/share' => 'stories#share', as: :story_share
+
 
 end
