@@ -1,0 +1,83 @@
+@import 'font_variables';
+@import 'color_variables';
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 99px;
+}
+
+.left {
+  position: relative;
+  text-align: left;
+  width: 166px;
+  left: 10px;
+  top: 20px;
+}
+
+.controls .export {
+  top: 20px;
+  opacity: 0.8;
+}
+
+.home {
+  position: relative;
+  left: 0;
+  opacity: 0.8;
+}
+
+a.help.button {
+  top: 20px;
+  padding-left: 14px;
+  padding-right: 14px;
+  opacity: 0.8;
+}
+
+.session {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+a.button.signup {
+  background-color: $primary-color;
+  color: white;
+}
+
+a.button.signup:hover {
+  background-color: white;
+  color: $base-text;
+}
+
+.login, .logout {
+  top: 20px;
+  right: 20px;
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  z-index: -1;
+  text-align: center;
+}
+
+
+h1.story-name {
+  font-family: $display-font;
+  top: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+h1.story-name:hover {
+  border-bottom: 3px solid $primary-color;
+}
+
+h1.story-name:focus {
+  border-bottom: 3px solid $secondary-color;
+  outline: none;
+}

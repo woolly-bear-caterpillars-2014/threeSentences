@@ -1,9 +1,7 @@
-<h1 class="story-name" contenteditable='true'><%= @story.name %></h1>
-
 <div class="controls">
   <span class="save-indicator">Saved</span>
-  <%= link_to raw('<i class="fa fa-share"></i>'), '#', class: 'button export round' %>
 </div>
+
 <%= render 'stories/export' %>
 
 <div id="frame">

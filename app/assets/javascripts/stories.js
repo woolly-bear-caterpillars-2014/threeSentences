@@ -376,6 +376,7 @@ Story.prototype.updateTitle = function(title) {
   var response = this.sync(params);
   response.done(function(data){
     story.name = data.name;
+    storyView.displaySave();
   });
 };
 
