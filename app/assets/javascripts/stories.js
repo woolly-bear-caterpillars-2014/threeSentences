@@ -4,7 +4,6 @@ var storyView = (function() {
   var columnTemplate,
       cueTemplate,
       sentenceTemplate,
-      endTemplate,
       currentSentenceContent;
 
   var colWidth = 850;
@@ -15,7 +14,6 @@ var storyView = (function() {
     columnTemplate = _.template($('#column-template').html());
     cueTemplate = _.template($('#cue-template').html());
     sentenceTemplate = _.template($('#sentence-template').html());
-    endTemplate = _.template($('#end-template').html());
   };
 
   var setupFirstThree = function(firstThree) {
@@ -97,15 +95,16 @@ var storyView = (function() {
 
   var setFrameWidth = function() {
     var numCols = $('.slidee').children('.column').length;
-
     $('#frame').width(400 + (numCols * colWidth));
   };
 
   var endColumn = function() {
-    if ($('#the-end').length === 0) {
-      $('.slidee').append(endTemplate());
+    if ($('.slidee #the-end').length === 0) {
+      var end = $('#the-end').detach();
+      $('.slidee').append(end);
       var currentWidth = $('#frame').width();
       $('#frame').width(currentWidth + 850);
+      end.fadeIn();
     }
   };
 

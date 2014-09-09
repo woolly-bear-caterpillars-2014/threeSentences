@@ -18,16 +18,10 @@ h1.story-name {
 .cluster {
   display: none;
   margin: 0 auto 2em auto;
-  // border-left: 5px solid black;
-  // border-right: 5px solid black;
 }
 
 .bottomborder {
-  // margin-bottom: 50px;
-  // margin-top: 50px;
   padding-bottom: 40px;
-  // border-bottom: 5px solid black;
-
 }
 
 
@@ -37,7 +31,6 @@ h1.story-name {
   margin: 0 auto 0.75em auto;
   text-align: left;
   color: $light-shade-base-text;
-  // border-top: 5px solid black;
 }
 
 input.sentence{
@@ -49,7 +42,6 @@ input.sentence{
   padding: 10px 10px 10px 10px;
   margin: 10px auto;
   margin-left: 10px;
-  // margin: 10px 10px;
   border-width:0px;
   border:none;
   border-bottom: 1px solid $primary-color;
@@ -67,7 +59,6 @@ input.sentence{
 input.sentence:focus {
   outline: none;
   padding: 10px 10px 8px 10px;
-  // margin: 10px auto 10px auto;
   border-bottom: 3px solid $primary-color;
   background-color: white;
 }
@@ -110,10 +101,19 @@ input.sentence:hover {
   display: none;
 }
 
-.export {
+.controls .export {
   position: fixed;
   top: 20px;
   left: 110px;
+}
+
+#the-end {
+  display: none;
+}
+
+#the-end .export {
+  margin: 20px auto;
+  display: inline-block;
 }
 
 
