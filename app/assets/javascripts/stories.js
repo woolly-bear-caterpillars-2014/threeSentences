@@ -306,7 +306,8 @@ var tourStart = function(e){
 }
 
 
-function startIntro(){
+function startIntro(e){
+        e.preventDefault();
         var intro = introJs();
           intro.setOptions({
             steps: [
