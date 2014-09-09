@@ -3,6 +3,7 @@ class Story < ActiveRecord::Base
   has_many :sentences
 
   validates :name, presence: true
+  before_save :generate_share_url
 
 
   def export_story(filetype)
@@ -91,5 +92,9 @@ class Story < ActiveRecord::Base
     else
       shortened_title = self.name
     end
+  end
+
+  def generate_share_url
+    self.share_url = Digest::SHA1.hexdigest(rand(1_000_000).to_s)[0..6]
   end
 end
