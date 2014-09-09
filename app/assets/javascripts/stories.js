@@ -302,7 +302,7 @@ Sentence.prototype.initialRender = function() {
 };
 
 var sentenceToggle = function(){
-  
+  $(this).siblings('.triad').slideToggle(500);
 };
 
 var tourStart = function(e){
@@ -393,5 +393,4 @@ function startIntro(e){
 
 $(document).ready(function(){
   storyView.initialize();
-  $('body').on('click', '.cue', sentenceToggle);
 });
