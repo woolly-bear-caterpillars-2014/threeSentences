@@ -1,18 +1,25 @@
 @import 'font_variables';
 @import 'color_variables';
 
+body {
+  text-align: center;
+}
+
 h1.story-name {
   font-family: $display-font;
+  position: relative;
+  top: 30px;
   text-align: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
+  display: inline-block;
+}
 
-  margin: 60px auto;
-  text-align: center;
-  width: 50%;
+h1.story-name:hover {
+  border-bottom: 3px solid $primary-color;
+}
 
+h1.story-name:focus {
+  border-bottom: 3px solid $secondary-color;
+  outline: none;
 }
 
 .cluster {

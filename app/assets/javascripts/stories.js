@@ -36,6 +36,17 @@ var storyView = (function() {
   };
 
   var bindEventListeners = function() {
+    $('body').on('click', '.cue', sentenceToggle);
+    $('.help').on('click', startIntro);
+
+    $('.story-name').on('blur', function(e) {
+      e.preventDefault();
+      var newTitle = $('.story-name').html();
+      if (newTitle !== story.name) {
+	story.updateTitle(newTitle);
+      }
+    });
+
     $('body').on('focus', 'input.sentence', function(e){
       e.preventDefault();
       currentSentenceContent = $(this).val();
@@ -305,7 +316,6 @@ var tourStart = function(e){
   introJs().start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
 }
 
-
 function startIntro(e){
         e.preventDefault();
         var intro = introJs();
@@ -351,10 +361,44 @@ function startIntro(e){
 
       }
 
+
+// ----------------- STORY ---------------------
+function Story(storyJson) {
+  this.name = storyJson.name;
+  this.id = storyJson.id;
+  this.$el = $('.story-name');
+}
+
+Story.prototype.updateTitle = function(title) {
+  var story = this;
+  var params = {
+    "story": {
+      id: this.id,
+      name: title
+    }
+  };
+  var response = this.sync(params);
+  response.done(function(data){
+    story.name = data.name;
+  });
+};
+
+Story.prototype.sync = function(params) {
+  var story = this;
+  return $.ajax({
+    url: '/stories/' + story.id,
+    method: 'PUT',
+    data: JSON.stringify(params),
+    dataType: 'json',
+    contentType: 'application/json'
+  });
+};
+
+
+
 // ---------------------------------------------
 
 $(document).ready(function(){
   storyView.initialize();
-  $('body').on('click', '.cue', sentenceToggle);
-  $('.help').on('click', startIntro);
+
 });
