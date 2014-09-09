@@ -1,11 +1,8 @@
 class StoriesController < ApplicationController
   require 'digest'
-
-
   before_action :authenticate_user!, except: [:share]
   before_action :get_story, only: [:show, :destroy, :export, :update]
   before_action :verify_author, only: [:show, :destroy, :export, :update]
-
 
   def index
     @stories = current_user.stories.all
@@ -20,7 +17,6 @@ class StoriesController < ApplicationController
   end
 
   def share
-    p params
     @user = current_user if current_user
     @story = Story.find_by(share_url: params[:share_url])
     @shared = true
@@ -82,7 +78,9 @@ class StoriesController < ApplicationController
 
   def demo
     @story = Story.new
+
     render :demo, layout: false
+
   end
 
   private

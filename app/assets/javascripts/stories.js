@@ -354,10 +354,8 @@ function startIntro(e){
               },
               {
                 element: '.button.export.round',
-                intro: 'Since this is an outlining tool, we cut you off after 363 sentences. Here you are given the option to export your story.',
-                onToolTipShow: function(element) { //would be called before showing the tooltip
-              console.log("heyeyeyey") //do your action, i.e. load the bootstrap tab page
-    }
+                intro: 'Since this is an outlining tool, we cut you off after 363 sentences. Here you are given the option to export your story.'
+
               }
             ]
           });
