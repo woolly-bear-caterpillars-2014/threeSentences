@@ -4,6 +4,7 @@ var storyView = (function() {
   var columnTemplate,
       cueTemplate,
       sentenceTemplate,
+      endTemplate,
       currentSentenceContent;
 
   var colWidth = 850;
@@ -14,6 +15,7 @@ var storyView = (function() {
     columnTemplate = _.template($('#column-template').html());
     cueTemplate = _.template($('#cue-template').html());
     sentenceTemplate = _.template($('#sentence-template').html());
+    endTemplate = _.template($('#end-template').html());
   };
 
   var setupFirstThree = function(firstThree) {
@@ -95,12 +97,21 @@ var storyView = (function() {
 
   var setFrameWidth = function() {
     var numCols = $('.slidee').children('.column').length;
-    var currentWidth = $('#frame').width();
+
     $('#frame').width(400 + (numCols * colWidth));
+  };
+
+  var endColumn = function() {
+    if ($('#the-end').length === 0) {
+      $('.slidee').append(endTemplate());
+      var currentWidth = $('#frame').width();
+      $('#frame').width(currentWidth + 850);
+    }
   };
 
   return {
    buildColumn: function(depth) {
+     if ( depth >= 5) { return endColumn() }
      var column = columnTemplate({depth: depth});
      var startPos = calculateStartPosition(depth);
      var endPos = calculateEndPosition(depth);

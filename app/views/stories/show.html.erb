@@ -31,6 +31,17 @@
   <h3 class="cue" data-parent-position="{{ parent_position }}">{{ cue }}</h3>
 </script>
 
+<script type="text/template" class="template" data-depth="6" id="end-template">
+  <div class="column" id="the-end">
+    <div class="end-message">
+      <i class="fa fa-book fa-5x"></i>
+      <h3>You&#39;re ready to go write your book!<h3>
+      <%= link_to "Export", root_path, class: 'button end' %>
+    </div>
+  </div>
+
+</script>
+
 <script>
   var story = <%= raw json_escape(@story.to_json) %>;
   var sentencesJson = [];
