@@ -1,5 +1,7 @@
 @import 'font_variables';
 @import 'color_variables';
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
   font-family: $font-family;
@@ -95,6 +97,10 @@ button:focus, a.button:focus, input[type=submit]:focus, input[type=button]:focus
   border: 2px solid $primary-color;
   outline: none;
   background-color: white;
+}
+
+a.round {
+  border-radius: 40px;
 }
 
 a.button.newstory {
