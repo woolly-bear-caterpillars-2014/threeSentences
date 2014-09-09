@@ -16,8 +16,9 @@ class StoriesController < ApplicationController
   end
 
   def share
+    p params
     @user = current_user if current_user
-    @story = Story.find(params[:id])
+    @story = Story.find_by(share_url: params[:share_url])
     @shared = true
     render :show
   end
