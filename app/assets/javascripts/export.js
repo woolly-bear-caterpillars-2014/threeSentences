@@ -8,7 +8,7 @@ var deleteExport = function (url) {
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
-    $('.modal-bg ').fadeToggle();
+    $('.modal-bg').fadeToggle();
   });
 
   $('.absolute-center-export form').submit(function(e){
