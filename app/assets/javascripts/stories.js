@@ -37,8 +37,6 @@ var storyView = (function() {
 
   var bindEventListeners = function() {
     $('body').on('click', '.cue', sentenceToggle);
-    $('.help').on('click', startIntro);
-
     $('.story-name').on('blur', function(e) {
       e.preventDefault();
       var newTitle = $('.story-name').html();
@@ -312,7 +310,7 @@ var tourStart = function(e){
 }
 
 function startIntro(e){
-        e.preventDefault();
+        if (e) { e.preventDefault(); };
         var intro = introJs();
           intro.setOptions({
             steps: [
@@ -403,4 +401,7 @@ Story.prototype.sync = function(params) {
 
 $(document).ready(function(){
   storyView.initialize();
+  if(window.location.href == "http://0.0.0.0:3000/stories/demo") {
+    startIntro();
+    }
 });
