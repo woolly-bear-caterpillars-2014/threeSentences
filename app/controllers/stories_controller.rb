@@ -68,6 +68,10 @@ class StoriesController < ApplicationController
     end
   end
 
+  def demo
+    @story = Story.new
+  end
+
   private
 
   def story_params
@@ -77,4 +81,7 @@ class StoriesController < ApplicationController
   def get_story
     @story = Story.find(params[:id])
   end
+
+
+
 end
