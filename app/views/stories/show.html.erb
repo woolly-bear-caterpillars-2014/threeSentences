@@ -1,9 +1,7 @@
-<h1 class="story-name" contenteditable='true'><%= @story.name %></h1>
-
 <div class="controls">
   <span class="save-indicator">Saved</span>
-  <%= link_to raw('<i class="fa fa-share"></i>'), '#', class: 'button export round' %>
 </div>
+
 <%= render 'stories/help' %>
 <%= render 'stories/export' %>
 
@@ -43,7 +41,6 @@
 
   var shared = <%= @shared %>;
   var story = new Story(<%= raw json_escape(@story.to_json) %>);
-  var shared = <%= @shared %>
   var sentencesJson = [];
   <% if @story.sentences %>
   sentencesJson = <%= raw json_escape(@story.sentences.order(:position).to_json) %>
