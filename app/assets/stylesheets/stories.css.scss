@@ -79,24 +79,6 @@ input.sentence:hover {
   background-color: $primary-color;
 }
 
-#exportform {
-  padding: 20px;
-  text-align: center;
-  background: $background-color;
-  border: 1px solid $primary-color;
-  -webkit-box-shadow: 0px 0px 100px 1px $primary-color;
-  -moz-box-shadow: 0px 0px 100px 1px $primary-color;
-  box-shadow: 0px 0px 100px 1px $primary-color;
-}
-
-#exportform h2 {
-  padding-bottom: 20px;
-}
-
-#exportform .radio {
-  padding-top: 20px;
-}
-
 .save-indicator {
   position: fixed;
   top: 30px;
@@ -112,6 +94,13 @@ input.sentence:hover {
   position: fixed;
   top: 20px;
   left: 120px;
+  opacity: 0.8;
+}
+
+.controls .share {
+  position: fixed;
+  top: 20px;
+  left: 170px;
   opacity: 0.8;
 }
 
@@ -137,4 +126,68 @@ input.sentence:hover {
 
 .end-message h3 {
   margin: 20px;
+
+}
+
+.sharebox {
+  border-radius: 2px;
+  border: none;
+  border: 1px solid $primary-color;
+  width: 80%;
+  margin: 20px;
+  padding: 4px;
+  margin-bottom: 30px;
+  font-size: $font-basesize;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.sharebox h3 {
+  margin-top: 20px;
+}
+
+.modal-bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: fixed;
+  background: rgba(0,0,0, 0.8);
+  display: none;
+  z-index: 4;
+}
+
+.absolute-center-export {
+  height: 333px;
+  position: absolute;
+  top: 50%;
+  margin-top: -150px;
+  left: 50%;
+  margin-left: -300px;
+  width: 600px;
+  z-index: 5;
+  padding: 20px;
+  text-align: center;
+  background: $background-color;
+  border: 1px solid $primary-color;
+  border-radius: 3px;
+/*  -webkit-box-shadow: 0px 0px 20px 1px $primary-color;
+  -moz-box-shadow: 0px 0px 20px 1px $primary-color;
+  box-shadow: 0px 0px 20px 1px $primary-color;*/
+}
+
+.absolute-center-export h3 {
+  margin: 30px;
+
+}
+
+.absolute-center-export .radio {
+  margin-top: -10px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: $base-text;
 }
