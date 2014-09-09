@@ -302,14 +302,7 @@ Sentence.prototype.initialRender = function() {
 };
 
 var sentenceToggle = function(){
-  if ($(this).siblings('input').is(":hidden")){
-    $(this).siblings('input').animate({opacity: 1});
-    $(this).siblings('input').toggle();
-
-  } else {
-    $(this).siblings('input').animate({opacity: 0});
-    $(this).siblings('input').toggle();
-  }
+  
 };
 
 var tourStart = function(e){
