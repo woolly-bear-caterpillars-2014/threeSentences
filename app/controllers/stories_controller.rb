@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
-  require 'digest' 
+  require 'digest'
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:share]
   before_action :get_story, only: [:show, :destroy, :export]
   before_action :verify_author, only: [:show, :destroy, :export]
 
@@ -11,7 +11,8 @@ class StoriesController < ApplicationController
 
   def show
     @sentence = Sentence.new
-    @user = current_user
+    @user = current_user if current_user
+    @shared = false
   end
 
   def share
@@ -19,7 +20,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     share_url = Digest::SHA1.hexdigest(@story.name)[0..6]
     @shared = true
-
+    render :show
   end
 
   def new
