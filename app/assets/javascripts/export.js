@@ -21,7 +21,7 @@ $(document).ready(function(){
     }).done(function(data) {
       $.fileDownload(data['url'], {
           successCallback: function (url) {
-            $('.absolute-center-export').fadeToggle();
+	    $('.modal-bg').fadeToggle();
 	    deleteExport(url);
           },
           failCallback: function (html, url) {
@@ -30,19 +30,18 @@ $(document).ready(function(){
     });
   });
 
+  $('.absolute-center-export').click(function(e){
+    e.stopPropagation();
+  });
+
   $('.modal-bg').click(function(e){
     e.preventDefault();
-    if (e.target !== this) {
-      return;
-    }
-    $('.modal-bg').fadeToggle();
-  })
-
-  $('.close').click(function(e){
-    e.preventDefault();
-
     $('.modal-bg').fadeToggle();
   });
 
+  $('.close').click(function(e){
+    e.preventDefault();
+    $('.modal-bg').fadeToggle();
+  });
 
 });

@@ -37,6 +37,7 @@ var storyView = (function() {
 
   var bindEventListeners = function() {
     $('body').on('click', '.cue', sentenceToggle);
+
     $('.story-name').on('blur', function(e) {
       e.preventDefault();
       var newTitle = $('.story-name').html();
@@ -399,5 +400,5 @@ $(document).ready(function(){
   storyView.initialize();
   if(window.location.href == "http://0.0.0.0:3000/stories/demo") {
     startIntro();
-    }
+  }
 });
