@@ -179,3 +179,28 @@ input[type='checkbox'] {
   padding-right: 20px;
   text-align: right;
 }
+
+.radio label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: $font-smallsize;
+}
+
+.absolute-center-export input[type=submit] {
+  margin-left: 20px;
+}
+
+.absolute-center-export input[type=radio] {
+  margin: 5px 5px 5px 10px;
+}
+
+
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
+}

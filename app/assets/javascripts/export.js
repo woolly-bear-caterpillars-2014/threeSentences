@@ -8,10 +8,10 @@ var deleteExport = function (url) {
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
-    $('.absolute-center-export').toggle();
+    $('.absolute-center-export').fadeToggle();
   });
 
-  $('#exportform form').submit(function(e){
+  $('.absolute-center-export form').submit(function(e){
     e.preventDefault();
     var $url = ($(this).attr('action'));
     $.ajax({
@@ -21,7 +21,7 @@ $(document).ready(function(){
     }).done(function(data) {
       $.fileDownload(data['url'], {
           successCallback: function (url) {
-            $('.absolute-center-export').hide();
+            $('.absolute-center-export').fadeToggle();
 	    deleteExport(url);
           },
           failCallback: function (html, url) {
@@ -30,9 +30,9 @@ $(document).ready(function(){
     });
   });
 
-  $('#exportform button').click(function(e){
+  $('.close').click(function(e){
     e.preventDefault();
-    $('.absolute-center-export').hide();
+    $('.absolute-center-export').fadeToggle();
   });
 
 
