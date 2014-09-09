@@ -36,16 +36,12 @@ body {
 	background: #F5FEFF;
 	color: #ddd;
 	text-align: center;
-	cursor: pointer;
 }
 
 .column > :first-child {
  margin-top: 0;
 }
 
-#column-0 {
-  /*background: red;*/
-}
 
 #column-0 > :first-child {
   margin-top: 140px;
@@ -60,27 +56,6 @@ p {
   color: #000;
 }
 
-.scrollbar {
-	margin: 0 0 1em 0;
-	height: 2px;
-	background: #ccc;
-	line-height: 0;
-}
-
-.scrollbar .handle {
-	width: 100px;
-	height: 100%;
-	background: #292a33;
-	cursor: pointer;
-}
-
-.scrollbar .handle .mousearea {
-	position: absolute;
-	top: -9px;
-	left: 0;
-	width: 100%;
-	height: 20px;
-}
 
 h1, h2, h3, h4, h5, h6, li, p {
 	color: #333333;

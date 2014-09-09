@@ -99,6 +99,10 @@ button:focus, a.button:focus, input[type=submit]:focus, input[type=button]:focus
   background-color: white;
 }
 
+a.round {
+  border-radius: 40px;
+}
+
 a.button.newstory {
   background: $secondary-color;
 }
