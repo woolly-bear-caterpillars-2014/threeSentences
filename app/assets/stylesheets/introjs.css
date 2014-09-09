@@ -142,7 +142,7 @@ tr.introjs-showElement > th {
   padding: 30px;
   line-height: 24px;
   background-color: #F5FEFF;
-  min-width: 300px;
+  min-width: 350px;
   max-width: 400px;
   border-radius: 10px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
@@ -218,7 +218,8 @@ button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover
   -webkit-border-radius: 0.2em 0 0 0.2em;
   -moz-border-radius: 0.2em 0 0 0.2em;
   border-radius: 0.2em 0 0 0.2em;
-  border-right: none;
+  margin-right: 5px;
+  /*border-right: none;*/
 }
 
 .introjs-nextbutton {
@@ -235,6 +236,7 @@ button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover
   background-color: #f4f4f4;
   background-image: none;
   text-decoration: none;
+  display: none;
 }
 
 .introjs-bullets {
@@ -273,4 +275,8 @@ button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover
   width: 0;
   left: 50%;
   top: 50%;
+}
+
+.introjs-tooltip.laststep {
+  display: none;
 }

@@ -379,12 +379,19 @@ function startIntro(e){
               },
               {
                 element: '#step5',
-                intro: 'Get it, use it.'
+		intro: 'Get it, use it.',
+		class: 'laststep'
               }
             ]
           });
 
-          intro.start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
+	  intro.start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false }).onexit(function() {
+    window.location.href = "new";
+  }).oncomplete(function() {
+    window.location.href = "new";
+  })
+
+
       }
 
 // ---------------------------------------------
