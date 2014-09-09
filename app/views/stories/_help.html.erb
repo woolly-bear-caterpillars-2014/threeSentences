@@ -1,0 +1,20 @@
+<div class="modal-bg-help">
+  <div class="absolute-center-help">
+      <h3>Copy this link to share your work</h3>
+      <%= text_field_tag 'share_url', "#{root_url}stories/#{@story.share_url}/share", class: 'sharebox' %><br>
+      <hr>
+      <h3>Help<h3>
+      <%= form_tag("/stories/#{params[:id]}/export") do %>
+        <div class="radio">
+          <%= radio_button_tag(:filetype, "rtf", checked: true) %>
+          <%= label_tag(:rtf, "RTF") %>
+          <%= radio_button_tag(:filetype, "pdf") %>
+          <%= label_tag(:pdf, "PDF") %>
+          <%= radio_button_tag(:filetype, "md") %>
+          <%= label_tag(:pdf, "Markdown") %>
+          <%= submit_tag 'Export' %>
+        </div>
+        <%= link_to raw('<i class="fa fa-close"></i>'), '#', class: 'close' %>
+      <% end %>
+  </div>
+</div>
