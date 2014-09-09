@@ -132,9 +132,7 @@ var storyView = (function() {
       column += "</div>";
       $('.slidee').append(column);
       setFrameWidth();
-      $('.column[data-depth=' + depth + ']').mCustomScrollbar({
-        theme: 'rounded-dots-dark'
-      });
+
     },
 
     findOrInitializeColumn: function(depth) {
