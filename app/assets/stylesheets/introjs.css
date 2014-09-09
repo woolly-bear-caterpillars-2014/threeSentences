@@ -135,11 +135,11 @@ tr.introjs-showElement > th {
 }
 
 .introjs-tooltip {
-  color: #FF6430;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  font-weight: 200;
+  color: #333333;
+  font-family: 'Varela Round', sans-serif;
   position: absolute;
-  padding: 10px;
+  padding: 30px;
+  line-height: 24px;
   background-color: #F5FEFF;
   min-width: 200px;
   max-width: 300px;
@@ -165,7 +165,7 @@ tr.introjs-showElement > th {
   overflow: visible;
   display: inline-block;
   padding: 0.3em 0.8em;
-  
+
   font-size: 12px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -184,8 +184,8 @@ tr.introjs-showElement > th {
   margin-top: 10px;
 }
 button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover {
-  
-  
+
+
 
 }
 
