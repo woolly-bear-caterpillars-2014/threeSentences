@@ -347,7 +347,7 @@ function startIntro(e){
               },
               {
                 element: '.button.export.round',
-                intro: 'Since this is an outlining tool, we cut you off after 363 sentences. Here you are given the option to export your story.'
+                intro: "Since this is an outlining tool, we cut you off after 363 sentences. Here you are given the option to export your story. Let's get writing!"
 
               }
             ]
