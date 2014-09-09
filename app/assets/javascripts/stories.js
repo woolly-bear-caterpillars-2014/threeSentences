@@ -153,6 +153,8 @@ var storyView = (function() {
             column += '<div class="cluster">';
           }
           column += cueTemplate({cue: '', parent_position: parentPosition(element)});
+          column += '<div class="triad">'
+
         }
         column += sentenceTemplate({
           sentence_id: '',
@@ -162,7 +164,7 @@ var storyView = (function() {
         });
 
       });
-      column += "</div>";
+      column += "</div></div>";
       $('.slidee').append(column);
       setFrameWidth();
 
