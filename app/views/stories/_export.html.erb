@@ -4,7 +4,7 @@
       <%= text_field_tag 'share_url', "#{root_url}stories/#{@story.share_url}/share", class: 'sharebox' %><br>
       <hr>
       <h3>Export<h3>
-      <%= form_tag("/stories/#{params[:id]}/export", id: "export_form") do %>
+      <%= form_tag("/stories/#{params[:id]}/export") do %>
         <div class="radio">
           <%= radio_button_tag(:filetype, "rtf", checked: true) %>
           <%= label_tag(:rtf, "RTF") %>

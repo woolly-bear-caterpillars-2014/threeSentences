@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('.modal-bg').fadeToggle();
   });
 
-  $('#export_form').submit(function(e){
+  $('.absolute-center-export form').submit(function(e){
     e.preventDefault();
     var $url = ($(this).attr('action'));
     $.ajax({
