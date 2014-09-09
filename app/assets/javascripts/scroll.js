@@ -16,7 +16,7 @@ $(document).ready(function() {
             max: position.top + $(this).height(),
             onEnter: function(element, position) {
               if(console) console.log('entering ' +  element.id);
-              $("body").css('background-color', "blue");
+              // $("body").css('background-color', "blue");
             },
             onLeave: function(element, position) {
               if(console) console.log('leaving ' +  element.id);

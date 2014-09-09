@@ -8,10 +8,10 @@ var deleteExport = function (url) {
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
-    $('.modal-bg ').fadeToggle();
+    $('.modal-bg').fadeToggle();
   });
 
-  $('.absolute-center-export form').submit(function(e){
+  $('#export_form').submit(function(e){
     e.preventDefault();
     var $url = ($(this).attr('action'));
     $.ajax({

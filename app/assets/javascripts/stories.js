@@ -135,17 +135,12 @@ var storyView = (function() {
      var iterator = 0;
      _.each(range, function(element, index, list) {
         if (index !== 0 && index % 3 === 0) {
-          column += '</div>';
+          column += '</div></div>';
         }
         if (index % 3 === 0) {
           iterator++;
           if (iterator % spacing === 0){
-            if (index===3){
-              console.log("it worked")
-              column += '<div data-step="5" data-intro="test" class="cluster bottomborder">';
-            } else {
-              column += '<div class="cluster bottomborder">';
-            }
+            column += '<div class="cluster bottomborder">';
           }
           else {
             column += '<div class="cluster">';
@@ -162,7 +157,7 @@ var storyView = (function() {
         });
 
       });
-      column += "</div></div>";
+      column += "</div></div></div>";
       $('.slidee').append(column);
       setFrameWidth();
 
