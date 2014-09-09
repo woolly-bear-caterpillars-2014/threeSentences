@@ -1,9 +1,11 @@
 class StoriesController < ApplicationController
   require 'digest'
 
+
   before_action :authenticate_user!, except: [:share]
-  before_action :get_story, only: [:show, :destroy, :export]
-  before_action :verify_author, only: [:show, :destroy, :export]
+  before_action :get_story, only: [:show, :destroy, :export, :update]
+  before_action :verify_author, only: [:show, :destroy, :export, :update]
+
 
   def index
     @stories = current_user.stories.all
@@ -33,6 +35,14 @@ class StoriesController < ApplicationController
       redirect_to @story
     else
       render :new
+    end
+  end
+
+  def update
+    if @story.update(story_params)
+      render json: @story.to_json
+    else
+      render json: @story.errors.full_messages.to_json
     end
   end
 

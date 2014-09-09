@@ -1,4 +1,4 @@
-<h1 class="story-name"><%= @story.name %></h1>
+<h1 class="story-name" contenteditable='true'><%= @story.name %></h1>
 
 <div class="controls">
   <span class="save-indicator">Saved</span>
@@ -39,7 +39,7 @@
 </script>
 
 <script>
-  var story = <%= raw json_escape(@story.to_json) %>;
+  var story = new Story(<%= raw json_escape(@story.to_json) %>);
   var shared = <%= @shared %>
   var sentencesJson = [];
   <% if @story.sentences %>
