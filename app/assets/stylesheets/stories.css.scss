@@ -147,6 +147,16 @@ input.sentence:hover {
   margin-top: 20px;
 }
 
+.modal-bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: fixed;
+  background: rgba(0,0,0, 0.8);
+  display: none;
+  z-index: 4;
+}
+
 .absolute-center-export {
   height: 333px;
   position: absolute;
@@ -155,15 +165,15 @@ input.sentence:hover {
   left: 50%;
   margin-left: -300px;
   width: 600px;
-  display: none;
   z-index: 5;
   padding: 20px;
   text-align: center;
   background: $background-color;
   border: 1px solid $primary-color;
-  -webkit-box-shadow: 0px 0px 100px 1px $primary-color;
-  -moz-box-shadow: 0px 0px 100px 1px $primary-color;
-  box-shadow: 0px 0px 100px 1px $primary-color;
+  border-radius: 3px;
+/*  -webkit-box-shadow: 0px 0px 20px 1px $primary-color;
+  -moz-box-shadow: 0px 0px 20px 1px $primary-color;
+  box-shadow: 0px 0px 20px 1px $primary-color;*/
 }
 
 .absolute-center-export h3 {

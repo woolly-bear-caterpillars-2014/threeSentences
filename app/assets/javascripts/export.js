@@ -8,7 +8,7 @@ var deleteExport = function (url) {
 $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
-    $('.absolute-center-export').fadeToggle();
+    $('.modal-bg ').fadeToggle();
   });
 
   $('.absolute-center-export form').submit(function(e){
@@ -30,9 +30,18 @@ $(document).ready(function(){
     });
   });
 
+  $('.modal-bg').click(function(e){
+    e.preventDefault();
+    if (e.target !== this) {
+      return;
+    }
+    $('.modal-bg').fadeToggle();
+  })
+
   $('.close').click(function(e){
     e.preventDefault();
-    $('.absolute-center-export').fadeToggle();
+
+    $('.modal-bg').fadeToggle();
   });
 
 
