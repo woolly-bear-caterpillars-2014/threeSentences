@@ -95,6 +95,6 @@ class Story < ActiveRecord::Base
   end
 
   def generate_share_url
-    self.share_url = Digest::SHA1.hexdigest(rand(1_000_000))[0..6]
+    self.share_url = Digest::SHA1.hexdigest(rand(1_000_000).to_s)[0..6]
   end
 end
