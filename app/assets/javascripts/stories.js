@@ -36,6 +36,17 @@ var storyView = (function() {
   };
 
   var bindEventListeners = function() {
+    $('body').on('click', '.cue', sentenceToggle);
+    $('.help').on('click', startIntro);
+
+    $('.story-name').on('blur', function(e) {
+      e.preventDefault();
+      var newTitle = $('.story-name').html();
+      if (newTitle !== story.name) {
+	story.updateTitle(newTitle);
+      }
+    });
+
     $('body').on('focus', 'input.sentence', function(e){
       e.preventDefault();
       currentSentenceContent = $(this).val();
@@ -108,6 +119,13 @@ var storyView = (function() {
     }
   };
 
+  var setShared = function(shared_value){
+    if (shared_value === true) {
+    $('input.sentence').attr('disabled', true)
+  }
+};
+
+
   return {
    buildColumn: function(depth) {
      if ( depth >= 5) { return endColumn() }
@@ -124,7 +142,12 @@ var storyView = (function() {
         if (index % 3 === 0) {
           iterator++;
           if (iterator % spacing === 0){
-            column += '<div class="cluster bottomborder">';
+	    if (index===3){
+	      console.log("it worked")
+	      column += '<div data-step="5" data-intro="test" class="cluster bottomborder">';
+	    } else {
+	      column += '<div class="cluster bottomborder">';
+	    }
           }
           else {
             column += '<div class="cluster">';
@@ -173,6 +196,7 @@ var storyView = (function() {
      initializeSentences();
      bindEventListeners();
      setFrameWidth();
+     setShared(shared);
     }
   };
 
@@ -285,6 +309,90 @@ var sentenceToggle = function(){
     $(this).siblings('input').toggle();
   }
 };
+
+var tourStart = function(e){
+  e.preventDefault();
+  console.log("hey")
+  introJs().start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
+}
+
+// ----------------- STORY ---------------------
+function Story(storyJson) {
+  this.name = storyJson.name;
+  this.id = storyJson.id;
+  this.$el = $('.story-name');
+}
+
+Story.prototype.updateTitle = function(title) {
+  var story = this;
+  var params = {
+    "story": {
+      id: this.id,
+      name: title
+    }
+  };
+  var response = this.sync(params);
+  response.done(function(data){
+    story.name = data.name;
+  });
+};
+
+Story.prototype.sync = function(params) {
+  var story = this;
+  return $.ajax({
+    url: '/stories/' + story.id,
+    method: 'PUT',
+    data: JSON.stringify(params),
+    dataType: 'json',
+    contentType: 'application/json'
+  });
+};
+
+
+function startIntro(e){
+	e.preventDefault();
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              {
+                intro: "Welcome to Three Sentences"
+              },
+              {
+                element: document.querySelector('#column-0'),
+                intro: "Here, you see there are three lines to enter new sentences.",
+                position: 'right'
+              },
+              {
+                element: '.sentence',
+                intro: "Here is the top line, which is used to start the introduction to your story. This line is meant to encapsulate your introduction in one sentence.",
+                position: 'top'
+              },
+              {
+                element: '#two',
+                intro: 'Enter a line that summarizes the conflict of your story here.',
+                position: 'top'
+              },
+              {
+                element: '#three',
+                intro: "And here is where you write your conclusion. Watch what happens when you enter a sentence.",
+                position: 'top'
+              },
+              {
+                element: '#step5',
+		intro: 'Get it, use it.',
+		class: 'laststep'
+              }
+            ]
+          });
+
+	  intro.start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false }).onexit(function() {
+    window.location.href = "new";
+  }).oncomplete(function() {
+    window.location.href = "new";
+  })
+
+
+      }
 
 // ---------------------------------------------
 

@@ -1,8 +1,8 @@
-<h1 class="story-name"><%= @story.name %></h1>
+<h1 class="story-name" contenteditable='true'><%= @story.name %></h1>
 
 <div class="controls">
   <span class="save-indicator">Saved</span>
-  <%= link_to raw('<i class="fa fa-share"></i>'), root_path, class: 'button export round' %>
+  <%= link_to raw('<i class="fa fa-share"></i>'), '#', class: 'button export round' %>
 </div>
 <%= render 'stories/export' %>
 
@@ -11,8 +11,8 @@
   <div class="slidee">
     <div class="column" data-depth="0" id="column-0">
       <input type="text" class="sentence" data-id="" data-position="1" data-parent-id="" data-depth="0" placeholder="The Beginning"></input>
-      <input type="text" class="sentence" data-id="" data-position="2" data-parent-id="" data-depth="0" placeholder="The Conflict"></input>
-      <input type="text" class="sentence" data-id="" data-position="3" data-parent-id="" data-depth="0" placeholder="The Resolution"></input>
+      <input type="text" class="sentence" id="two" data-id="" data-position="2" data-parent-id="" data-depth="0" placeholder="The Conflict"></input>
+      <input class="sentence" id="three" data-id="" data-position="3" data-parent-id="" data-depth="0" placeholder="The Resolution"></input>
     </div>
 
   </div>
@@ -21,7 +21,7 @@
 <div class="column" id="the-end" data-depth="6">
   <div class="end-message">
     <i class="fa fa-book fa-5x"></i>
-    <h3>You&#39;re ready to go write your book!<h3>
+    <h3>You&#39;re ready to go write your story!<h3>
     <%= link_to "Export", root_path, class: 'button export end' %>
   </div>
 </div>
@@ -39,7 +39,8 @@
 </script>
 
 <script>
-  var story = <%= raw json_escape(@story.to_json) %>;
+  var story = new Story(<%= raw json_escape(@story.to_json) %>);
+  var shared = <%= @shared %>
   var sentencesJson = [];
   <% if @story.sentences %>
   sentencesJson = <%= raw json_escape(@story.sentences.order(:position).to_json) %>

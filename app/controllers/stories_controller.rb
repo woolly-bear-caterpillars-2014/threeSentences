@@ -1,7 +1,8 @@
 class StoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :get_story, only: [:show, :destroy, :export]
-  before_action :verify_author, only: [:show, :destroy, :export]
+  require 'digest'
+  before_action :authenticate_user!, except: [:share]
+  before_action :get_story, only: [:show, :destroy, :export, :update]
+  before_action :verify_author, only: [:show, :destroy, :export, :update]
 
   def index
     @stories = current_user.stories.all
@@ -9,7 +10,15 @@ class StoriesController < ApplicationController
 
   def show
     @sentence = Sentence.new
-    @user = current_user
+    @user = current_user if current_user
+    @shared = false
+  end
+
+  def share
+    @user = current_user if current_user
+    @story = Story.find_by(share_url: params[:share_url])
+    @shared = true
+    render :show
   end
 
   def new
@@ -22,6 +31,14 @@ class StoriesController < ApplicationController
       redirect_to @story
     else
       render :new
+    end
+  end
+
+  def update
+    if @story.update(story_params)
+      render json: @story.to_json
+    else
+      render json: @story.errors.full_messages.to_json
     end
   end
 
@@ -57,6 +74,10 @@ class StoriesController < ApplicationController
     end
   end
 
+  def demo
+    @story = Story.new
+  end
+
   private
 
   def story_params
@@ -66,4 +87,7 @@ class StoriesController < ApplicationController
   def get_story
     @story = Story.find(params[:id])
   end
+
+
+
 end
