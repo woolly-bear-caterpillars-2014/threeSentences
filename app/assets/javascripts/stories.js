@@ -37,8 +37,6 @@ var storyView = (function() {
 
   var bindEventListeners = function() {
     $('body').on('click', '.cue', sentenceToggle);
-    $('.help').on('click', startIntro);
-
     $('.story-name').on('blur', function(e) {
       e.preventDefault();
       var newTitle = $('.story-name').html();
@@ -123,7 +121,7 @@ var storyView = (function() {
     if (shared_value === true) {
     $('input.sentence').attr('disabled', true)
   }
-};
+}
 
 
   return {
@@ -142,12 +140,12 @@ var storyView = (function() {
         if (index % 3 === 0) {
           iterator++;
           if (iterator % spacing === 0){
-	    if (index===3){
-	      console.log("it worked")
-	      column += '<div data-step="5" data-intro="test" class="cluster bottomborder">';
-	    } else {
-	      column += '<div class="cluster bottomborder">';
-	    }
+            if (index===3){
+              console.log("it worked")
+              column += '<div data-step="5" data-intro="test" class="cluster bottomborder">';
+            } else {
+              column += '<div class="cluster bottomborder">';
+            }
           }
           else {
             column += '<div class="cluster">';
@@ -311,6 +309,60 @@ var tourStart = function(e){
   introJs().start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
 }
 
+function startIntro(e){
+        if (e) { e.preventDefault(); };
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              {
+                intro: "Welcome to Three Sentences"
+              },
+              {
+                element: document.querySelector('#column-0'),
+                intro: "Here, you see there are three lines to enter new sentences.",
+                position: 'right'
+              },
+              {
+                element: '.sentence',
+                intro: "Here is the top line, which is used to start the introduction to your story. This line is meant to encapsulate your introduction in one sentence.",
+                position: 'top'
+              },
+              {
+                element: '#two',
+                intro: 'Enter a line that summarizes the conflict of your story here.',
+                position: 'top'
+              },
+              {
+                element: '#three',
+                intro: "And here is where you write your conclusion. Watch what happens when you enter a sentence.",
+                position: 'top'
+              },
+              {
+                element: '#cluster_tour',
+                intro: 'As you see, a new set of three lines have been created.'
+              },
+              {
+                element: '#cue_tour',
+                intro: 'The cue or header line matches up with the sentence that these three lines came from. This is a cue of what sentence to embellish.'
+              },
+              {
+                element: '.button.export.round',
+                intro: 'Since this is an outlining tool, we cut you off after 363 sentences. Here you are given the option to export your story.'
+
+              }
+            ]
+          });
+
+          intro.start().setOptions({ 'skipLabel': "Okay, I've got it!" }).onexit(function() {
+    window.location.href = "new";
+  }).oncomplete(function() {
+    window.location.href = "new";
+  })
+
+
+      }
+
+
 // ----------------- STORY ---------------------
 function Story(storyJson) {
   this.name = storyJson.name;
@@ -344,53 +396,12 @@ Story.prototype.sync = function(params) {
 };
 
 
-function startIntro(e){
-	e.preventDefault();
-        var intro = introJs();
-          intro.setOptions({
-            steps: [
-              {
-                intro: "Welcome to Three Sentences"
-              },
-              {
-                element: document.querySelector('#column-0'),
-                intro: "Here, you see there are three lines to enter new sentences.",
-                position: 'right'
-              },
-              {
-                element: '.sentence',
-                intro: "Here is the top line, which is used to start the introduction to your story. This line is meant to encapsulate your introduction in one sentence.",
-                position: 'top'
-              },
-              {
-                element: '#two',
-                intro: 'Enter a line that summarizes the conflict of your story here.',
-                position: 'top'
-              },
-              {
-                element: '#three',
-                intro: "And here is where you write your conclusion. Watch what happens when you enter a sentence.",
-                position: 'top'
-              },
-              {
-                element: '#step5',
-		intro: 'Get it, use it.',
-		class: 'laststep'
-              }
-            ]
-          });
-
-	  intro.start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false }).onexit(function() {
-    window.location.href = "new";
-  }).oncomplete(function() {
-    window.location.href = "new";
-  })
-
-
-      }
 
 // ---------------------------------------------
 
 $(document).ready(function(){
   storyView.initialize();
+  if(window.location.href == "http://0.0.0.0:3000/stories/demo") {
+    startIntro();
+    }
 });
