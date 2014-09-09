@@ -276,9 +276,16 @@ var sentenceToggle = function(){
   }
 };
 
+var tourStart = function(e){
+  e.preventDefault();
+  introJs().start()
+
+}
+
 // ---------------------------------------------
 
 $(document).ready(function(){
   storyView.initialize();
   $('body').on('click', '.cue', sentenceToggle);
+  $('.tour').on('click', tourStart);
 });
