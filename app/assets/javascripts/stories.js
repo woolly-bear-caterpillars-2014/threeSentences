@@ -294,10 +294,16 @@ var sentenceToggle = function(){
   }
 };
 
+var tourStart = function(e){
+  e.preventDefault();
+  introJs().start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
+
+}
+
 // ---------------------------------------------
 
 $(document).ready(function(){
   storyView.initialize();
   $('body').on('click', '.cue', sentenceToggle);
-
+  $('.help').on('click', tourStart);
 });
