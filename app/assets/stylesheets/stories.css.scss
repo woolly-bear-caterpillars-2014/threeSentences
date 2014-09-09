@@ -18,7 +18,18 @@ h1.story-name {
 .cluster {
   display: none;
   margin: 0 auto 2em auto;
+  // border-left: 5px solid black;
+  // border-right: 5px solid black;
 }
+
+.bottomborder {
+  // margin-bottom: 50px;
+  // margin-top: 50px;
+  padding-bottom: 40px;
+  // border-bottom: 5px solid black;
+
+}
+
 
 .cue {
   font-family: $font-family;
@@ -26,6 +37,7 @@ h1.story-name {
   margin: 0 auto 0.75em auto;
   text-align: left;
   color: $light-shade-base-text;
+  // border-top: 5px solid black;
 }
 
 input.sentence{
@@ -103,6 +115,7 @@ input.sentence:hover {
   top: 20px;
   left: 110px;
 }
+
 
 .bottomborder {
   padding-bottom: 40px;
