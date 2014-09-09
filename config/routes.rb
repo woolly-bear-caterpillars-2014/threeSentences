@@ -17,5 +17,7 @@ Rails.application.routes.draw do
 
   get 'stories/:share_url/share' => 'stories#share', as: :story_share
 
+  get 'stories/demo' => 'stories#demo'
+
 
 end

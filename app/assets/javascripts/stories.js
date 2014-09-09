@@ -348,41 +348,43 @@ Story.prototype.sync = function(params) {
   });
 };
 
-function startIntro(){
-	var intro = introJs();
-	  intro.setOptions({
-	    steps: [
-	      {
-		intro: "Welcome to Three Sentences"
-	      },
-	      {
-		element: document.querySelector('#column-0'),
-		intro: "Here, you see there are three lines to enter new sentences.",
-		position: 'right'
-	      },
-	      {
-		element: '.sentence',
-		intro: "Here is the top line, which is used to start the introduction to your story. This line is meant to encapsulate your introduction in one sentence.",
-		position: 'top'
-	      },
-	      {
-		element: '#two',
-		intro: 'Enter a line that summarizes the conflict of your story here.',
-		position: 'top'
-	      },
-	      {
-		element: '#three',
-		intro: "And here is where you write your conclusion. Watch what happens when you enter a sentence.",
-		position: 'top'
-	      },
-	      {
-		element: '#step5',
-		intro: 'Get it, use it.'
-	      }
-	    ]
-	  });
 
-	  intro.start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
+function startIntro(e){
+	e.preventDefault();
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              {
+                intro: "Welcome to Three Sentences"
+              },
+              {
+                element: document.querySelector('#column-0'),
+                intro: "Here, you see there are three lines to enter new sentences.",
+                position: 'right'
+              },
+              {
+                element: '.sentence',
+                intro: "Here is the top line, which is used to start the introduction to your story. This line is meant to encapsulate your introduction in one sentence.",
+                position: 'top'
+              },
+              {
+                element: '#two',
+                intro: 'Enter a line that summarizes the conflict of your story here.',
+                position: 'top'
+              },
+              {
+                element: '#three',
+                intro: "And here is where you write your conclusion. Watch what happens when you enter a sentence.",
+                position: 'top'
+              },
+              {
+                element: '#step5',
+                intro: 'Get it, use it.'
+              }
+            ]
+          });
+
+          intro.start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
       }
 
 // ---------------------------------------------
