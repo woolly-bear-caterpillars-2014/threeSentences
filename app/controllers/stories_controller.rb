@@ -13,7 +13,9 @@ class StoriesController < ApplicationController
 
   def show
     @sentence = Sentence.new
+
     @user = current_user if current_user
+
     @shared = false
   end
 
@@ -80,6 +82,7 @@ class StoriesController < ApplicationController
 
   def demo
     @story = Story.new
+    render :demo, layout: false
   end
 
   private
