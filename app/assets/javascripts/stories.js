@@ -37,7 +37,7 @@ var storyView = (function() {
 
   var bindEventListeners = function() {
     $('body').on('click', '.cue', sentenceToggle);
-    $('.help').on('click', tourStart);
+    $('.help').on('click', startIntro);
 
     $('.story-name').on('blur', function(e) {
       e.preventDefault();
@@ -142,7 +142,12 @@ var storyView = (function() {
         if (index % 3 === 0) {
           iterator++;
           if (iterator % spacing === 0){
-            column += '<div class="cluster bottomborder">';
+            if (index===3){
+              console.log("it worked")
+              column += '<div data-step="5" data-intro="test" class="cluster bottomborder">';
+            } else {
+              column += '<div class="cluster bottomborder">';
+            }
           }
           else {
             column += '<div class="cluster">';
@@ -307,9 +312,55 @@ var sentenceToggle = function(){
 
 var tourStart = function(e){
   e.preventDefault();
+  console.log("hey")
   introJs().start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
-
 }
+
+function startIntro(e){
+        e.preventDefault();
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              {
+                intro: "Welcome to Three Sentences"
+              },
+              {
+                element: document.querySelector('#column-0'),
+                intro: "Here, you see there are three lines to enter new sentences.",
+                position: 'right'
+              },
+              {
+                element: '.sentence',
+                intro: "Here is the top line, which is used to start the introduction to your story. This line is meant to encapsulate your introduction in one sentence.",
+                position: 'top'
+              },
+              {
+                element: '#two',
+                intro: 'Enter a line that summarizes the conflict of your story here.',
+                position: 'top'
+              },
+              {
+                element: '#three',
+                intro: "And here is where you write your conclusion. Watch what happens when you enter a sentence.",
+                position: 'top'
+              },
+              {
+                element: '#step5',
+                intro: 'Get it, use it.',
+                class: 'laststep'
+              }
+            ]
+          });
+
+          intro.start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false }).onexit(function() {
+    window.location.href = "new";
+  }).oncomplete(function() {
+    window.location.href = "new";
+  })
+
+
+      }
+
 
 // ----------------- STORY ---------------------
 function Story(storyJson) {
@@ -342,6 +393,7 @@ Story.prototype.sync = function(params) {
     contentType: 'application/json'
   });
 };
+
 
 
 // ---------------------------------------------

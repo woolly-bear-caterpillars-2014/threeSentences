@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  require 'digest' 
+  require 'digest'
 
   before_action :authenticate_user!
   before_action :get_story, only: [:show, :destroy, :export, :update]
@@ -12,6 +12,7 @@ class StoriesController < ApplicationController
   def show
     @sentence = Sentence.new
     @user = current_user
+    @shared = false
   end
 
   def share
@@ -75,6 +76,10 @@ class StoriesController < ApplicationController
     end
   end
 
+  def demo
+    @story = Story.new
+  end
+
   private
 
   def story_params
@@ -84,4 +89,7 @@ class StoriesController < ApplicationController
   def get_story
     @story = Story.find(params[:id])
   end
+
+
+
 end
