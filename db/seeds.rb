@@ -20,6 +20,8 @@ make_three(story.id, 0)
 
 depth1 = [1, 2, 3]
 
+depth1 = [1, 2, 3]
+
 depth1.each do |d|
   sentence = story.sentences.find(d)
   make_three(sentence.story_id, (sentence.depth + 1), sentence.id, story.sentences.last.position)
