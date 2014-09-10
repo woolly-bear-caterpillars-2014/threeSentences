@@ -1,6 +1,7 @@
 module Export
 
   def export_story(filetype)
+    @sentences = self.sentences
     self.export(get_content, filetype)
   end
 
@@ -11,20 +12,20 @@ module Export
     headers = get_headers
     headers.each do |header|
       md_content += create_header(header)
-      md_content += get_children(header)
+      md_content += add_children(header)
       md_content += "\n"
     end
     md_content
   end
 
-  def get_children(parent)
+  def add_children(parent)
     child_content = ""
-    if parent.children.exists?
-      parent.children.each do |child|
+    if has_children?(parent)
+      get_children(parent).each do |child|
          child_content += create_text(child)
-         if child.children.exists?
+         if has_children?(child)
           child_content += "\n"
-          child_content += get_children(child)
+          child_content += add_children(child)
           child_content += "\n"
          end
       end
@@ -32,9 +33,16 @@ module Export
     child_content
   end
 
+  def has_children?(parent)
+    get_children(parent).length > 0
+  end
+
+  def get_children(parent)
+    @sentences.select { |sentence| sentence.parent_id == parent.id }
+  end
 
   def get_headers
-    [1, 2, 3].map {|position| self.sentences.find_by_position(position)}
+    @sentences.select { |sentence| [1, 2, 3].include? (sentence.position) }
   end
 
   def create_title
