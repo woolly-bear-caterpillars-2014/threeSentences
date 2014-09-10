@@ -3,7 +3,7 @@ class Story < ActiveRecord::Base
   has_many :sentences
 
   validates :name, presence: true
-  before_save :generate_share_url
+  before_create :generate_share_url
 
 
   def export_story(filetype)
@@ -68,7 +68,7 @@ class Story < ActiveRecord::Base
   end
 
   def export(content, filetype)
-    filename = downcase_and_change_spaces_to_underscores(self.shortened_title)
+    filename = prepare_story_title_for_export(self.name)
     case filetype
     when 'rtf'
       to_export = Docverter::Conversion.run("markdown", filetype, content)
@@ -82,16 +82,8 @@ class Story < ActiveRecord::Base
     return "/download/#{filename}.#{filetype}"
   end
 
-  def downcase_and_change_spaces_to_underscores(name)
-    name.squish.downcase.tr(" ","_")
-  end
-
-  def shortened_title
-    if self.name.length > 20
-      shortened_title = self.name[0..19]
-    else
-      shortened_title = self.name
-    end
+  def prepare_story_title_for_export(name)
+    name.squish.downcase.tr(" ","_").gsub(/[^\w\.]/, '')[0..19]
   end
 
   def generate_share_url
