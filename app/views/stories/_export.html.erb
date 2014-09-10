@@ -7,11 +7,11 @@
       <%= form_tag("/stories/#{params[:id]}/export") do %>
         <div class="radio">
           <%= radio_button_tag(:filetype, "rtf", checked: true) %>
-          <%= label_tag(:rtf, "RTF") %>
+          <%= label_tag(:rtf, "RTF", :value => 'rtf') %>
           <%= radio_button_tag(:filetype, "pdf") %>
-          <%= label_tag(:pdf, "PDF") %>
+          <%= label_tag(:pdf, "PDF", :value => 'pdf') %>
           <%= radio_button_tag(:filetype, "md") %>
-          <%= label_tag(:pdf, "Markdown") %>
+          <%= label_tag(:pdf, "Markdown", :value => 'md') %>
           <%= submit_tag 'Export' %>
         </div>
         <%= link_to raw('<i class="fa fa-close"></i>'), '#', class: 'close' %>
