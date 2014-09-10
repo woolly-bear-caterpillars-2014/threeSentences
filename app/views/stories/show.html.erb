@@ -38,7 +38,6 @@
 </script>
 
 <script>
-
   var shared = <%= @shared %>;
   var story = new Story(<%= raw json_escape(@story.to_json) %>);
   var sentencesJson = [];
