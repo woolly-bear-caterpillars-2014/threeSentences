@@ -29,14 +29,37 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 	margin: 150px 20px 10px 0;
-  padding-left: 100px;
+  padding-left: 80px;
 	height: 70vh;
   width: 700px;
   min-width: 700px;
 	background: #F5FEFF;
 	color: #ddd;
+  position: relative;
 	text-align: center;
 }
+
+.fa.fa-chevron-right.arrow {
+  float: left;
+  position: relative;
+  top: 433px;
+  font-size: 54px;
+  color: #D4EBEB;
+  margin-left: 20px;
+}
+
+/*.column:before {
+  content: '\f054';
+  display: block;
+  position: fixed;
+  width: inherit;
+  z-index: 100;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}*/
 
 .column > :first-child {
  margin-top: 0;

@@ -228,6 +228,16 @@ button:hover, a.button:hover, input[type=submit]:hover, input[type=button]:hover
   border-radius: 0 0.2em 0.2em 0;
 }
 
+.introjs-nextbutton:focus {
+  outline: none;
+  background: #F5FEFF;
+}
+
+.introjs-nextbutton:focus:hover {
+  outline: none;
+  background: #86CFD9;
+}
+
 .introjs-disabled, .introjs-disabled:hover, .introjs-disabled:focus {
   color: #9a9a9a;
   border-color: #d4d4d4;

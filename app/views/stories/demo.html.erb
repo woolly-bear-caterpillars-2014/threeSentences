@@ -1,52 +1,68 @@
-<html><head>
+
+<!DOCTYPE html>
+<html>
+<head>
   <title>three sentences</title>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
-    <link data-turbolinks-track="true" href="/assets/_color_variables.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/_font_variables.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/horizontal.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/introjs.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/reset.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/scrollbars.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/sentences.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/sessionsusers.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/stories.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/styleguide.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/users.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/welcome.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/font-awesome.css?body=1" media="all" rel="stylesheet">
-<link data-turbolinks-track="true" href="/assets/application.css?body=1" media="all" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Lora|Varela+Round" rel="stylesheet" type="text/css">
+  <link data-turbolinks-track="true" href="/assets/_color_variables.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/_font_variables.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/horizontal.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/introjs.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/nav.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/reset.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/scrollbars.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/sentences.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/sessionsusers.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/stories.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/styleguide.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/users.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/welcome.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/font-awesome.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/application.css?body=1" media="all" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Lora|Varela+Round' rel='stylesheet' type='text/css'>
   <script data-turbolinks-track="true" src="/assets/jquery.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/jquery_ujs.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/jquery.turbolinks.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/turbolinks.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/stories.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/jquery.fileDownload.js?body=1"></script>
+<script data-turbolinks-track="true" src="/assets/jquery-scrollspy.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/export.js?body=1"></script>
+<script data-turbolinks-track="true" src="/assets/help.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/horizontal.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/intro.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/jquery-mousewheel.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/mousetrap.min.js?body=1"></script>
+<script data-turbolinks-track="true" src="/assets/scroll.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/users.js?body=1"></script>
 <script data-turbolinks-track="true" src="/assets/application.js?body=1"></script>
-  <meta content="authenticity_token" name="csrf-param">
-<meta content="7peDrZO1g+6JxGd5QkSrIqJeKIT7/0xnypMA0eULIlM=" name="csrf-token">
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="fYavVzDji+cmIRlPy/MLH2/atF1rsiDOpvAY83iT9gw=" name="csrf-token" />
 </head>
-<body cz-shortcut-listen="true">
+<body>
 
 <nav>
-  <a class="button home round" href="/"><i class="fa fa-home"></i></a>
-  <a href="#" class="button help round"><i class="fa fa-question"></i></a>
-  <a class="button logout" data-method="delete" href="/users/sign_out" rel="nofollow">Log Out</a>
-</nav>
+  <div class="left">
+    <a class="button home round" href="/"><i class="fa fa-home"></i></a>
+    <a href="#" class="button help round"><i class="fa fa-question"></i></a>
 
-<h1 class="story-name" contenteditable="true">Gremlins</h1>
+<a class="button export round" href=""><i class="fa fa-share"></i></a>
+  </div>
+
+  <div class="title">
+    <h1 class="story-name" contenteditable='true'>Gremlins</h1>
+  </div>
+
+  <div class="session">
+  <a class="button logout" data-method="delete" href="/users/sign_out" rel="nofollow">Log Out</a>
+  </div>
+</nav>
 
 <div class="controls">
   <span class="save-indicator">Saved</span>
-  <a class="button export round" href="#"><i class="fa fa-share"></i></a>
 </div>
+
 <div class="modal-bg">
   <div class="absolute-center-export">
       <h3>Copy this link to share your work</h3>
