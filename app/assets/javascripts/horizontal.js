@@ -7,6 +7,10 @@ $(document).ready(function(){
         screenDown,
         screenUp,
         nightMode = false,
+        greenMode = false,
+        redMode = false,
+        blueMode = false,
+        yellowMode = false,
         colWidth = 850,
         scrollSpeed = 300;
 
@@ -59,6 +63,59 @@ $(document).ready(function(){
          $(foregrounds).css( "color", "#333333" );
         }
     });
+
+    Mousetrap.bind('shift+k', function() {
+         if (greenMode === false){
+         greenMode = true;
+         $(backgrounds).css( "background", "#41CA00" );
+         $(foregrounds).css( "color", "#123600" );
+        }
+        else {
+         greenMode = false;
+         $(backgrounds).css( "background", "#F5FEFF" );
+         $(foregrounds).css( "color", "#333333" );
+        }
+    });
+
+    Mousetrap.bind('shift+l', function() {
+         if (redMode === false){
+         redMode = true;
+         $(backgrounds).css( "background", "#2D0400" );
+         $(foregrounds).css( "color", "#FF1800" );
+        }
+        else {
+         redMode = false;
+         $(backgrounds).css( "background", "#F5FEFF" );
+         $(foregrounds).css( "color", "#333333" );
+        }
+    });
+
+    Mousetrap.bind('shift+j', function() {
+         if (blueMode === false){
+         blueMode = true;
+         $(backgrounds).css( "background", "#2217B4" );
+         $(foregrounds).css( "color", "#FFEE00" );
+        }
+        else {
+         blueMode = false;
+         $(backgrounds).css( "background", "#F5FEFF" );
+         $(foregrounds).css( "color", "#333333" );
+        }
+    });
+
+    Mousetrap.bind('shift+h', function() {
+         if (yellowMode === false){
+         yellowMode = true;
+         $(backgrounds).css( "background", "#FFEE00" );
+         $(foregrounds).css( "color", "#2217B4" );
+        }
+        else {
+         yellowMode = false;
+         $(backgrounds).css( "background", "#F5FEFF" );
+         $(foregrounds).css( "color", "#333333" );
+        }
+    });
+
 
 });
 
