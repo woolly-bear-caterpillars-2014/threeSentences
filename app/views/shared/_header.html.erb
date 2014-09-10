@@ -1,7 +1,7 @@
 <nav>
   <div class="left">
     <%= link_to raw('<i class="fa fa-home"></i>'), root_path, class: 'button home round' %>
-    <%= render :partial => 'stories/story_nav' if params['controller'] == 'stories' %>
+    <%= story_controls %>
     <h3 class="tag-line"><a href="/">three sentences</a></h3>
   </div>
 

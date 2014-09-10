@@ -267,7 +267,7 @@ Sentence.prototype.ajaxSync = function(url, method) {
 Sentence.prototype.updateChildren = function() {
   var cue = $('.cue[data-parent-position=' + this.position + ']');
   cue.html(this.content);
-  cue.siblings('.sentence').attr('data-parent-id', this.id);
+  cue.siblings().find('.sentence').attr('data-parent-id', this.id);
   cue.parent('.cluster').fadeIn(500);
 };
 
