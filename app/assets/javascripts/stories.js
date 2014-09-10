@@ -202,7 +202,23 @@ var storyView = (function() {
 })();
 
 var sentenceToggle = function(){
+  if ($(this).attr('data-toggled') === 'false') {
+    $(this).attr('data-toggled', 'true');
+    $(this).parent().find('span.cue_arrow').css({
+      transform: 'rotate(90deg)',
+      MozTransform: 'rotate(90deg)',
+      WebkitTransform: 'rotate(90deg)',
+      msTransform: 'rotate(90deg)'});
+  } else {
+    $(this).attr('data-toggled', 'false');
+    $(this).parent().find('span.cue_arrow').css({
+      transform: 'rotate(0deg)',
+      MozTransform: 'rotate(0deg)',
+      WebkitTransform: 'rotate(0deg)',
+      msTransform: 'rotate(0deg)'});
+  }
   $(this).siblings('.triad').slideToggle(500);
+
 };
 
 // ----- SENTENCE MODEL ------
@@ -270,7 +286,7 @@ Sentence.prototype.ajaxSync = function(url, method) {
 
 Sentence.prototype.updateChildren = function() {
   var cue = $('.cue[data-parent-position=' + this.position + ']');
-  cue.html(this.content);
+  cue.children('.cue-text').html(this.content);
   cue.siblings().find('.sentence').attr('data-parent-id', this.id);
   cue.parent('.cluster').fadeIn(500);
 };
