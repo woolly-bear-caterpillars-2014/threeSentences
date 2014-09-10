@@ -80,6 +80,7 @@ button, a.button, input[type=submit], input[type=button] {
   border: 1px solid $primary-color;
   background: $background-color;
   border-radius: 2px;
+  cursor: pointer;
   text-decoration: none;
   -webkit-transition: all 0.20s ease-in-out;
   -moz-transition: all 0.20s ease-in-out;
