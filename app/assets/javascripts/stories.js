@@ -397,7 +397,7 @@ $(document).ready(function(){
     var target = $('.column'+$(this).attr('href'));
     $('body').animate({ scrollLeft: (target.offset().left) }, 200);
   });
-  if(window.location.href === "http://0.0.0.0:3000/stories/demo") {
+  if(window.location.href === window.location.origin + "/stories/demo") {
     startIntro();
   }
 });
