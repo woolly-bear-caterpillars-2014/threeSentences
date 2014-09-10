@@ -1,40 +1,7 @@
 <div class="container">
-
-    <% unless user_signed_in? %>
-      <div class="absolute-center">
+    <div class="absolute-center">
       <h1 id="brand">three sentences</h1>
-    <% end %>
-    <% if user_signed_in? %>
-    <div class="absolute-center-icons">
-    <div id="profile">
-
-      <h2><%= @user.username %>'s stories</h2><br><br>
-      <li><%= link_to 'New Story', new_story_path, class: 'button newstory' %></li>
-        <ol>
-
-
-        <br><br>
-<div class="grid">
-
-        <% @user.stories.each do |story| %>
-
-          <%= link_to story do %>
-            <div class="grouping">
-              <div class="col-1">
-                <i class="fa fa-file fa-3x"></i><h3><%= shorten_title(story.name) %></h3>
-              </div>
-            </div>
-          <% end %>
-
-        <% end %>
-
-        </ol>
-     </div>
-    <% else %>
       <p id="tagline">If you can write three sentences,<br> you can write a story.</p>
-    <% end %>
+     <%= link_to "Sign Up", new_user_registration_path, class: 'button signup' %>
   </div>
 </div>
-
-<!-- link_to "Delete", story_path(story), method: :delete -->
-
