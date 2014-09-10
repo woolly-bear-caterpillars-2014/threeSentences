@@ -149,13 +149,19 @@ input.sentence:hover {
 
 .save-indicator {
   position: fixed;
-  top: 30px;
-  right: 200px;
+  top: 23px;
+  right: 100px;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
   color: $primary-color;
   font-weight: 300;
   margin-right: 20px;
   display: none;
+  i {
+    position: relative;
+    top: 1px;
+    right: 3px;
+    opacity: 0.8;
+  }
 }
 
 #the-end {
