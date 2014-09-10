@@ -12,23 +12,25 @@ nav {
 .left {
   position: relative;
   text-align: left;
-  width: 166px;
+  width: auto;
   left: 10px;
   top: 20px;
 }
 
 .export {
+  float: left;
+  margin-left: 5px;
   opacity: 0.8;
 }
 
 .home {
-  position: relative;
-  left: 0;
+  float: left;
   opacity: 0.8;
 }
 
 a.help.button {
-  top: 20px;
+  float: left;
+  margin-left: 5px;
   padding-left: 14px;
   padding-right: 14px;
   opacity: 0.8;
@@ -56,9 +58,11 @@ a.button.signup:hover {
 }
 
 h3.tag-line {
-  position: relative;
-  left: 143px;
-  top: -33px;
+  float: left;
+  margin-left: 10px;
+  margin-top: -5px;
+  width: 2em;
+  display: inline-block;
   a {
     color: lighten($primary-color, 10%);
     text-decoration: none;

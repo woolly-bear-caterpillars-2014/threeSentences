@@ -8,40 +8,19 @@ body {
 .cluster {
   display: none;
   margin: 0 auto 1em auto;
-   border-left: 2px solid #FFA2BE;
-   // border-top: 2px solid #FFA2BE;
-   // border-bottom: 2px solid #FFA2BE;
-
-  // border-radius: 20px;
-  // border-top-left-radius: 9px;
-  // border-bottom-left-radius: 9px;
+  border-left: 2px solid #FFA2BE;
   padding: 30px;
-  //   background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
-  //   background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
-  //   background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
-  //   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
-  // box-sizing: padding-box;
-// border-width: 3px;
--moz-border-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), #000000, #000000, rgba(0, 0, 0, 0)) 1 100%;
-// -webkit-border-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(33.33333%, #000000), color-stop(66.66667%, #000000), color-stop(100%, rgba(0, 0, 0, 0))) 1 100%;
--webkit-border-image: -webkit-linear-gradient(top, #F5FEFF, #FFA2BE, #FFA2BE, #F5FEFF) 1 100%;
--o-border-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), #000000, #000000, rgba(0, 0, 0, 0)) 1 100%;
-border-image: linear-gradient(top, rgba(0, 0, 0, 0), #000000, #000000, rgba(0, 0, 0, 0)) 1 100%;
-
+  -moz-border-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), #000000, #000000, rgba(0, 0, 0, 0)) 1 100%;
+  -webkit-border-image: -webkit-linear-gradient(top, #F5FEFF, #FFA2BE, #FFA2BE, #F5FEFF) 1 100%;
+  -o-border-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), #000000, #000000, rgba(0, 0, 0, 0)) 1 100%;
+  border-image: linear-gradient(top, rgba(0, 0, 0, 0), #000000, #000000, rgba(0, 0, 0, 0)) 1 100%;
 }
 
 .triad {
   border: 1px solid transparent;
-  // border-left: 3px solid #FFA2BE;
-  // // border-radius: 20px;
-  // border-top-left-radius: 50px;
-  // border-bottom-left-radius: 50px;
-  // padding: 10px;
-
 }
 
 .bottomborder {
-  // border-bottom: 2px solid #FFA2BE;
   padding-bottom: 40px;
 }
 
@@ -265,9 +244,6 @@ input.sentence:hover {
   background: $background-color;
   border: 1px solid $primary-color;
   border-radius: 3px;
-/*  -webkit-box-shadow: 0px 0px 20px 1px $primary-color;
-  -moz-box-shadow: 0px 0px 20px 1px $primary-color;
-  box-shadow: 0px 0px 20px 1px $primary-color;*/
 }
 
 .close, .close-help {
