@@ -398,7 +398,12 @@ Story.prototype.sync = function(params) {
 
 $(document).ready(function(){
   storyView.initialize();
-  if(window.location.href == "http://0.0.0.0:3000/stories/demo") {
+  $('body').on('click', 'a.arrow', function(e) {
+    e.preventDefault();
+    var target = $('.column'+$(this).attr('href'));
+    $('body').animate({ scrollLeft: (target.offset().left) }, 200);
+  });
+  if(window.location.href === "http://0.0.0.0:3000/stories/demo") {
     startIntro();
   }
 });

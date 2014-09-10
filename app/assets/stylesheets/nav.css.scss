@@ -17,8 +17,7 @@ nav {
   top: 20px;
 }
 
-.controls .export {
-  top: 20px;
+.export {
   opacity: 0.8;
 }
 
@@ -55,6 +54,21 @@ a.button.signup:hover {
   top: 20px;
   right: 20px;
 }
+
+h3.tag-line {
+  position: relative;
+  left: 143px;
+  top: -33px;
+  a {
+    color: lighten($primary-color, 10%);
+    text-decoration: none;
+
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+}
+
 
 .title {
   position: absolute;
