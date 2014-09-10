@@ -15,7 +15,7 @@ $(document).ready(function(){
         scrollSpeed = 300;
 
 
-    Mousetrap.bindGlobal('right', function() {
+    Mousetrap.bind('right', function() {
         screenRight = $(document).scrollLeft();
         $("html, body").animate({scrollLeft: (screenRight + colWidth)}, scrollSpeed);
     });
