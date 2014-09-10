@@ -20,11 +20,11 @@ $(document).ready(function(){
       data: $(this).serialize()
     }).done(function(data) {
       $.fileDownload(data['url'], {
-          successCallback: function (url) {
-	    $('.modal-bg').fadeToggle();
-	    deleteExport(url);
+        successCallback: function (url) {
+	        $('.modal-bg').fadeToggle();
+	        deleteExport(url);
           },
-          failCallback: function (html, url) {
+        failCallback: function (html, url) {
           }
       });
     });
