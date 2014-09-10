@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+  include Export
+
   belongs_to :user
   has_many :sentences
 
