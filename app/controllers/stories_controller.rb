@@ -79,7 +79,7 @@ class StoriesController < ApplicationController
   def demo
     @story = Story.new
 
-    render :demo, layout: false
+    # render :demo, layout: false
 
   end
 
