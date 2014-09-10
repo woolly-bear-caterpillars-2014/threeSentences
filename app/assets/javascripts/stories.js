@@ -202,9 +202,7 @@ var storyView = (function() {
 })();
 
 var sentenceToggle = function(){
-  console.log(this);
   if ($(this).attr('data-toggled') === 'false') {
-    console.log('close');
     $(this).attr('data-toggled', 'true');
     $(this).parent().find('span.cue_arrow').css({
       transform: 'rotate(90deg)',
@@ -212,7 +210,6 @@ var sentenceToggle = function(){
       WebkitTransform: 'rotate(90deg)',
       msTransform: 'rotate(90deg)'});
   } else {
-    console.log('open')
     $(this).attr('data-toggled', 'false');
     $(this).parent().find('span.cue_arrow').css({
       transform: 'rotate(0deg)',
