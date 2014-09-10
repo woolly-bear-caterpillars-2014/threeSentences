@@ -1,7 +1,11 @@
 class WelcomeController < ApplicationController
 
   def index
-    @user = current_user
+    if current_user
+      render 'users/show'
+    else
+      render 'index'
+    end
   end
 
 end

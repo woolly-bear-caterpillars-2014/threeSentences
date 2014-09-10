@@ -196,7 +196,6 @@ input[type='checkbox'] {
 }
 
 
-
 hr {
     border: 0;
     height: 1px;
@@ -204,4 +203,8 @@ hr {
     background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
     background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), $primary-color, rgba(0,0,0,0));
+}
+
+.welcome .session .button.signup {
+  display: none;
 }
