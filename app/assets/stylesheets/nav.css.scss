@@ -59,9 +59,17 @@ h3.tag-line {
   position: relative;
   left: 143px;
   top: -33px;
-  color: lighten($primary-color, 10%);
+  a {
+    color: lighten($primary-color, 10%);
+    text-decoration: none;
 
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
 }
+
+
 .title {
   position: absolute;
   left: 0;
