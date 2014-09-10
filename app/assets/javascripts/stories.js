@@ -363,7 +363,7 @@ function startIntro(e){
       },
       {
 	element: '.button.export.round',
-	intro: "After five columns, we cut you off. This is the beginning of your writing process—not the end of it.<br/><br/>You can share or export your story here, so you can take it to the next step."
+	intro: "After five columns, you're done. But this is the beginning of your writing process—not the end of it.<br/><br/>You can share or export your story here, so you can take it to the next step."
       }
     ]
   });
