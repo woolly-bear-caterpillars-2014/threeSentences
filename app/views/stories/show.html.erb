@@ -1,5 +1,5 @@
 <div class="controls">
-  <span class="save-indicator">Saved</span>
+  <span class="save-indicator"><i class="fa fa-check-circle"></i> saved</span>
 </div>
 
 <%= render 'stories/export' %>
@@ -24,7 +24,7 @@
 </div>
 
 <script type="text/template" class="template" id="column-template">
-  <i class="fa fa-chevron-right arrow"></i>
+  <a href="#column-{{ depth }}" class='arrow'><i class="fa fa-chevron-right arrow"></i></a>
   <div class="column" data-depth="{{ depth }}" id="column-{{ depth }}">
 </script>
 

@@ -29,7 +29,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 	margin: 150px 20px 10px 0;
-  padding-left: 100px;
+  padding-left: 80px;
 	height: 70vh;
   width: 700px;
   min-width: 700px;
@@ -45,6 +45,7 @@ body {
   top: 433px;
   font-size: 54px;
   color: #D4EBEB;
+  margin-left: 20px;
 }
 
 /*.column:before {
