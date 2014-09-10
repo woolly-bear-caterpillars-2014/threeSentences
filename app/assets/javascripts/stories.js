@@ -310,45 +310,49 @@ function startIntro(e){
   intro.setOptions({
     steps: [
       {
-	intro: "Welcome to Three Sentences"
+	intro: "Welcome to Three Sentences. We'd like to show you around."
       },
       {
 	element: document.querySelector('#column-0'),
-	intro: "Here, you see there are three lines to enter new sentences.",
-	position: 'right'
+	intro: "If you can write three sentences, you can write a story.",
+	position: 'top'
       },
       {
 	element: '.sentence',
-	intro: "Here is the top line, which is used to start the introduction to your story. This line is meant to encapsulate your introduction in one sentence.",
+	intro: "Write your first sentence here. It should describe the beginning of your story.",
 	position: 'top'
       },
       {
 	element: '#two',
-	intro: 'Enter a line that summarizes the conflict of your story here.',
+	intro: "Your second sentence should describe your story's main conflict.",
 	position: 'top'
       },
       {
 	element: '#three',
-	intro: "And here is where you write your conclusion. Watch what happens when you enter a sentence.",
+	intro: "The third sentence should be the ending of your story—the resolution.",
 	position: 'top'
       },
       {
-	element: '#cluster_tour',
-	intro: 'As you see, a new set of three lines have been created.'
+	element: '#cue_tour',
+	intro: 'When you enter a sentence, it becomes a cue for three new sentences that branch off of it.'
       },
       {
-	element: '#cue_tour',
-	intro: 'The cue or header line matches up with the sentence that these three lines came from. This is a cue of what sentence to embellish.'
+	element: '#cluster_tour',
+	intro: "Look at your cue and enter three sentences that expand upon it."
+      },
+      {
+  element: '#cluster_tour_2',
+  intro: "If you do this for every sentence you write, you'll scaffold out your story in no time.",
+  position: 'top'
       },
       {
 	element: '.button.export.round',
-	intro: "Since this is an outlining tool, we cut you off after 363 sentences. Here you are given the option to export your story. Let's get writing!"
-
+	intro: "After five columns, we cut you off. This is the beginning of your writing process—not the end of it.<br/><br/>You can share or export your story here, so you can take it to the next step."
       }
     ]
   });
 
-  intro.start().setOptions({ 'skipLabel': "Okay, I've got it!" }).onexit(function() {
+  intro.start().setOptions({ 'skipLabel': "End Tour" }).onexit(function() {
     window.location.href = "new";
   }).oncomplete(function() {
     window.location.href = "new";
