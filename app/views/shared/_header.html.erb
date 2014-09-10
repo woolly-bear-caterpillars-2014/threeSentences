@@ -1,0 +1,19 @@
+<nav>
+  <div class="left">
+    <%= link_to raw('<i class="fa fa-home"></i>'), root_path, class: 'button home round' %>
+    <%= render :partial => 'stories/story_nav' if params['controller'] == 'stories' %>
+  </div>
+
+  <div class="title">
+    <h1 class="story-name" contenteditable='true'><%= @story.name if @story %></h1>
+  </div>
+
+  <div class="session">
+  <% unless user_signed_in? %>
+  <%= link_to "Sign Up", new_user_registration_path, class: 'button signup' %>
+  <%= link_to "Log In", new_user_session_path, class: 'button login' %>
+  <% else %>
+  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'button logout' %>
+  <% end %>
+  </div>
+</nav>
