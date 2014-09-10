@@ -1,10 +1,3 @@
-var deleteExport = function (url) {
-  $.ajax({
-    method: "DELETE",
-    url: url
-  });
-};
-
 $(document).ready(function(){
   $('.help').click(function(e){
     e.preventDefault();
