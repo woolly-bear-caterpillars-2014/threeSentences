@@ -15,7 +15,7 @@ $(document).ready(function(){
         scrollSpeed = 300;
 
 
-    Mousetrap.bind('right', function() {
+    Mousetrap.bindGlobal('right', function() {
         screenRight = $(document).scrollLeft();
         $("html, body").animate({scrollLeft: (screenRight + colWidth)}, scrollSpeed);
     });
@@ -51,7 +51,7 @@ $(document).ready(function(){
         $("html, body").animate({scrollLeft: 1720}, scrollSpeed);
     });
 
-    Mousetrap.bind('shift+n', function() {
+    Mousetrap.bindGlobal('shift+ctrl+n', function() {
          if (nightMode === false){
          nightMode = true;
          $(backgrounds).css( "background", "#333333" );
@@ -64,7 +64,7 @@ $(document).ready(function(){
         }
     });
 
-    Mousetrap.bind('shift+k', function() {
+    Mousetrap.bindGlobal('shift+ctrl+k', function() {
          if (greenMode === false){
          greenMode = true;
          $(backgrounds).css( "background", "#41CA00" );
@@ -77,7 +77,7 @@ $(document).ready(function(){
         }
     });
 
-    Mousetrap.bind('shift+l', function() {
+    Mousetrap.bindGlobal('shift+ctrl+l', function() {
          if (redMode === false){
          redMode = true;
          $(backgrounds).css( "background", "#2D0400" );
@@ -90,7 +90,7 @@ $(document).ready(function(){
         }
     });
 
-    Mousetrap.bind('shift+j', function() {
+    Mousetrap.bindGlobal('shift+ctrl+j', function() {
          if (blueMode === false){
          blueMode = true;
          $(backgrounds).css( "background", "#2217B4" );
@@ -103,7 +103,7 @@ $(document).ready(function(){
         }
     });
 
-    Mousetrap.bind('shift+h', function() {
+    Mousetrap.bindGlobal('shift+ctrl+h', function() {
          if (yellowMode === false){
          yellowMode = true;
          $(backgrounds).css( "background", "#FFEE00" );
