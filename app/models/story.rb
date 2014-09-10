@@ -3,7 +3,7 @@ class Story < ActiveRecord::Base
   has_many :sentences
 
   validates :name, presence: true
-  before_save :generate_share_url
+  before_create :generate_share_url
 
 
   def export_story(filetype)
