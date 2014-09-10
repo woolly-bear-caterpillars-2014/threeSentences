@@ -116,7 +116,6 @@ $(document).ready(function(){
         }
     });
 
-FFEE00
 
 });
 
