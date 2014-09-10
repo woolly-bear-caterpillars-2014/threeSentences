@@ -1,7 +1,7 @@
 <div class="modal-bg">
   <div class="absolute-center-export">
       <h3>Copy this link to share your work</h3>
-      <%= text_field_tag 'share_url', "#{root_url}stories/#{@story.share_url}/share", class: 'sharebox' %><br>
+      <%= text_field_tag 'share_url', "#{root_url}stories/#{@story.share_url}/share", disabled: true, class: 'sharebox' %><br>
       <hr>
       <h3>Export<h3>
       <%= form_tag("/stories/#{params[:id]}/export") do %>
