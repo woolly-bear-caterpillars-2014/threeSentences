@@ -288,4 +288,18 @@ input.sentence:hover {
   text-align: left;
 }
 
+.cue_arrow {
+  float: left;
+  margin-right: 20px;
+  margin-left: -10px;
+  -ms-transform:rotate(90deg); /* IE 9 */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+  -o-transform:rotate(90deg); /* Opera */
+  -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
+}
 
