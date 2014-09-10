@@ -9,6 +9,7 @@ $(document).ready(function(){
   $('.export').click(function(e){
     e.preventDefault();
     $('.absolute-center-export input[type=submit]').val('Export')
+    $('.absolute-center-export input[type=submit]').removeAttr("disabled");
     $('.modal-bg').fadeToggle();
   });
 
