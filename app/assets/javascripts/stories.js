@@ -356,8 +356,13 @@ function startIntro(e){
     window.location.href = "new";
   }).oncomplete(function() {
     window.location.href = "new";
+  }).onbeforechange(function(targetElem) {
+    if (targetElem.id === "cue_tour") {
+      $('body').animate({ scrollLeft: ($(targetElem).offset().left - 200) }, 200);
+    } else if (targetElem.className === "button export round") {
+      $('body').animate({ scrollLeft: 0}, 200);
+    }
   });
-
 }
 
 
