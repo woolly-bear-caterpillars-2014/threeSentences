@@ -19,10 +19,4 @@ $('.modal-bg-help').click(function(e){
     $('.modal-bg-help').fadeToggle();
   });
 
-  $('.close').click(function(e){
-    e.preventDefault();
-
-    $('.modal-bg-help').fadeToggle();
-  });
-
 });
