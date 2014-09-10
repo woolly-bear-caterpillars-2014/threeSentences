@@ -1,0 +1,43 @@
+<div class="modal-bg-help">
+  <div class="absolute-center-help">
+      <h3>Help<h3>
+      <hr>
+      <%= link_to raw('<i class="fa fa-close"></i>'), '#', class: 'close-help' %>
+      <h4>Keyboard Shortcuts</h4>
+
+      <div class="shortcuts">
+        <table>
+          <tr>
+            <td class="short-left"><span class="key">&#8594;</span></td>
+            <td class="short-right">moves right one column</span></td>
+          </tr>
+          <tr>
+            <td class="short-left"><span class="key">&#8592;</td>
+            <td class="short-right">moves left one column</span></td>
+          </tr>
+          <tr>
+            <td class="short-left"><span class="key">shift + &#8594;</td>
+            <td class="short-right">moves to last column on right</span></td>
+          </tr>
+          <tr>
+            <td class="short-left"><span class="key">shift + &#8592;</td>
+            <td class="short-right">moves to first column</span></td>
+          </tr>
+          <tr>
+            <td class="short-left"><span class="key">shift + (1, 2, 3, 4, 5)</td>
+            <td class="short-right">moves to specified column number</span></td>
+          </tr>
+          <tr>
+            <td class="short-left"><span class="key">shift + N</td>
+            <td class="short-right">night mode</span></td>
+          </tr>
+        </table>
+      </div>
+      <%= link_to "Take the Tour Again", stories_demo_path, class: 'button' %>
+  </div>
+</div>
+
+
+
+
+

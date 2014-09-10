@@ -299,12 +299,6 @@ var sentenceToggle = function(){
   $(this).siblings('.triad').slideToggle(500);
 };
 
-var tourStart = function(e){
-  e.preventDefault();
-  console.log("hey")
-  introJs().start().setOptions({ 'skipLabel': "Okay, I've got it!", 'showStepNumbers': false });
-}
-
 function startIntro(e){
         if (e) { e.preventDefault(); };
         var intro = introJs();

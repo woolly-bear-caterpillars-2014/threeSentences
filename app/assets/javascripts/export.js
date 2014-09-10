@@ -34,6 +34,10 @@ $(document).ready(function(){
     e.stopPropagation();
   });
 
+  $('.absolute-center-help').click(function(e){
+    e.stopPropagation();
+  });
+
   $('.modal-bg').click(function(e){
     e.preventDefault();
     $('.modal-bg').fadeToggle();
@@ -42,6 +46,11 @@ $(document).ready(function(){
   $('.close').click(function(e){
     e.preventDefault();
     $('.modal-bg').fadeToggle();
+  });
+
+  $('.close-help').click(function(e){
+    e.preventDefault();
+    $('.modal-bg-help').fadeToggle();
   });
 
 });
