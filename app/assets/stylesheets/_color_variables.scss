@@ -1,8 +1,10 @@
-$background-color: #F5FEFF;
+$background-color: darken(#F5FEFF, 10%);
 
-$primary-color: #86CFD9;
+$original-primary-color: #86CFD9;
 
-$secondary-color: #88F068;
+$primary-color: darken(#86CFD9, 30%);
+
+$secondary-color: #C8538F;
 
 $base-text: #333333;
 

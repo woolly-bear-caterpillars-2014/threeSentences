@@ -106,11 +106,13 @@ a.round {
 
 a.button.newstory {
   background: $secondary-color;
+  color: white;
+  border: none;
 }
 
 a.button.newstory:hover {
   color: white;
-  background: $primary-color;
+  background: darken($secondary-color, 30%);
 }
 
 #brand {
