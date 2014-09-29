@@ -47,12 +47,17 @@ a.help.button {
   right: 10px;
 }
 
-a.button.signup {
+.button.invert {
   background-color: $primary-color;
   color: white;
 }
 
-a.button.signup:hover {
+.button.invert:hover {
+  background-color: white;
+  color: $base-text;
+}
+
+.button.invert:focus {
   background-color: white;
   color: $base-text;
 }
