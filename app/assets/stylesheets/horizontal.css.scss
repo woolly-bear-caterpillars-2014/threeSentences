@@ -1,0 +1,112 @@
+@import 'font_variables';
+@import 'color_variables';
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#frame {
+  position: absolute;
+  top: 0;
+  margin: 75px 0px 0px 0px;
+  padding: 0;
+  width: 100%;
+  font-size: 30px;
+}
+
+.slidee {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.column:first-child {
+  margin-left: 200px;
+}
+.column {
+	float: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+	margin: 150px 20px 10px 0;
+  padding-left: 80px;
+	height: 70vh;
+  width: 700px;
+  min-width: 700px;
+	background: #F5FEFF;
+	color: #ddd;
+  position: relative;
+	text-align: center;
+}
+
+.fa.fa-chevron-right.arrow {
+  float: left;
+  position: relative;
+  top: 433px;
+  font-size: 54px;
+  color: #D4EBEB;
+  margin-left: 20px;
+}
+
+.column > :first-child {
+ margin-top: 0;
+}
+
+#column-0 > :first-child {
+  margin-top: 140px;
+}
+
+#column-0 input.sentence {
+  margin-bottom: 70px;
+}
+
+p {
+  font-size: 14px;
+  color: #000;
+}
+
+
+h1, h2, h3, h4, h5, h6, li, p {
+	color: #333333;
+}
+
+.story-list {
+  margin: 30px auto;
+	font-size: 2em;
+  text-align: left;
+  width: 60%;
+}
+
+
+li.story-link {
+  margin-bottom: 15px;
+  list-style-type: none;
+}
+
+.story-link a {
+  text-decoration: none;
+  color: black;
+  line-height: 47px;
+  font-family: 'Helvetica Neue', serif;
+  font-weight: 200;
+  font-size: 22px;
+}
+
+.story-link i {
+  color: $primary-color;
+  margin-right: 10px;
+  position: relative;
+  top: 5px;
+}
+
+.story-link:hover {
+  i {
+    color: darken($primary-color, 10%);
+  }
+  a {
+	 color: $primary-color;
+  }
+}

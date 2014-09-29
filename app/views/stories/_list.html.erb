@@ -1,31 +1,30 @@
 <div class="absolute-center-icons">
      <div id="profile">
 
-     <h2><%= @user.username %>'s stories</h2><br><br>
+     <h2><%= @user.username %>'s stories</h2>
      <li>
        <%= link_to 'New Story', new_story_path, class: 'button newstory' %>
      </li>
 
    <ol>
 
-   <br><br>
    <div class="grid">
 
    <% @user.stories.each do |story| %>
 
-     <%= link_to story do %>
-       <div class="grouping">
-	 <div class="col-1">
-	   <i class="my-icon"><i></i><i></i><i></i></i>
-	   <h4><%= story.sentences.size %></h4>
-	   <br>
-	   <h6><%= 'sentence'.pluralize(story.sentences.size) %><h6>
-	   <h5><%= story.name %></h5>
-	   <h5><%= link_to 'Share', story_share_path(story) %>
+    <%= link_to story do %>
+      <div class="grouping">
+      <div class="col-1">
+      <i class="my-icon"><i></i><i></i><i></i></i>
+      <h4><%= story.sentences.size %></h4>
+      <br>
+      <h6><%= 'sentence'.pluralize(story.sentences.size) %><h6>
+      <h5><%= story.name %></h5>
+      <h5><%= link_to 'Share', story_share_path(story) %>
 
-	 </div>
-       </div>
-     <% end %>
+      </div>
+      </div>
+    <% end %>
 
    <% end %>
 
