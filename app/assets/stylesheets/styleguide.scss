@@ -135,7 +135,15 @@ a.button.newstory:hover {
 section.flash {
   font-size: $font-smallsize;
   font-weight: 200;
+  background-color: $warning-color;
+  border-radius: 2px;
+  color: white;
+  padding: 3px 5px;
+  width: 50%;
+  margin: 10px auto 0 auto;
+  opacity: 0.8;
 }
+
 
 label {
   font-weight: 200;
