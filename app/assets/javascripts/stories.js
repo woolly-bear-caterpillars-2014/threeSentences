@@ -1,4 +1,5 @@
 // ------------- VIEW MODULE -------------
+var story;
 
 var storyView = (function() {
   var columnTemplate,
@@ -36,22 +37,22 @@ var storyView = (function() {
   };
 
   var bindEventListeners = function() {
-    $('body').on('click', '.cue', sentenceToggle);
+    $('slidee').on('click', '.cue', sentenceToggle);
 
     $('.story-name').on('blur', function(e) {
       e.preventDefault();
       var newTitle = $('.story-name').html();
       if (newTitle !== story.name) {
-	story.updateTitle(newTitle);
+        story.updateTitle(newTitle);
       }
     });
 
-    $('body').on('focus', 'input.sentence', function(e){
+    $('slidee').on('focus', 'input.sentence', function(e){
       e.preventDefault();
       currentSentenceContent = $(this).val();
     });
 
-    $('body').on('blur', 'input.sentence', function(e) {
+    $('slidee').on('blur', 'input.sentence', function(e) {
       e.preventDefault();
 
       if ($(this).val() !== currentSentenceContent) {
@@ -67,6 +68,12 @@ var storyView = (function() {
           sentence.save();
         }
       }
+    });
+
+    $('slidee').on('click', 'a.arrow', function(e) {
+      e.preventDefault();
+      var target = $('.column'+$(this).attr('href'));
+      $('body').animate({ scrollLeft: (target.offset().left) }, 200);
     });
   };
 
@@ -125,6 +132,48 @@ var storyView = (function() {
     }
   };
 
+  var introSteps = {
+        steps: [
+          { intro: "Welcome to Three Sentences. We'd like to show you around." },
+          {
+            element: document.querySelector('#column-0'),
+            intro: "If you can write three sentences, you can write a story.",
+            position: 'top'
+          },
+          {
+            element: '.sentence',
+            intro: "Write your first sentence here. It should describe the beginning of your story.",
+            position: 'top'
+          },
+          {
+            element: '#two',
+            intro: "Your second sentence should describe your story's main conflict.",
+            position: 'top'
+          },
+          {
+            element: '#three',
+            intro: "The third sentence should be the ending of your story—the resolution.",
+            position: 'top'
+          },
+          {
+            element: '#cue_tour',
+            intro: 'When you enter a sentence, it becomes a cue for three new sentences that branch off of it.'
+          },
+          {
+            element: '#cluster_tour',
+            intro: "Look at your cue and enter three sentences that expand upon it."
+          },
+          {
+            element: '#cluster_tour_2',
+            intro: "If you do this for every sentence you write, you'll scaffold out your story in no time.",
+            position: 'top'
+          },
+          {
+            element: '.button.export.round',
+            intro: "After five columns, you're done. But this is the beginning of your writing process—not the end of it.<br/><br/>You can share or export your story here, so you can take it to the next step."
+          }
+        ]
+      };
 
   return {
    buildColumn: function(depth) {
@@ -148,7 +197,7 @@ var storyView = (function() {
             column += '<div class="cluster">';
           }
           column += cueTemplate({cue: '', parent_position: parentPosition(element)});
-          column += '<div class="triad">'
+          column += '<div class="triad">';
 
         }
         column += sentenceTemplate({
@@ -185,6 +234,27 @@ var storyView = (function() {
 
     displaySave: function() {
       $('.save-indicator').fadeIn(400).delay(700).fadeOut(400);
+    },
+
+    startIntro: function(e){
+      if (e) {
+        e.preventDefault();
+      }
+      var intro = introJs();
+
+      intro.setOptions(introSteps);
+
+      intro.start().setOptions({ 'skipLabel': "End Tour" }).onexit(function() {
+        window.location.href = "new";
+      }).oncomplete(function() {
+        window.location.href = "new";
+      }).onbeforechange(function(targetElem) {
+        if (targetElem.id === "cue_tour") {
+          $('body').animate({ scrollLeft: ($(targetElem).offset().left - 200) }, 200);
+        } else if (targetElem.className === "button export round") {
+          $('body').animate({ scrollLeft: 0}, 200);
+        }
+      });
     },
 
     initialize: function() {
@@ -315,73 +385,6 @@ Sentence.prototype.initialRender = function() {
   this.updateElement();
 };
 
-
-
-function startIntro(e){
-  if (e) {
-    e.preventDefault();
-  }
-  var intro = introJs();
-
-  intro.setOptions({
-    steps: [
-      {
-	intro: "Welcome to Three Sentences. We'd like to show you around."
-      },
-      {
-	element: document.querySelector('#column-0'),
-	intro: "If you can write three sentences, you can write a story.",
-	position: 'top'
-      },
-      {
-	element: '.sentence',
-	intro: "Write your first sentence here. It should describe the beginning of your story.",
-	position: 'top'
-      },
-      {
-	element: '#two',
-	intro: "Your second sentence should describe your story's main conflict.",
-	position: 'top'
-      },
-      {
-	element: '#three',
-	intro: "The third sentence should be the ending of your story—the resolution.",
-	position: 'top'
-      },
-      {
-	element: '#cue_tour',
-	intro: 'When you enter a sentence, it becomes a cue for three new sentences that branch off of it.'
-      },
-      {
-	element: '#cluster_tour',
-	intro: "Look at your cue and enter three sentences that expand upon it."
-      },
-      {
-  element: '#cluster_tour_2',
-  intro: "If you do this for every sentence you write, you'll scaffold out your story in no time.",
-  position: 'top'
-      },
-      {
-	element: '.button.export.round',
-	intro: "After five columns, you're done. But this is the beginning of your writing process—not the end of it.<br/><br/>You can share or export your story here, so you can take it to the next step."
-      }
-    ]
-  });
-
-  intro.start().setOptions({ 'skipLabel': "End Tour" }).onexit(function() {
-    window.location.href = "new";
-  }).oncomplete(function() {
-    window.location.href = "new";
-  }).onbeforechange(function(targetElem) {
-    if (targetElem.id === "cue_tour") {
-      $('body').animate({ scrollLeft: ($(targetElem).offset().left - 200) }, 200);
-    } else if (targetElem.className === "button export round") {
-      $('body').animate({ scrollLeft: 0}, 200);
-    }
-  });
-}
-
-
 // ----------------- STORY ---------------------
 function Story(storyJson) {
   this.name = storyJson.name;
@@ -420,13 +423,10 @@ Story.prototype.sync = function(params) {
 // ---------------------------------------------
 
 $(document).ready(function(){
+  story = new Story(storyJson);
   storyView.initialize();
-  $('body').on('click', 'a.arrow', function(e) {
-    e.preventDefault();
-    var target = $('.column'+$(this).attr('href'));
-    $('body').animate({ scrollLeft: (target.offset().left) }, 200);
-  });
+
   if(window.location.href === window.location.origin + "/stories/demo") {
-    startIntro();
+    storyView.startIntro();
   }
 });
