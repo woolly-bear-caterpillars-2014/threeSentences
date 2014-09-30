@@ -35,7 +35,7 @@ var storyView = (function() {
   };
 
   var bindEventListeners = function() {
-    $('slidee').on('click', '.cue', sentenceToggle);
+    $('.slidee').on('click', '.cue', sentenceToggle);
 
     $('.story-name').on('blur', function(e) {
       e.preventDefault();
@@ -45,12 +45,12 @@ var storyView = (function() {
       }
     });
 
-    $('slidee').on('focus', 'input.sentence', function(e){
+    $('.slidee').on('focus', 'input.sentence', function(e){
       e.preventDefault();
       currentSentenceContent = $(this).val();
     });
 
-    $('slidee').on('blur', 'input.sentence', function(e) {
+    $('.slidee').on('blur', 'input.sentence', function(e) {
       e.preventDefault();
 
       if ($(this).val() !== currentSentenceContent) {
@@ -68,7 +68,7 @@ var storyView = (function() {
       }
     });
 
-    $('slidee').on('click', 'a.arrow', function(e) {
+    $('.slidee').on('click', 'a.arrow', function(e) {
       e.preventDefault();
       var target = $('.column'+$(this).attr('href'));
       $('body').animate({ scrollLeft: (target.offset().left) }, 200);
