@@ -1,6 +1,4 @@
 // ------------- VIEW MODULE -------------
-var story;
-
 var storyView = (function() {
   var columnTemplate,
       cueTemplate,
@@ -423,7 +421,7 @@ Story.prototype.sync = function(params) {
 // ---------------------------------------------
 
 $(document).ready(function(){
-  story = new Story(storyJson);
+
   storyView.initialize();
 
   if(window.location.href === window.location.origin + "/stories/demo") {
