@@ -3,15 +3,28 @@
     <div class="loginform">
       <h2>Log In</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div><%= f.email_field :email, autofocus: true, placeholder: 'Email', :required => true %></div>
 
-        <div><%= f.password_field :password, autocomplete: "off", placeholder: 'Password', :required => true %></div>
+        <div>
+          <label class="right" for="user_email">Email</label>
+          <%= f.email_field :email, autofocus: true, placeholder: 'you@email.com', :required => true %>
+        </div>
 
+        <div>
+        <label class="right" for="user_password">Password</label>
+        <%= f.password_field :password, autocomplete: "off", placeholder: '********', :required => true %>
+        </div>
         <% if devise_mapping.rememberable? -%>
-          <div id="rememberme"><%= f.check_box :remember_me %><span id="remember">remember me</span></div>
+          <div class="remember_me">
+            <%= f.check_box :remember_me %><label for="user_remember_me"> remember me</label>
+          </div>
         <% end -%>
+        <% flash.each do |name, msg| %>
+            <%= content_tag :section, msg, :id => "flash_#{name}", :class => "flash" %>
+        <% end %>
+        <div>
+          <%= f.submit "Log In", :class => "button invert" %>
 
-        <div><%= f.submit "Log In" %></div>
+        </div>
       <% end %>
     </div>
   </div>

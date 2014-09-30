@@ -8,6 +8,14 @@ class Story < ActiveRecord::Base
   validates :name, presence: true
   before_create :generate_share_url
 
+  def short_title
+    if name.length > 40
+      return name[0..39] + "..."
+    else
+      return name
+    end
+  end
+
   private
 
   def generate_share_url

@@ -2,28 +2,20 @@
   <div class="absolute-center-icons">
   <div id="profile">
 
-    <h2><%= current_user.username %>'s stories</h2><br><br>
-    <li>
-      <%= link_to 'New Story', new_story_path, class: 'button newstory' %>
-    </li>
+    <h2><%= current_user.username %>'s stories</h2>
 
-    <ol>
-    <br><br>
+    <%= link_to raw('<i class="fa fa-pencil-square-o"></i> New Story'), new_story_path, class: 'button newstory' %>
 
-    <div class="grid">
 
+    <div >
+      <ul class="story-list">
       <% current_user.stories.each do |story| %>
-
+        <li class="story-link">
         <%= link_to story do %>
-          <div class="grouping">
-            <div class="col-1">
-              <i class="fa fa-file fa-3x"></i><h3><%= shorten_title(story.name) %></h3>
-            </div>
-          </div>
+          <i class="fa fa-book fa-2x"></i><%= story.short_title %>
         <% end %>
-
+        </li>
       <% end %>
-
+      </ul>
     </div>
-  </ol>
 </div>

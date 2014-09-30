@@ -3,20 +3,31 @@
     <div class="signupform">
       <h2>Sign Up</h2>
 
+
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-         <div>
-        <%= f.text_field :username, autofocus: true, placeholder: 'Username', :required => true %></div>
+        <div>
+        <label class="right" for="user_username">Username</label>
+        <%= f.text_field :username, autofocus: true, :required => true %>
+        </div>
+
 
         <div>
-        <%= f.email_field :email, placeholder: 'Email', :required => true %></div>
+        <label class="right" for="user_email">Email</label>
+        <%= f.email_field :email, placeholder: 'you@email.com', :required => true %>
+
+        </div>
 
         <div>
-          <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', :required => true %></div>
+        <label class="right" for="user_password">Password</label>
+          <%= f.password_field :password, autocomplete: "off", :placeholder =>"8+ characters", :required => true, :pattern => ".{8,}", :title => "Minimum 8 characters" %>
+        </div>
 
         <div>
-          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', :required => true %></div>
-
-        <div><%= f.submit "Sign Up" %></div>
+        <label class="right" for="user_password_confirmation">Confirm Password</label>
+          <%= f.password_field :password_confirmation, autocomplete: "off",:placeholder =>"8+ characters",  :required => true, :pattern => ".{8,}", :title => "Minimum 8 characters" %>
+        </div>
+        <%= devise_error_messages! %>
+        <div><%= f.submit "Sign Up", :class => "button invert" %></div>
 
       <% end %>
     </div>

@@ -70,7 +70,7 @@ h4 {
   font-size: $font-xlargesize;
 }
 
-button, a.button, input[type=submit], input[type=button] {
+button, a.button, input[type=submit], input[type=button]  {
   padding: 10px;
   font-size: $font-smallsize;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -100,12 +100,27 @@ button:focus, a.button:focus, input[type=submit]:focus, input[type=button]:focus
   background-color: white;
 }
 
-a.round {
+a.round, i.round {
   border-radius: 100%;
 }
 
+i.button {
+  padding: 10px;
+  border: 1px solid $primary-color;
+  background: $background-color;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: all 0.20s ease-in-out;
+  -moz-transition: all 0.20s ease-in-out;
+  -o-transition: all 0.20s ease-in-out;
+  transition: all 0.20s ease-in-out;
+}
+
 a.button.newstory {
-  background: $secondary-color;
+  background: #349f7e;
+  color: white;
+  display: inline-block;
+  margin-top: 20px;
 }
 
 a.button.newstory:hover {
@@ -117,46 +132,96 @@ a.button.newstory:hover {
   color: $primary-color;
 }
 
-form input[type='text'], form input[type='email'], form input[type='password'] {
+section.flash {
+  font-size: $font-smallsize;
+  font-weight: 200;
+  background-color: $warning-color;
   border-radius: 2px;
+  color: white;
+  padding: 3px 5px;
+  width: 50%;
+  margin: 10px auto 0 auto;
+  opacity: 0.8;
+}
+
+
+label {
+  font-weight: 200;
+}
+
+label.right {
+  display: inline-block;
+  width: 180px;
+  text-align: right;
+}
+
+input::-webkit-input-placeholder { font-family: "Helvetica Neue", sans-serif; font-weight: lighter; }
+input::-moz-placeholder { font-family: "Helvetica Neue", sans-serif; font-weight: lighter; } /* firefox 19+ */
+input:-ms-input-placeholder { font-family: "Helvetica Neue", sans-serif; font-weight: lighter; } /* ie */
+input:-moz-placeholder { font-family: "Helvetica Neue", sans-serif; font-weight: lighter; }
+
+form input[type='text'], form input[type='email'], form input[type='password'] {
+  border-width: 0px;
   border: none;
-  border: 1px solid $primary-color;
-  width: 200px;
+  border-bottom: 1px solid $primary-color;
+  border-radius: 3px 3px 0 0;
+  background-color: white;
+  outline: none;
+  cursor: text;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  box-shadow: none;
+  color: $primary-color;
+  width: 260px;
   margin: 10px;
   padding: 4px;
   font-size: $font-basesize;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   letter-spacing: 1px;
 }
 
-
+form input[type='text']:focus, form input[type='email']:focus, form input[type='password']:focus {
+ outline: none;
+ padding: 4px 4px 2px 4px;
+ border-bottom: 3px solid $primary-color;
+ background-color: white;
+}
 
 input[type='checkbox'] {
   position: relative;
   bottom: 1px;
 }
 
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors > input[type='text'], .field_with_errors > input[type='email'], .field_with_errors > input[type='password'] {
+  border-bottom: 1px solid $warning-color;
+  background-color: lighten($warning-color, 39%);
+}
+
 #error_explanation{
-  font-size: 12px;
-  margin: 20px auto 0;
-  padding: 10px;
-  background: $error-color;
-  width: 350px;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  font-size: 16px;
+  font-weight: 200;
+  text-align: left;
+  display: inline-block;
+  opacity: 0.8;
+  margin-top: 10px;
 }
 
 #error_explanation h2 {
-  font-size: 14px;
-  margin: 10px;
+  display: none;
 }
 
 #error_explanation li {
-  padding-bottom: 10px;
-  padding-right: 20px;
-  text-align: right;
+  background-color: $warning-color;
+  border-radius: 2px;
+  color: white;
+  padding: 3px 5px;
+
 }
 
 #success_explanation{
